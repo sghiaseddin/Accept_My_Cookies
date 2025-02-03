@@ -1,0 +1,27 @@
+/* Tab Navigation */
+.nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+.nav-tab {
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.nav-tab-active {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none; /* Hide all tab content by default */
+}
+
+.tab-content.active {
+    display: block; /* Show active tab content */
+}

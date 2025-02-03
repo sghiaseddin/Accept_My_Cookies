@@ -12,9 +12,11 @@
                     type: 'POST',
                     data: {
                         action: 'accept_my_cookies_cleanup',
-                        nonce: acceptMyCookies.nonce // Pass the nonce
+                        nonce: acceptMyCookiesCleanup.nonce // Pass the nonce
                     },
                     success: function (response) {
+                        console.log(response);
+                        console.log('Cleanup was successful.');
                         // Redirect to the deactivation URL after cleanup
                         window.location.href = $(e.target).attr('href');
                     },

@@ -23,7 +23,8 @@ class AcceptMyCookies_Admin_Controller {
         add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
         add_action( 'admin_init', array( $this, 'register_settings' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-        add_action( 'wp_ajax_accept_my_cookies_cleanup', array( $this, 'ajax_cleanup' ) ); // AJAX endpoint
+        add_action( 'wp_ajax_accept_my_cookies_cleanup', array( $this, 'ajax_cleanup' ) );
+        add_action( 'wp_ajax_accept_my_cookies_save_settings', array( $this, 'ajax_save_settings' ) );
     }
 
     /**
@@ -45,12 +46,20 @@ class AcceptMyCookies_Admin_Controller {
     public function register_settings() {
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
 
-        // Register settings section
+        // Register settings for the General tab
         add_settings_section(
-            'accept_my_cookies_main_section',
-            __( 'Sample Settings', 'accept-my-cookies' ),
+            'accept_my_cookies_general_section',
+            __( 'General Settings', 'accept-my-cookies' ),
             null,
-            'accept-my-cookies'
+            'accept-my-cookies-general'
+        );
+
+        // Register settings for the Styling tab
+        add_settings_section(
+            'accept_my_cookies_styling_section',
+            __( 'Styling Settings', 'accept-my-cookies' ),
+            null,
+            'accept-my-cookies-styling'
         );
 
         // Register settings fields
@@ -60,12 +69,15 @@ class AcceptMyCookies_Admin_Controller {
                 $option['key']
             );
 
+            $page = $option['tab'] === 'general' ? 'accept-my-cookies-general' : 'accept-my-cookies-styling';
+            $section = $option['tab'] === 'general' ? 'accept_my_cookies_general_section' : 'accept_my_cookies_styling_section';
+
             add_settings_field(
                 $option['key'],
                 $option['label'],
                 array( $this, 'render_option_field' ),
-                'accept-my-cookies',
-                'accept_my_cookies_main_section',
+                $page,
+                $section,
                 array( 'option_name' => $option_name )
             );
         }
@@ -78,14 +90,14 @@ class AcceptMyCookies_Admin_Controller {
      */
     public function render_option_field( $args ) {
         $option_name = $args['option_name'];
+        $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
+        $option = $schema[ $option_name ];
         $value = $this->settings_handler->get_option( $option_name );
-        $schema = include __DIR__ . '/../options.php';
-        $key = $schema[ $option_name ]['key'];
         ?>
-        <input type="text" name="<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $value ); ?>" class="regular-text">
+        <input type="text" name="<?php echo esc_attr( $option['key'] ); ?>" value="<?php echo esc_attr( $value ); ?>" class="regular-text">
         <?php
     }
-
+    
     /**
      * Render the settings page.
      */
@@ -106,10 +118,43 @@ class AcceptMyCookies_Admin_Controller {
             true
         );
 
+        wp_enqueue_script(
+            'accept-my-cookies-save-settings',
+            ACCEPT_MY_COOKIES_URL . 'assets/js/save-settings.js',
+            array( 'jquery' ),
+            ACCEPT_MY_COOKIES_VERSION,
+            true
+        );
+
+        wp_enqueue_script(
+            'accept-my-cookies-tabs',
+            ACCEPT_MY_COOKIES_URL . 'assets/js/tabs.js',
+            array( 'jquery' ),
+            ACCEPT_MY_COOKIES_VERSION,
+            true
+        );    
+    
+        wp_enqueue_style(
+            'accept-my-cookies-admin',
+            ACCEPT_MY_COOKIES_URL . 'assets/css/admin.css',
+            array(),
+            ACCEPT_MY_COOKIES_VERSION
+        );
+    
+        // Localize the script with AJAX URL and nonce
+        wp_localize_script(
+            'accept-my-cookies-save-settings',
+            'acceptMyCookiesSaveSettings',
+            array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' ),
+                'nonce'   => wp_create_nonce( 'accept_my_cookies_save_settings_nonce' )
+            )
+        );
+    
         // Localize the script with AJAX URL and nonce
         wp_localize_script(
             'accept-my-cookies-deactivate',
-            'acceptMyCookies',
+            'acceptMyCookiesCleanup',
             array(
                 'ajaxurl' => admin_url( 'admin-ajax.php' ),
                 'nonce'   => wp_create_nonce( 'accept_my_cookies_cleanup_nonce' )
@@ -129,5 +174,22 @@ class AcceptMyCookies_Admin_Controller {
         // Perform cleanup
         $this->settings_handler->delete_all_options();
         wp_send_json_success( 'Cleanup completed.' );
+    }
+
+    public function ajax_save_settings() {
+        // Verify nonce for security
+        if ( ! isset( $_POST['_ajax_nonce'] ) || ! wp_verify_nonce( $_POST['_ajax_nonce'], 'accept_my_cookies_save_settings_nonce' ) ) {
+            wp_send_json_error( 'Invalid nonce.' );
+        }
+    
+        // Save the settings
+        $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
+        foreach ( $schema as $option ) {
+            if ( isset( $_POST[ $option['key'] ] ) ) {
+                update_option( $option['key'], sanitize_text_field( $_POST[ $option['key'] ] ) );
+            }
+        }
+    
+        wp_send_json_success( 'Settings saved.' );
     }
 }

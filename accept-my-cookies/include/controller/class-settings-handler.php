@@ -51,7 +51,7 @@ class AcceptMyCookies_Settings_Handler {
      */
     public function save_default_options() {
         $schema = $this->get_options_schema();
-        foreach ( $schema as $option ) {
+        foreach ( $schema as $key => $option ) {
             if ( ! get_option( $option['key'] ) ) {
                 update_option( $option['key'], $option['default'] );
             }
@@ -63,7 +63,7 @@ class AcceptMyCookies_Settings_Handler {
      */
     public function delete_all_options() {
         $schema = $this->get_options_schema();
-        foreach ( $schema as $option ) {
+        foreach ( $schema as $key => $option ) {
             delete_option( $option['key'] );
         }
     }
