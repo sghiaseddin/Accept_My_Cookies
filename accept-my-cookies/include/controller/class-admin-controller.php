@@ -7,12 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class AcceptMyCookies_Admin_Controller {
 
     private $settings_handler;
+    private $admin_view;
 
     /**
      * Constructor.
      */
     public function __construct() {
         $this->settings_handler = new AcceptMyCookies_Settings_Handler();
+        $this->admin_view = new AcceptMyCookies_Admin_View();
         $this->init_hooks();
     }
 
@@ -22,7 +24,7 @@ class AcceptMyCookies_Admin_Controller {
     private function init_hooks() {
         add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
         add_action( 'admin_init', array( $this, 'register_settings' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+        add_action( 'admin_enqueue_scripts', array( $this->admin_view, 'enqueue_scripts' ) );
         add_action( 'wp_ajax_accept_my_cookies_cleanup', array( $this, 'ajax_cleanup' ) );
         add_action( 'wp_ajax_accept_my_cookies_save_settings', array( $this, 'ajax_save_settings' ) );
     }
@@ -54,6 +56,14 @@ class AcceptMyCookies_Admin_Controller {
             'accept-my-cookies-general'
         );
 
+        // Register settings for the Google Property tab
+        add_settings_section(
+            'accept_my_cookies_google_property_section',
+            __( 'Google Property Settings', 'accept-my-cookies' ),
+            null,
+            'accept-my-cookies-google-property'
+        );
+        
         // Register settings for the Styling tab
         add_settings_section(
             'accept_my_cookies_styling_section',
@@ -69,33 +79,30 @@ class AcceptMyCookies_Admin_Controller {
                 $option['key']
             );
 
-            $page = $option['tab'] === 'general' ? 'accept-my-cookies-general' : 'accept-my-cookies-styling';
-            $section = $option['tab'] === 'general' ? 'accept_my_cookies_general_section' : 'accept_my_cookies_styling_section';
+            switch ($option['tab']) {
+                case 'general':
+                    $page = 'accept-my-cookies-general';
+                    $section = 'accept_my_cookies_general_section';
+                    break;
+                case 'google_property':
+                    $page = 'accept-my-cookies-google-property';
+                    $section = 'accept_my_cookies_google_property_section';
+                    break;
+                case 'styling':
+                    $page = 'accept-my-cookies-styling';
+                    $section = 'accept_my_cookies_styling_section';
+                    break;
+            }
 
             add_settings_field(
                 $option['key'],
                 $option['label'],
-                array( $this, 'render_option_field' ),
+                array( $this->admin_view, 'render_option_field' ),
                 $page,
                 $section,
                 array( 'option_name' => $option_name )
             );
         }
-    }
-
-    /**
-     * Render an option input field.
-     *
-     * @param array $args The field arguments.
-     */
-    public function render_option_field( $args ) {
-        $option_name = $args['option_name'];
-        $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
-        $option = $schema[ $option_name ];
-        $value = $this->settings_handler->get_option( $option_name );
-        ?>
-        <input type="text" name="<?php echo esc_attr( $option['key'] ); ?>" value="<?php echo esc_attr( $value ); ?>" class="regular-text">
-        <?php
     }
     
     /**
@@ -104,62 +111,6 @@ class AcceptMyCookies_Admin_Controller {
     public function render_settings_page() {
         // Include the view file
         include_once ACCEPT_MY_COOKIES_DIR . '/include/view/settings-page.php';
-    }
-
-    /**
-     * Enqueue scripts and styles for the admin area.
-     */
-    public function enqueue_scripts() {
-        wp_enqueue_script(
-            'accept-my-cookies-deactivate',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/deactivate.js',
-            array( 'jquery' ),
-            ACCEPT_MY_COOKIES_VERSION,
-            true
-        );
-
-        wp_enqueue_script(
-            'accept-my-cookies-save-settings',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/save-settings.js',
-            array( 'jquery' ),
-            ACCEPT_MY_COOKIES_VERSION,
-            true
-        );
-
-        wp_enqueue_script(
-            'accept-my-cookies-tabs',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/tabs.js',
-            array( 'jquery' ),
-            ACCEPT_MY_COOKIES_VERSION,
-            true
-        );    
-    
-        wp_enqueue_style(
-            'accept-my-cookies-admin',
-            ACCEPT_MY_COOKIES_URL . 'assets/css/admin.css',
-            array(),
-            ACCEPT_MY_COOKIES_VERSION
-        );
-    
-        // Localize the script with AJAX URL and nonce
-        wp_localize_script(
-            'accept-my-cookies-save-settings',
-            'acceptMyCookiesSaveSettings',
-            array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' ),
-                'nonce'   => wp_create_nonce( 'accept_my_cookies_save_settings_nonce' )
-            )
-        );
-    
-        // Localize the script with AJAX URL and nonce
-        wp_localize_script(
-            'accept-my-cookies-deactivate',
-            'acceptMyCookiesCleanup',
-            array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' ),
-                'nonce'   => wp_create_nonce( 'accept_my_cookies_cleanup_nonce' )
-            )
-        );
     }
 
     /**

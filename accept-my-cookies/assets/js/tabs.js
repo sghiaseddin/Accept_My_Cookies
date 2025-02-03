@@ -5,6 +5,7 @@ jQuery(document).ready(function ($) {
 
         // Get the target tab
         var targetTab = $(this).data('tab');
+        var tabHref = $(this).attr('href');
 
         // Remove active class from all tabs
         $('.nav-tab').removeClass('nav-tab-active');
@@ -17,5 +18,10 @@ jQuery(document).ready(function ($) {
 
         // Show the target tab content
         $('#' + targetTab + '-tab').show();
+
+        // Update the URL without reloading the page
+        var url = new URL(window.location);
+        url.searchParams.set('tab', targetTab);
+        history.pushState(null, '', url.pathname + url.search);
     });
 });

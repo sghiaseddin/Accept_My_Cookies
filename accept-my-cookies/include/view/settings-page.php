@@ -16,6 +16,9 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
         <a href="#general" class="nav-tab <?php echo $active_tab === 'general' ? 'nav-tab-active' : ''; ?>" data-tab="general">
             <?php esc_html_e( 'General', 'accept-my-cookies' ); ?>
         </a>
+        <a href="#google_property" class="nav-tab <?php echo $active_tab === 'google_property' ? 'nav-tab-active' : ''; ?>" data-tab="google_property">
+            <?php esc_html_e( 'Google Property', 'accept-my-cookies' ); ?>
+        </a>
         <a href="#styling" class="nav-tab <?php echo $active_tab === 'styling' ? 'nav-tab-active' : ''; ?>" data-tab="styling">
             <?php esc_html_e( 'Styling', 'accept-my-cookies' ); ?>
         </a>
@@ -30,6 +33,11 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
         <!-- General Tab Content -->
         <div id="general-tab" class="tab-content" style="<?php echo $active_tab === 'general' ? 'display: block;' : 'display: none;'; ?>">
             <?php include ACCEPT_MY_COOKIES_DIR . '/include/view/general-tab.php'; ?>
+        </div>
+
+        <!-- Google Property Tab Content -->
+        <div id="google_property-tab" class="tab-content" style="<?php echo $active_tab === 'google_property' ? 'display: block;' : 'display: none;'; ?>">
+            <?php include ACCEPT_MY_COOKIES_DIR . '/include/view/google-property-tab.php'; ?>
         </div>
 
         <!-- Styling Tab Content -->

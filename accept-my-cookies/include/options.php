@@ -5,16 +5,314 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-    'sample_option' => array(
-        'key'     => 'accept_my_cookies_sample_option',
-        'default' => __( 'This is a sample option value.', 'accept-my-cookies' ),
-        'label'   => __( 'Sample Option', 'accept-my-cookies' ),
-        'tab'     => 'general', 
+    // General Tab Options
+    'consent_text' => array(
+        'key'     => 'accept_my_cookies_consent_text',
+        'default' => __( 'We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.', 'accept-my-cookies' ),
+        'label'   => __( 'Consent Text', 'accept-my-cookies' ),
+        'type'    => 'textarea',
+        'tab'     => 'general',
+        'description' => __( 'The text displayed in the consent banner.', 'accept-my-cookies' ),
     ),
-    'styling_sample' => array(
-        'key'     => 'accept_my_cookies_styling_sample',
-        'default' => __( 'This is a styling sample value.', 'accept-my-cookies' ),
-        'label'   => __( 'Styling Sample', 'accept-my-cookies' ),
-        'tab'     => 'styling', 
+    'learn_more_url' => array(
+        'key'     => 'accept_my_cookies_learn_more_url',
+        'default' => get_privacy_policy_url() ? get_privacy_policy_url() : 'https://example.com/privacy-policy',
+        'label'   => __( 'Learn More URL', 'accept-my-cookies' ),
+        'type'    => 'text',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter the URL for the "Learn More" link', 'accept-my-cookies' ),
+        'description' => __( 'The URL where users can learn more about your cookie policy.', 'accept-my-cookies' ),
+    ),
+    'learn_more_text' => array(
+        'key'     => 'accept_my_cookies_learn_more_text',
+        'default' => __( 'Learn More', 'accept-my-cookies' ),
+        'label'   => __( 'Learn More Text', 'accept-my-cookies' ),
+        'type'    => 'text',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter the text for the "Learn More" link', 'accept-my-cookies' ),
+    ),
+    'accept_button_text' => array(
+        'key'     => 'accept_my_cookies_accept_button_text',
+        'default' => __( 'Accept', 'accept-my-cookies' ),
+        'label'   => __( 'Accept Button Text', 'accept-my-cookies' ),
+        'type'    => 'text',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter the text for the "Accept" button', 'accept-my-cookies' ),
+    ),
+    'customize_button_enabled' => array(
+        'key'     => 'accept_my_cookies_customize_button_enabled',
+        'default' => '0', // 1 for enabled, 0 for disabled
+        'label'   => __( 'Enable Customize Button', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'general',
+        'description' => __( 'Enable the "Customize" button to allow users to adjust their consent preferences in details.', 'accept-my-cookies' ),
+    ),
+    'customize_button_text' => array(
+        'key'     => 'accept_my_cookies_customize_button_text',
+        'default' => __( 'Customize', 'accept-my-cookies' ),
+        'label'   => __( 'Customize Button Text', 'accept-my-cookies' ),
+        'type'    => 'text',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter the text for the "Customize" button', 'accept-my-cookies' ),
+        'data-depends-on' => 'accept_my_cookies_customize_button_enabled',
+    ),
+    'cookie_expiration_days' => array(
+        'key'     => 'accept_my_cookies_cookie_expiration_days',
+        'default' => '180', // Default to 180 days
+        'label'   => __( 'Cookie Expiration (Days)', 'accept-my-cookies' ),
+        'type'    => 'number',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter the number of days for cookie expiration', 'accept-my-cookies' ),
+        'description' => __( 'The number of days before the consent cookie expires.', 'accept-my-cookies' ),
+    ),
+    'storage_method' => array(
+        'key'     => 'accept_my_cookies_storage_method',
+        'default' => 'local_storage', // Options: 'cookies' or 'local_storage'
+        'label'   => __( 'Storage Method', 'accept-my-cookies' ),
+        'type'    => 'select',
+        'options' => array(
+            'cookies'       => __( 'Cookies', 'accept-my-cookies' ),
+            'local_storage' => __( 'Local Storage', 'accept-my-cookies' ),
+        ),
+        'tab'     => 'general',
+        'description' => __( 'Choose how consent preferences are stored (cookies or local storage).', 'accept-my-cookies' ),
+    ),
+    'logging_enabled' => array(
+        'key'     => 'accept_my_cookies_logging_enabled',
+        'default' => '0', // 0 for disabled, 1 for enabled
+        'label'   => __( 'Enable Logging', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'general',
+        'description' => __( 'Enable storing consent decisions of users in a log file (wp-contents/uploads/accept-my-cookies/consents.log).', 'accept-my-cookies' ),
+    ),
+    'custom_html_head' => array(
+        'key'     => 'accept_my_cookies_custom_html_head',
+        'default' => '', // Default empty
+        'label'   => __( 'Custom HTML (Head)', 'accept-my-cookies' ),
+        'type'    => 'textarea',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter custom HTML to be added to the <head> section', 'accept-my-cookies' ),
+        'description' => __( 'Add custom HTML code that will be injected into the <head> section of your site.', 'accept-my-cookies' ),
+    ),
+
+    // Google Property Tab Options
+    'google_consent_mode_enabled' => array(
+        'key'     => 'accept_my_cookies_google_consent_mode_enabled',
+        'default' => '0', // 0 for disabled, 1 for enabled
+        'label'   => __( 'Enable Google Consent Mode', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'google_property',
+        'description' => __( 'Enable Google Consent Mode to manage user consent for Google services.', 'accept-my-cookies' ),
+    ),
+    'ga_id' => array(
+        'key'     => 'accept_my_cookies_ga_id',
+        'default' => '', // Default empty
+        'label'   => __( 'Google Property ID', 'accept-my-cookies' ),
+        'type'    => 'text',
+        'tab'     => 'google_property',
+        'placeholder' => __( 'Enter your Google Property ID (e.g., G-123456)', 'accept-my-cookies' ),
+        'data-depends-on' => 'accept_my_cookies_google_consent_mode_enabled',
+    ),
+    'analytics_storage' => array(
+        'key'     => 'accept_my_cookies_analytics_storage',
+        'default' => '1', // 1 for enabled, 0 for disabled
+        'label'   => __( 'Enable Analytics Storage', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'google_property',
+        'data-depends-on' => 'accept_my_cookies_google_consent_mode_enabled',
+    ),
+    'ad_storage' => array(
+        'key'     => 'accept_my_cookies_ad_storage',
+        'default' => '1', // 1 for enabled, 0 for disabled
+        'label'   => __( 'Enable Ad Storage', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'google_property',
+        'data-depends-on' => 'accept_my_cookies_google_consent_mode_enabled',
+    ),
+    'ad_user_data' => array(
+        'key'     => 'accept_my_cookies_ad_user_data',
+        'default' => '1', // 1 for enabled, 0 for disabled
+        'label'   => __( 'Enable Ad User Data', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'google_property',
+        'data-depends-on' => 'accept_my_cookies_google_consent_mode_enabled',
+    ),
+    'ad_personalization' => array(
+        'key'     => 'accept_my_cookies_ad_personalization',
+        'default' => '1', // 1 for enabled, 0 for disabled
+        'label'   => __( 'Enable Ad Personalization', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'google_property',
+        'data-depends-on' => 'accept_my_cookies_google_consent_mode_enabled',
+    ),
+
+    // Styling Tab Options
+    'banner_position' => array(
+        'key'     => 'accept_my_cookies_banner_position',
+        'default' => 'bottom', // Options: 'bottom', 'top', 'left', 'right', 'center'
+        'label'   => __( 'Banner Position', 'accept-my-cookies' ),
+        'type'    => 'select',
+        'options' => array(
+            'bottom' => __( 'Bottom', 'accept-my-cookies' ),
+            'top'    => __( 'Top', 'accept-my-cookies' ),
+            'left'   => __( 'Left', 'accept-my-cookies' ),
+            'right'  => __( 'Right', 'accept-my-cookies' ),
+            'center' => __( 'Center', 'accept-my-cookies' ),
+        ),
+        'tab'     => 'styling',
+        'description' => __( 'Choose where the consent banner appears on the screen.', 'accept-my-cookies' ),
+    ),
+    'banner_size' => array(
+        'key'     => 'accept_my_cookies_banner_size',
+        'default' => 'normal', // Options: 'tiny', 'normal', 'wide'
+        'label'   => __( 'Banner Size', 'accept-my-cookies' ),
+        'type'    => 'select',
+        'options' => array(
+            'tiny'   => __( 'Tiny', 'accept-my-cookies' ),
+            'normal' => __( 'Normal', 'accept-my-cookies' ),
+            'wide'   => __( 'Wide', 'accept-my-cookies' ),
+        ),
+        'tab'     => 'styling',
+        'description' => __( 'Choose the size of the consent banner.', 'accept-my-cookies' ),
+    ),
+    'banner_button_size' => array(
+        'key'     => 'accept_my_cookies_banner_button_size',
+        'default' => 'normal', // Options: 'small', 'normal', 'large'
+        'label'   => __( 'Button Size', 'accept-my-cookies' ),
+        'type'    => 'select',
+        'options' => array(
+            'small'  => __( 'Small', 'accept-my-cookies' ),
+            'normal' => __( 'Normal', 'accept-my-cookies' ),
+            'large'  => __( 'Large', 'accept-my-cookies' ),
+        ),
+        'tab'     => 'styling',
+        'description' => __( 'Choose the size of the buttons in the consent banner.', 'accept-my-cookies' ),
+    ),
+    'banner_text_size' => array(
+        'key'     => 'accept_my_cookies_banner_text_size',
+        'default' => '14', // Default text size in pixels
+        'label'   => __( 'Banner Text Size (px)', 'accept-my-cookies' ),
+        'type'    => 'number',
+        'tab'     => 'styling',
+        'description' => __( 'Set the font size of the text in the consent banner.', 'accept-my-cookies' ),
+    ),
+    'banner_button_text_size' => array(
+        'key'     => 'accept_my_cookies_banner_button_text_size',
+        'default' => '14', // Default button text size in pixels
+        'label'   => __( 'Button Text Size (px)', 'accept-my-cookies' ),
+        'type'    => 'number',
+        'tab'     => 'styling',
+        'description' => __( 'Set the font size of the text in the consent banner buttons.', 'accept-my-cookies' ),
+    ),
+    'banner_z_index' => array(
+        'key'     => 'accept_my_cookies_banner_z_index',
+        'default' => '9999', // Default z-index
+        'label'   => __( 'Banner Z-Index', 'accept-my-cookies' ),
+        'type'    => 'number',
+        'tab'     => 'styling',
+        'description' => __( 'Set the z-index of the consent banner to control its stacking order.', 'accept-my-cookies' ),
+    ),
+    'banner_delay_seconds' => array(
+        'key'     => 'accept_my_cookies_banner_delay_seconds',
+        'default' => '2', // Default delay in seconds
+        'label'   => __( 'Banner Delay (Seconds)', 'accept-my-cookies' ),
+        'type'    => 'number',
+        'tab'     => 'styling',
+        'description' => __( 'Set the delay (in seconds) before the consent banner appears.', 'accept-my-cookies' ),
+    ),
+    'banner_color_style' => array(
+        'key'     => 'accept_my_cookies_banner_color_style',
+        'default' => 'dark', // Options: 'dark', 'bright', 'custom'
+        'label'   => __( 'Banner Color Style', 'accept-my-cookies' ),
+        'type'    => 'select',
+        'options' => array(
+            'dark'   => __( 'Dark', 'accept-my-cookies' ),
+            'bright' => __( 'Bright', 'accept-my-cookies' ),
+            'custom' => __( 'Custom', 'accept-my-cookies' ),
+        ),
+        'tab'     => 'styling',
+        'description' => __( 'Choose a predefined color style or customize it.', 'accept-my-cookies' ),
+    ),
+    'banner_background_color' => array(
+        'key'     => 'accept_my_cookies_banner_background_color',
+        'default' => '#1e1e1e', // Default dark background color
+        'label'   => __( 'Banner Background Color', 'accept-my-cookies' ),
+        'type'    => 'color',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
+    ),
+    'banner_background_opacity' => array(
+        'key'     => 'accept_my_cookies_banner_background_opacity',
+        'default' => '0.8', // Default opacity
+        'label'   => __( 'Banner Background Opacity', 'accept-my-cookies' ),
+        'type'    => 'number',
+        'step'    => '0.1',
+        'min'     => '0',
+        'max'     => '1',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
+        'description' => __( 'Set the opacity of the consent banner background.', 'accept-my-cookies' ),
+    ),
+    'banner_overlay_color' => array(
+        'key'     => 'accept_my_cookies_banner_overlay_color',
+        'default' => '#000000', // Default black overlay
+        'label'   => __( 'Banner Overlay Color', 'accept-my-cookies' ),
+        'type'    => 'color',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
+        'description' => __( 'Set the color of the overlay behind the consent banner.', 'accept-my-cookies' ),
+    ),
+    'banner_overlay_opacity' => array(
+        'key'     => 'accept_my_cookies_banner_overlay_opacity',
+        'default' => '0.5', // Default opacity
+        'label'   => __( 'Banner Overlay Opacity', 'accept-my-cookies' ),
+        'type'    => 'number',
+        'step'    => '0.1',
+        'min'     => '0',
+        'max'     => '1',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
+        'description' => __( 'Set the opacity of the overlay behind the consent banner.', 'accept-my-cookies' ),
+    ),
+    'banner_text_color' => array(
+        'key'     => 'accept_my_cookies_banner_text_color',
+        'default' => '#ffffff', // Default white text color
+        'label'   => __( 'Banner Text Color', 'accept-my-cookies' ),
+        'type'    => 'color',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
+    ),
+    'banner_link_color' => array(
+        'key'     => 'accept_my_cookies_banner_link_color',
+        'default' => '#0073aa', // Default link color
+        'label'   => __( 'Banner Link Color', 'accept-my-cookies' ),
+        'type'    => 'color',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
+        'description' => __( 'Set the color of "Learn More" link in the consent banner.', 'accept-my-cookies' ),
+    ),
+    'banner_button_background_color' => array(
+        'key'     => 'accept_my_cookies_banner_button_background_color',
+        'default' => '#0073aa', // Default button color
+        'label'   => __( 'Button Background Color', 'accept-my-cookies' ),
+        'type'    => 'color',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
+    ),
+    'banner_button_text_color' => array(
+        'key'     => 'accept_my_cookies_banner_button_text_color',
+        'default' => '#ffffff', // Default button text color
+        'label'   => __( 'Button Text Color', 'accept-my-cookies' ),
+        'type'    => 'color',
+        'tab'     => 'styling',
+        'data-depends-on' => 'accept_my_cookies_banner_color_style',
+        'data-depends-value' => 'custom',
     ),
 );
