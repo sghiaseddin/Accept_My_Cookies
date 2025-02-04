@@ -39,17 +39,17 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
 
         <!-- General Tab Content -->
         <div id="general-tab" class="tab-content" style="<?php echo $active_tab === 'general' ? 'display: block;' : 'display: none;'; ?>">
-            <?php include ACCEPT_MY_COOKIES_DIR . '/include/view/general-tab.php'; ?>
+            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/general-tab.php'; ?>
         </div>
 
         <!-- Google Property Tab Content -->
         <div id="google_property-tab" class="tab-content" style="<?php echo $active_tab === 'google_property' ? 'display: block;' : 'display: none;'; ?>">
-            <?php include ACCEPT_MY_COOKIES_DIR . '/include/view/google-property-tab.php'; ?>
+            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/google-property-tab.php'; ?>
         </div>
 
         <!-- Styling Tab Content -->
         <div id="styling-tab" class="tab-content" style="<?php echo $active_tab === 'styling' ? 'display: block;' : 'display: none;'; ?>">
-            <?php include ACCEPT_MY_COOKIES_DIR . '/include/view/styling-tab.php'; ?>
+            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/styling-tab.php'; ?>
         </div>
 
         <?php submit_button( __( 'Save Settings', 'accept-my-cookies' ) ); ?>

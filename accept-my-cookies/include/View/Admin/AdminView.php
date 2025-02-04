@@ -1,10 +1,11 @@
 <?php
+namespace AcceptMyCookies\View\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-class AcceptMyCookies_Admin_View {
+class AdminView {
 
     /**
      * Render an option input field.

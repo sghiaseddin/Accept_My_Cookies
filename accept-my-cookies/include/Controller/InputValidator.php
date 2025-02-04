@@ -1,10 +1,11 @@
 <?php
+namespace AcceptMyCookies\Controller;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-class AcceptMyCookies_Settings_Validator {
+class InputValidator {
     public static function validate($type, $value, $options = array() ) {
         switch ($type) {
             case 'text':

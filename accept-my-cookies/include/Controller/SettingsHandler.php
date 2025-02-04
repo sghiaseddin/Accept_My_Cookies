@@ -1,10 +1,11 @@
 <?php
+namespace AcceptMyCookies\Controller;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-class AcceptMyCookies_Settings_Handler {
+class SettingsHandler {
 
     /**
      * Get the default options.

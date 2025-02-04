@@ -17,7 +17,7 @@ return array(
     ),
     'learn_more_url' => array(
         'key'     => 'accept_my_cookies_learn_more_url',
-        'default' => get_privacy_policy_url() ? get_privacy_policy_url() : 'https://example.com/privacy-policy',
+        'default' => 'https://example.com/privacy-policy',
         'label'   => __( 'Learn More URL', 'accept-my-cookies' ),
         'type'    => 'text',
         'tab'     => 'general',

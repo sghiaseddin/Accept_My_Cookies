@@ -1,0 +1,91 @@
+/* Consent Banner Styles */
+.accept-my-cookies-banner {
+    position: fixed;
+    z-index: 9999;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.accept-my-cookies-banner--bottom {
+    bottom: 0;
+    left: 0;
+}
+
+.accept-my-cookies-banner--top {
+    top: 0;
+    left: 0;
+}
+
+.accept-my-cookies-banner--left {
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    flex-direction: column;
+}
+
+.accept-my-cookies-banner--right {
+    top: 0;
+    right: 0;
+    width: auto;
+    height: 100%;
+    flex-direction: column;
+}
+
+.accept-my-cookies-banner--center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+.accept-my-cookies-banner__content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.accept-my-cookies-banner__text {
+    margin: 0;
+}
+
+.accept-my-cookies-banner__actions {
+    display: flex;
+    gap: 10px;
+}
+
+.accept-my-cookies-banner__link {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.accept-my-cookies-banner__link:hover {
+    text-decoration: underline;
+}
+
+.accept-my-cookies-banner__button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.accept-my-cookies-banner__button--accept {
+    background-color: #0073aa;
+    color: #ffffff;
+}
+
+.accept-my-cookies-banner__button--customize {
+    background-color: #555555;
+    color: #ffffff;
+}

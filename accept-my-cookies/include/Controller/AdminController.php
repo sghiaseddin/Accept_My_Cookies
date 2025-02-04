@@ -1,10 +1,14 @@
 <?php
+namespace AcceptMyCookies\Controller;
+use AcceptMyCookies\Controller\SettingsHandler;
+use AcceptMyCookies\Controller\InputValidator;
+use AcceptMyCookies\View\Admin\AdminView;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-class AcceptMyCookies_Admin_Controller {
+class AdminController {
 
     private $settings_handler;
     private $admin_view;
@@ -13,8 +17,8 @@ class AcceptMyCookies_Admin_Controller {
      * Constructor.
      */
     public function __construct() {
-        $this->settings_handler = new AcceptMyCookies_Settings_Handler();
-        $this->admin_view = new AcceptMyCookies_Admin_View();
+        $this->settings_handler = new SettingsHandler();
+        $this->admin_view = new AdminView();
         $this->init_hooks();
     }
 
@@ -110,7 +114,7 @@ class AcceptMyCookies_Admin_Controller {
      */
     public function render_settings_page() {
         // Include the view file
-        include_once ACCEPT_MY_COOKIES_DIR . '/include/view/settings-page.php';
+        include_once ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/settings-page.php';
     }
 
     /**
@@ -134,8 +138,7 @@ class AcceptMyCookies_Admin_Controller {
         }
     
         // Validate and save the settings        
-        include_once ACCEPT_MY_COOKIES_DIR . '/include/controller/class-input-validator.php';
-        $validator = new AcceptMyCookies_Settings_Validator();
+        $validator = new InputValidator();
 
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
         foreach ( $schema as $input => $option ) {
