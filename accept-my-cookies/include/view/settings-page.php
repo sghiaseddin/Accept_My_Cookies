@@ -9,6 +9,13 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
 ?>
 
 <div class="wrap">
+    <div id="message" class="notice is-dismissible" style="display:none">
+        <p></p>
+        <button type="button" class="notice-dismiss">
+            <span class="screen-reader-text"><?php echo esc_html( __( 'Dismiss this notice.', 'accept-my-cookies' ) ); ?></span>
+        </button>
+    </div>
+
     <h1><?php echo esc_html( __( 'Accept My Cookies Settings', 'accept-my-cookies' ) ); ?></h1>
 
     <!-- Tab Navigation -->

@@ -119,28 +119,39 @@ class AcceptMyCookies_Admin_Controller {
     public function ajax_cleanup() {
         // Verify nonce for security
         if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'accept_my_cookies_cleanup_nonce' ) ) {
-            wp_send_json_error( 'Invalid nonce.' );
+            wp_send_json_error( __('Invalid nonce.', 'accept-my-cookies') );
         }
 
         // Perform cleanup
         $this->settings_handler->delete_all_options();
-        wp_send_json_success( 'Cleanup completed.' );
+        wp_send_json_success( __('Cleanup completed.','accept-my-cookies') );
     }
 
     public function ajax_save_settings() {
         // Verify nonce for security
-        if ( ! isset( $_POST['_ajax_nonce'] ) || ! wp_verify_nonce( $_POST['_ajax_nonce'], 'accept_my_cookies_save_settings_nonce' ) ) {
-            wp_send_json_error( 'Invalid nonce.' );
+        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'accept_my_cookies_save_settings_nonce' ) ) {
+            wp_send_json_error( __('Your browser session is expired. Please reload this page.', 'accept-my-cookies') );
         }
     
-        // Save the settings
+        // Validate and save the settings        
+        include_once ACCEPT_MY_COOKIES_DIR . '/include/controller/class-input-validator.php';
+        $validator = new AcceptMyCookies_Settings_Validator();
+
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
-        foreach ( $schema as $option ) {
+        foreach ( $schema as $input => $option ) {
             if ( isset( $_POST[ $option['key'] ] ) ) {
-                update_option( $option['key'], sanitize_text_field( $_POST[ $option['key'] ] ) );
+                $value = $validator::validate( 
+                    $option['validation-type'], 
+                    $_POST[ $option['key'] ],
+                    isset( $option['options'] ) ? array_keys($option['options']) : array()
+                );
+                if ( $value !== false ) {
+                    update_option( $option['key'], $value );
+                } else {
+                    wp_send_json_error( sprintf( __('The value for "%s" is not valid. Please review it.', 'accept-my-cookies'), $option['label'] ) );
+                }
             }
         }
-    
-        wp_send_json_success( 'Settings saved.' );
+        wp_send_json_success( __('All options have successfully saved.', 'accept-my-cookies') );
     }
 }

@@ -1,24 +1,41 @@
 jQuery(document).ready(function ($) {
+    $('.wrap #message.is-dismissible > button').on('click', function () {
+        $('.wrap #message').fadeOut();
+    });
+
     $('#accept-my-cookies-settings-form').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Serialize the form data
         var formData = $(this).serialize();
 
+        $('.wrap #message').addClass('notice-info').fadeIn();
+        $('.wrap #message > p').text('Updating...');
+
         // Send the AJAX request
         $.ajax({
             url: ajaxurl,
             type: 'POST',
-            data: formData + '&action=accept_my_cookies_save_settings' + '&_ajax_nonce=' + acceptMyCookiesSaveSettings.nonce,
+            data: formData + '&action=accept_my_cookies_save_settings' + '&nonce=' + acceptMyCookiesSaveSettings.nonce, 
             success: function (response) {
                 if (response.success) {
-                    alert('Settings saved successfully!');
+                    $('.wrap #message').addClass('notice-success').fadeIn();
+                    $('.wrap #message').removeClass('notice-info');
+                    $('.wrap #message').removeClass('notice-error');
+                    $('.wrap #message > p').text(response.data);
                 } else {
-                    alert('Failed to save settings.');
+                    $('.wrap #message').addClass('notice-error').fadeIn();
+                    $('.wrap #message').removeClass('notice-info');
+                    $('.wrap #message').removeClass('notice-success');
+                    $('.wrap #message > p').text(response.data);
+                    console.log(response);
                 }
             },
             error: function () {
-                alert('An error occurred while saving settings.');
+                $('.wrap #message').addClass('notice-error').fadeIn();
+                $('.wrap #message').removeClass('notice-info');
+                $('.wrap #message').removeClass('notice-success');
+            $('.wrap #message > p').text('Cannot make a connection with server. Something is wrong!');
             }
         });
     });

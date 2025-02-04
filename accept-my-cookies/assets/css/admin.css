@@ -1,4 +1,22 @@
 /* Two-column layout for styling options */
+form#accept-my-cookies-settings-form {
+    display: flex;
+}
+
+form#accept-my-cookies-settings-form .tab-content {
+    flex: 1;
+}
+
+form#accept-my-cookies-settings-form p.submit {
+    flex: 0 1 150px;
+    max-width: 150px;
+    margin-top: 57px;
+}
+
+form#accept-my-cookies-settings-form p.submit input {
+    width: 100%;
+}
+
 .accept-my-cookies-field {
     margin-bottom: 20px;
 }
@@ -28,4 +46,46 @@
 
 .accept-my-cookies-field .description {
     font-size: small;
+}
+
+.accept-my-cookies-deactivate-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9999;
+}
+
+.accept-my-cookies-deactivate-modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 3px;
+    max-width: 480px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.accept-my-cookies-deactivate-modal h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.accept-my-cookies-deactivate-modal p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.accept-my-cookies-deactivate-modal .accept-my-cookies-options {
+    display: flex;
+    gap: 20px;
+}
+
+.accept-my-cookies-deactivate-modal .accept-my-cookies-options button {
+    padding: 2px 10px;
 }
