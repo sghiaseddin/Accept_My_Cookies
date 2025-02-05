@@ -47,14 +47,8 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // Sync checkbox value with checked attribute
-    // $('input[type="checkbox"]').on('change', function () {
-    //     if ( $(this).prop('checked') === true ) {
-    //         $(this).prev('input[type="hidden"]').val('1');
-    //         $(this).val('1');
-    //     } else {
-    //         $(this).prev('input[type="hidden"]').val('0');
-    //         $(this).val('0');
-    //     }
-    // });
+    // Sync color inputs with associated text input
+    $('input[type="color"]').on('change', function () {
+        $(this).prev('input[type="text"]').val($(this).val());
+    });
 });

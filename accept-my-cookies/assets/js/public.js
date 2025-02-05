@@ -20,6 +20,7 @@ jQuery(document).ready(function ($) {
         setTimeout(function () {
             if (!hasUserConsented()) {
                 $('#accept-my-cookies-banner').fadeIn();
+                $('.accept-my-cookies-banner-overlay').fadeIn();
             }
         }, delaySeconds * 1000); // Convert seconds to milliseconds
     }
@@ -97,6 +98,7 @@ jQuery(document).ready(function ($) {
     // Hide the consent banner
     function hideBanner() {
         $('#accept-my-cookies-banner').fadeOut();
+        $('.accept-my-cookies-banner-overlay').fadeOut();
     }
 
     // Update Google Consent Mode

@@ -2,7 +2,7 @@
 /**
  * @package Accept_My_Cookies
  * @version 0.1.0
- * @tag development: user decision on consent
+ * @tag development: consent banner ui
  */
 /*
 Plugin Name: Accept My Cookies
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define useful constants
-define( 'ACCEPT_MY_COOKIES_VERSION', '0.1.0' );
+define( 'ACCEPT_MY_COOKIES_VERSION', '0.2.0' );
 define( 'ACCEPT_MY_COOKIES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__) );
 
