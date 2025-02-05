@@ -26,31 +26,72 @@ jQuery(document).ready(function ($) {
 
     // Handle "Accept" button click
     $(document).on('click', '.accept-my-cookies-banner__button--accept', function () {
-        setConsent(true);
+        setConsent(true, false);
         hideBanner();
     });
 
     // Handle "Customize" button click
     $(document).on('click', '.accept-my-cookies-banner__button--customize', function () {
-        // TODO: Implement customization logic
-        console.log('Customize button clicked');
+        // Show toggles
+        $('.accept-my-cookies-banner__toggle').prop('disabled', false);
+        $('.accept-my-cookies-banner__toggle').prop('checked', false);
+        $('#accept-my-cookies-banner__toggles').fadeIn();
+        $('.accept-my-cookies-banner__button--acceptall').show();
+        $('.accept-my-cookies-banner__button--customize').hide();
     });
 
+    // Handle "Accept All" button click
+    $(document).on('click', '.accept-my-cookies-banner__button--acceptall', function () {
+        // Enable all toggles
+        $('.accept-my-cookies-banner__toggle').prop('checked', true);
+
+        setConsent(true, true);
+        hideBanner();
+    });
+    
     // Set consent preference
-    function setConsent(consent) {
+    function setConsent(consent, acceptAll = false) {
         const storageMethod = acceptMyCookiesData.options.storage_method;
 
+        // Determine consent values for each parameter
+        const consentParameters = [
+            'analytics_storage',
+            'ad_storage',
+            'ad_user_data',
+            'ad_personalization',
+        ];
+
+        var consentValues = {};
+        for (const param of consentParameters) {
+            if ($(`.accept-my-cookies-banner__toggle[data-consent-type="${param}"]`).length) {
+                consentValues[param] = acceptAll || getToggleValue(param);
+            }
+        }
+        
+        // Store consent in cookies or local storage
         if (storageMethod === 'cookies') {
             const expirationDays = acceptMyCookiesData.options.cookie_expiration_days;
             document.cookie = `accept_my_cookies_consent=${consent}; max-age=${expirationDays * 86400}; path=/`;
+            for (const [key, value] of Object.entries(consentValues)) {
+                document.cookie = `${key}=${value}; max-age=${expirationDays * 86400}; path=/`;
+            }
         } else {
             localStorage.setItem('accept_my_cookies_consent', consent);
+            for (const [key, value] of Object.entries(consentValues)) {
+                localStorage.setItem(key, value);
+            }
         }
 
         // Trigger Google Consent Mode if enabled
         if (acceptMyCookiesData.options.google_consent_mode_enabled) {
-            updateGoogleConsentMode(consent);
+            updateGoogleConsentMode(consentValues);
         }
+    }
+
+    // Get the value of a toggle
+    function getToggleValue(consentType) {
+        const toggle = $(`.accept-my-cookies-banner__toggle[data-consent-type="${consentType}"]`);
+        return toggle.prop('checked');
     }
 
     // Hide the consent banner
@@ -59,14 +100,14 @@ jQuery(document).ready(function ($) {
     }
 
     // Update Google Consent Mode
-    function updateGoogleConsentMode(consent) {
+    function updateGoogleConsentMode(consentValues) {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'update_consent',
-            'analytics_storage': consent ? 'granted' : 'denied',
-            'ad_storage': consent ? 'granted' : 'denied',
-            'ad_user_data': consent ? 'granted' : 'denied',
-            'ad_personalization': consent ? 'granted' : 'denied'
+            'analytics_storage': consentValues.analytics_storage ? 'granted' : 'denied',
+            'ad_storage': consentValues.ad_storage ? 'granted' : 'denied',
+            'ad_user_data': consentValues.ad_user_data ? 'granted' : 'denied',
+            'ad_personalization': consentValues.ad_personalization ? 'granted' : 'denied',
         });
     }
 

@@ -9,6 +9,13 @@ jQuery(document).ready(function ($) {
         // Serialize the form data
         var formData = $(this).serialize();
 
+        // include unchecked checkboxes with value 0
+        $('#accept-my-cookies-settings-form input[type=checkbox]').each( function(el) {
+            if ( $(this).prop('checked') === false ) {
+                formData += '&' + $(this).attr('name') + '=0';
+            }            
+        });
+
         $('.wrap #message').addClass('notice-info').fadeIn();
         $('.wrap #message > p').text('Updating...');
 
@@ -39,4 +46,15 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
+    // Sync checkbox value with checked attribute
+    // $('input[type="checkbox"]').on('change', function () {
+    //     if ( $(this).prop('checked') === true ) {
+    //         $(this).prev('input[type="hidden"]').val('1');
+    //         $(this).val('1');
+    //     } else {
+    //         $(this).prev('input[type="hidden"]').val('0');
+    //         $(this).val('0');
+    //     }
+    // });
 });

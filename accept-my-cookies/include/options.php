@@ -49,7 +49,7 @@ return array(
         'label'   => __( 'Enable Customize Button', 'accept-my-cookies' ),
         'type'    => 'checkbox',
         'tab'     => 'general',
-        'description' => __( 'Enable the "Customize" button to allow users to adjust their consent preferences in details.', 'accept-my-cookies' ),
+        'description' => __( 'Enable the "Customize" button to allow users to adjust their consent preferences in details. This option make sense when you enable Google Consent Mode too.', 'accept-my-cookies' ),
         'validation-type'   => 'boolean',
     ),
     'customize_button_text' => array(
@@ -59,6 +59,16 @@ return array(
         'type'    => 'text',
         'tab'     => 'general',
         'placeholder' => __( 'Enter the text for the "Customize" button', 'accept-my-cookies' ),
+        'data-depends-on' => 'accept_my_cookies_customize_button_enabled',
+        'validation-type'   => 'text',
+    ),
+    'acceptall_button_text' => array(
+        'key'     => 'accept_my_cookies_acceptall_button_text',
+        'default' => __( 'Accept All', 'accept-my-cookies' ),
+        'label'   => __( 'Accept All Button Text', 'accept-my-cookies' ),
+        'type'    => 'text',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter the text for the "Accept All" button', 'accept-my-cookies' ),
         'data-depends-on' => 'accept_my_cookies_customize_button_enabled',
         'validation-type'   => 'text',
     ),
@@ -74,7 +84,7 @@ return array(
     ),
     'storage_method' => array(
         'key'     => 'accept_my_cookies_storage_method',
-        'default' => 'local_storage', // Options: 'cookies' or 'local_storage'
+        'default' => 'cookies', // Options: 'cookies' or 'local_storage'
         'label'   => __( 'Storage Method', 'accept-my-cookies' ),
         'type'    => 'select',
         'options' => array(
@@ -82,7 +92,7 @@ return array(
             'local_storage' => __( 'Local Storage', 'accept-my-cookies' ),
         ),
         'tab'     => 'general',
-        'description' => __( 'Choose how consent preferences are stored (cookies or local storage).', 'accept-my-cookies' ),
+        'description' => __( 'Choose how consent preferences are stored; cookies or local storage. We recommend cookies, as it checked and processed during php execution. However local storage could be checked only on browser runtime using javascript.', 'accept-my-cookies' ),
         'validation-type'   => 'options',
     ),
     'logging_enabled' => array(
