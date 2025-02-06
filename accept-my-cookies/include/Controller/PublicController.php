@@ -34,10 +34,10 @@ class PublicController
         $this->settings_handler = new SettingsHandler();
 
         // Load saved plugin options
-        $this->options = $this->load_saved_options();
+        $this->options = $this->loadSavedOptions();
 
         // Register frontend hooks
-        $this->register_hooks();
+        $this->registerHooks();
     }
 
     /**
@@ -45,13 +45,13 @@ class PublicController
      *
      * @return array Saved plugin options.
      */
-    private function load_saved_options()
+    private function loadSavedOptions()
     {
         $schema = include ACCEPT_MY_COOKIES_DIR . 'include/options.php';
         $saved_options = array();
 
         foreach ($schema as $option_name => $option_details) {
-            $saved_options[$option_name] = $this->settings_handler->get_option($option_name);
+            $saved_options[$option_name] = $this->settings_handler->getOption($option_name);
         }
 
         return $saved_options;
@@ -60,19 +60,19 @@ class PublicController
     /**
      * Register frontend hooks.
      */
-    private function register_hooks()
+    private function registerHooks()
     {
         // Enqueue frontend scripts and styles
-        add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
 
         // Render the consent banner
-        add_action('wp_footer', array($this, 'render_consent_banner'));
+        add_action('wp_footer', array($this, 'renderConsentBanner'));
     }
 
     /**
      * Enqueue frontend scripts and styles.
      */
-    public function enqueue_scripts()
+    public function enqueueScripts()
     {
         // Enqueue CSS
         wp_enqueue_style(
@@ -106,10 +106,10 @@ class PublicController
     /**
      * Render the consent banner.
      */
-    public function render_consent_banner()
+    public function renderConsentBanner()
     {
         // Only render if the user hasn't already consented
-        if (!$this->has_user_consented()) {
+        if (!$this->hasUserConsented()) {
             // Initialize the ConsentBanner view
             $consent_banner = new ConsentBanner($this->options);
 
@@ -123,7 +123,7 @@ class PublicController
      *
      * @return bool Whether the user has consented.
      */
-    private function has_user_consented()
+    private function hasUserConsented()
     {
         // Check for consent cookie or local storage (implementation depends on storage method)
         $storage_method = $this->options['storage_method'];

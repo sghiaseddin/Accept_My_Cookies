@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin activation function.
  */
-function accept_my_cookies_activate() {
+function Accept_My_Cookies_Activate() {
     $settings_handler = new SettingsHandler();
-    $settings_handler->save_default_options();
+    $settings_handler->saveDefaultOptions();
 }

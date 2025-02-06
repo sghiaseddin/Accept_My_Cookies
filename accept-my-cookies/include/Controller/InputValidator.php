@@ -9,33 +9,33 @@ class InputValidator {
     public static function validate($type, $value, $options = array() ) {
         switch ($type) {
             case 'text':
-                return self::is_text($value);
+                return self::isText($value);
             case 'url':
-                return self::is_url($value);            
+                return self::isUrl($value);            
             case 'number':
-                return self::is_number($value);
+                return self::isNumber($value);
             case 'unit_interval':
-                return self::is_unit_interval($value);
+                return self::isUnitInterval($value);
             case 'boolean':
-                return self::is_boolean($value);
+                return self::isBoolean($value);
             case 'options':
-                return self::is_options($value, $options);
+                return self::isOptions($value, $options);
             case 'color':
-                return self::is_color($value);
+                return self::isColor($value);
             case 'ga_id':
-                return self::is_ga_id($value);
+                return self::isGaId($value);
             case 'html':
-                return self::is_html($value);
+                return self::isHtml($value);
             default:
                 return true;
         }
     }
 
-    private static function is_text($value) {
+    private static function isText($value) {
         return sanitize_text_field($value);
     }
 
-    private static function is_url($value) {
+    private static function isUrl($value) {
         if ( wp_http_validate_url($value) ) {
             return $value;
         } else {
@@ -43,7 +43,7 @@ class InputValidator {
         }
     }
 
-    private static function is_number($value) {
+    private static function isNumber($value) {
         if ( preg_match('/^[\d\.\,]+$/', $value) ) {
             return $value;
         } else {
@@ -51,7 +51,7 @@ class InputValidator {
         }
     }
 
-    private static function is_unit_interval($value) {
+    private static function isUnitInterval($value) {
         // check if the value is between 0 to 1
         if ( preg_match('/^(0(\.\d+)?|1(\.0*)?)$/', $value) ) {
             return $value;
@@ -60,7 +60,7 @@ class InputValidator {
         }
     }
 
-    private static function is_boolean($value) {
+    private static function isBoolean($value) {
         if ( preg_match('/^(0|1)$/', $value) ) {
             return $value;
         } else {
@@ -68,7 +68,7 @@ class InputValidator {
         }
     }
     
-    private static function is_options($value, $options) {
+    private static function isOptions($value, $options) {
         if ( in_array($value, $options) ) {
             return $value;
         } else {
@@ -76,7 +76,7 @@ class InputValidator {
         }
     }
 
-    private static function is_color($value) {
+    private static function isColor($value) {
         // Check if value matches hex color format (# followed by 3 or 6 hex digits)
         if ( preg_match('/^#[0-9A-Fa-f]{3,6}$/', $value) || ! $value ) {
             return $value;
@@ -85,7 +85,7 @@ class InputValidator {
         }
     }
 
-    private static function is_ga_id($value) {
+    private static function isGaId($value) {
         // Google Analytics ID format: UA-XXXXX-Y
         if ( preg_match('/(G-\w{10}|UA-\d{4,9}-\d{1,3})/', $value) || ! $value ) {
             return $value;
@@ -94,7 +94,7 @@ class InputValidator {
         }
     }
 
-    private static function is_html($value) {
+    private static function isHtml($value) {
         // Basic HTML validation using DOM parser
         if ( preg_match('/<[^>]+>/', $value) || ! $value ) {
             return $value;

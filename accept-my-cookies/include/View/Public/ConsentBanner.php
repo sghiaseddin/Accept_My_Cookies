@@ -28,13 +28,13 @@ class ConsentBanner {
      */
     public function render()
     {
-        $this->render_banner();
+        $this->renderBanner();
     }
 
     /**
      * Render the HTML for the consent banner.
      */
-    private function render_banner()
+    private function renderBanner()
     {
         // Extract options for easier access
         $consent_text                   = $this->options['consent_text'];
@@ -58,8 +58,8 @@ class ConsentBanner {
         
         $banner_color_style             = $this->options['banner_color_style'];
         if ( $banner_color_style == 'custom' ) {
-            $banner_background_color        = $this->add_opacity_to_hex($this->options['banner_background_color'], $this->options['banner_background_opacity']);
-            $banner_overlay_color           = $this->add_opacity_to_hex($this->options['banner_overlay_color'], $this->options['banner_overlay_opacity']);
+            $banner_background_color        = $this->addOpacityToHex($this->options['banner_background_color'], $this->options['banner_background_opacity']);
+            $banner_overlay_color           = $this->addOpacityToHex($this->options['banner_overlay_color'], $this->options['banner_overlay_opacity']);
             $banner_text_color              = $this->options['banner_text_color'];
             $banner_link_color              = $this->options['banner_link_color'];
             $banner_button_background_color = $this->options['banner_button_background_color'];
@@ -70,7 +70,7 @@ class ConsentBanner {
         include ACCEPT_MY_COOKIES_DIR . 'include/View/Public/templates/consent-banner.php';
     }
 
-    private function add_opacity_to_hex($hexColor, $opacity) {
+    private function addOpacityToHex($hexColor, $opacity) {
         $hexColor = ltrim($hexColor, '#');
     
         // Convert opacity (0 to 1) into a 2-digit hex value (00 to FF)

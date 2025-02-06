@@ -21,37 +21,37 @@ class AdminController {
     public function __construct() {
         $this->settings_handler = new SettingsHandler();
         $this->admin_view = new AdminView();
-        $this->init_hooks();
+        $this->initHooks();
     }
 
     /**
      * Initialize hooks.
      */
-    private function init_hooks() {
-        add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
-        add_action( 'admin_init', array( $this, 'register_settings' ) );
+    private function initHooks() {
+        add_action( 'admin_menu', array( $this, 'addSettingsPage' ) );
+        add_action( 'admin_init', array( $this, 'registerSettings' ) );
         add_action( 'admin_enqueue_scripts', array( $this->admin_view, 'enqueueScripts' ) );
-        add_action( 'wp_ajax_accept_my_cookies_cleanup', array( $this, 'ajax_cleanup' ) );
-        add_action( 'wp_ajax_accept_my_cookies_save_settings', array( $this, 'ajax_save_settings' ) );
+        add_action( 'wp_ajax_accept_my_cookies_cleanup', array( $this, 'ajaxCleanup' ) );
+        add_action( 'wp_ajax_accept_my_cookies_save_settings', array( $this, 'ajaxSaveSettings' ) );
     }
 
     /**
      * Add the settings page to the WordPress admin menu.
      */
-    public function add_settings_page() {
+    public function addSettingsPage() {
         add_options_page(
             __( 'Accept My Cookies Settings', 'accept-my-cookies' ),
             __( 'Accept My Cookies', 'accept-my-cookies' ),
             'manage_options',
             'accept-my-cookies',
-            array( $this, 'render_settings_page' )
+            array( $this, 'renderSettingsPage' )
         );
     }
 
     /**
      * Register the settings and fields.
      */
-    public function register_settings() {
+    public function registerSettings() {
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
 
         // Register settings for the General tab
@@ -114,7 +114,7 @@ class AdminController {
     /**
      * Render the settings page.
      */
-    public function render_settings_page() {
+    public function renderSettingsPage() {
         // Include the view file
         include_once ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/settings-page.php';
     }
@@ -122,18 +122,18 @@ class AdminController {
     /**
      * Handle AJAX request for cleanup before deactivation.
      */
-    public function ajax_cleanup() {
+    public function ajaxCleanup() {
         // Verify nonce for security
         if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'accept_my_cookies_cleanup_nonce' ) ) {
             wp_send_json_error( __('Invalid nonce.', 'accept-my-cookies') );
         }
 
         // Perform cleanup
-        $this->settings_handler->delete_all_options();
+        $this->settings_handler->deleteAllOptions();
         wp_send_json_success( __('Cleanup completed.','accept-my-cookies') );
     }
 
-    public function ajax_save_settings() {
+    public function ajaxSaveSettings() {
         // Verify nonce for security
         if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'accept_my_cookies_save_settings_nonce' ) ) {
             wp_send_json_error( __('Your browser session is expired. Please reload this page.', 'accept-my-cookies') );
