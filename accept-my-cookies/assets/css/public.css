@@ -127,6 +127,17 @@
     display: none;
 }
 
+.accept-my-cookies-banner__toggle-label-essentials {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.accept-my-cookies-banner__toggle_essentials {
+    display: none;
+}
+
 .accept-my-cookies-banner__toggle-slider {
     width: 40px;
     height: 20px;
@@ -153,9 +164,15 @@
     background-color: #0073aa;
 }
 
+.accept-my-cookies-banner__toggle_essentials:checked + .accept-my-cookies-banner__toggle-slider::before,
 .accept-my-cookies-banner__toggle:checked + .accept-my-cookies-banner__toggle-slider::before {
     transform: translateX(20px);
 }
+
+.accept-my-cookies-banner__toggle_essentials + .accept-my-cookies-banner__toggle-slider {
+    background-color: #aaa;
+}
+
 
 /* Link and Button Styles */
 .accept-my-cookies-banner__link {

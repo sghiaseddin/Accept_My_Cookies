@@ -9,6 +9,11 @@
                 </a>
             </p>
             <div id="accept-my-cookies-banner__toggles" style="display: none;">
+                    <label class="accept-my-cookies-banner__toggle-label-essentials">
+                        <input type="checkbox" class="accept-my-cookies-banner__toggle_essentials" disabled checked>
+                        <span class="accept-my-cookies-banner__toggle-slider"></span>
+                        <?php _e('Essentials', 'accept-my-cookies'); ?>
+                    </label>
                 <?php if ($analytics_storage) : ?>
                     <label class="accept-my-cookies-banner__toggle-label">
                         <input type="checkbox" class="accept-my-cookies-banner__toggle" data-consent-type="analytics_storage" disabled checked>
