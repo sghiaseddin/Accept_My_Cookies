@@ -67,7 +67,7 @@ jQuery(document).ready(function ($) {
 
         var consentValues = {};
         for (const param of consentParameters) {
-            if ($(`.accept - my - cookies - banner__toggle[data - consent - type = "${param}"]`).length) {
+            if ($(`.accept-my-cookies-banner__toggle[data-consent-type="${param}"]`).length) {
                 consentValues[param] = acceptAll || getToggleValue(param);
             }
         }
@@ -86,7 +86,7 @@ jQuery(document).ready(function ($) {
             }
         }
 
-        // Trigger Google Consent Mode if enabled
+        // Update Google Consent Mode
         if (acceptMyCookiesData.options.google_consent_mode_enabled) {
             updateGoogleConsentMode(consentValues);
         }
@@ -95,28 +95,24 @@ jQuery(document).ready(function ($) {
     // Get the value of a toggle
     function getToggleValue(consentType)
     {
-        const toggle = $(`.accept - my - cookies - banner__toggle[data - consent - type = "${consentType}"]`);
+        const toggle = $(`.accept-my-cookies-banner__toggle[data-consent-type="${consentType}"]`);
         return toggle.prop('checked');
     }
 
+    // Function to update Google Consent Mode
+    function updateGoogleConsentMode(consentValues) {
+        for (const [param, value] of Object.entries(consentValues)) {
+            if (value) {
+                updateConsent(param, value ? 'granted' : 'denied');
+            }
+        }
+    }
+    
     // Hide the consent banner
     function hideBanner()
     {
         $('#accept-my-cookies-banner').fadeOut();
         $('.accept-my-cookies-banner-overlay').fadeOut();
-    }
-
-    // Update Google Consent Mode
-    function updateGoogleConsentMode(consentValues)
-    {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'event': 'update_consent',
-            'analytics_storage': consentValues.analytics_storage ? 'granted' : 'denied',
-            'ad_storage': consentValues.ad_storage ? 'granted' : 'denied',
-            'ad_user_data': consentValues.ad_user_data ? 'granted' : 'denied',
-            'ad_personalization': consentValues.ad_personalization ? 'granted' : 'denied',
-        });
     }
 
     // Initialize the banner

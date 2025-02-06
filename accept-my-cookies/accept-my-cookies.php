@@ -11,7 +11,7 @@
  * @license  https://github.com/sghiaseddin/Accept_My_Cookies/blob/main/LICENSE GPL-3.0
  * @version  GIT: <https://github.com/sghiaseddin/Accept_My_Cookies>
  * @link     https://sghiaseddin.com
- * @tag      GitHub Action WordPress-Coding-Standards
+ * @tag      development: gtag implemented
  */
 
 /*
@@ -19,19 +19,20 @@ Plugin Name: Accept My Cookies
 Plugin URI: http://wordpress.org/plugins/accept-my-cookies/
 Description: Accept My Cookies is a lightweight and customizable WordPress plugin that helps you comply with GDPR and other privacy regulations. It displays a user-friendly consent modal, allowing visitors to accept or reject tracking cookies. The plugin supports Google Consent Mode for seamless integration with Google Analytics, Ads, and Tag Manager.
 Author: Shayan Ghiaseddin
-Version: 0.2.2
+Version: 0.3.5
 Author URI: https://sghiaseddin.com/
 */
 
 use AcceptMyCookies\Controller\AdminController;
 use AcceptMyCookies\Controller\PublicController;
+use AcceptMyCookies\Controller\GoogleConsentController;
 
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
 // Define useful constants
-define('ACCEPT_MY_COOKIES_VERSION', '0.2.2');
+define('ACCEPT_MY_COOKIES_VERSION', '0.3.5');
 define('ACCEPT_MY_COOKIES_DIR', plugin_dir_path(__FILE__));
 define('ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__));
 
@@ -81,5 +82,8 @@ function Accept_My_Cookies_init()
 
     // Initialize PublicController for frontend functionality
     new PublicController();
+
+    // Initialize GoogleConsentController for Google Consent Mode
+    new GoogleConsentController();
 }
 add_action('plugins_loaded', 'Accept_My_Cookies_init');
