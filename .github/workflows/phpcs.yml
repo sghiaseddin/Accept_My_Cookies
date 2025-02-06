@@ -1,0 +1,51 @@
+name: PHPCS check
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  phpcs:
+    name: PHPCS check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 'latest'
+          ini-values: 'memory_limit=1G'
+          coverage: none
+          tools: cs2pr
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          custom-cache-suffix: $(date -u "+%Y-%m")
+
+      - name: Run PHPCBF (Auto-fixer)
+        run: |
+          vendor/bin/phpcbf --standard=PSR12 --encoding=utf-8 --extensions=php,js,css,html ./accept-my-cookies || true
+
+      - name: Commit and Push Fixes
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "Apply PHPCBF auto-fixes" || echo "No PHPCBF fixes to commit"
+          git push || echo "No changes to push"
+        continue-on-error: true
+
+      - name: Run PHPCS checks
+        id: phpcs
+        run: vendor/bin/phpcs --report-full --report-checkstyle=./phpcs-report.xml --encoding=utf-8 --extensions=php,js,css,html --standard=PSR12 ./accept-my-cookies
+
+      - name: Show PHPCS results in PR
+        if: ${{ always() && steps.phpcs.outcome == 'failure' }}
+        run: cs2pr ./phpcs-report.xml

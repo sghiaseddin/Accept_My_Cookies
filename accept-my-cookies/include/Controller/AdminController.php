@@ -1,5 +1,7 @@
 <?php
+
 namespace AcceptMyCookies\Controller;
+
 use AcceptMyCookies\Controller\SettingsHandler;
 use AcceptMyCookies\Controller\InputValidator;
 use AcceptMyCookies\View\Admin\AdminView;
@@ -28,7 +30,7 @@ class AdminController {
     private function init_hooks() {
         add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
         add_action( 'admin_init', array( $this, 'register_settings' ) );
-        add_action( 'admin_enqueue_scripts', array( $this->admin_view, 'enqueue_scripts' ) );
+        add_action( 'admin_enqueue_scripts', array( $this->admin_view, 'enqueueScripts' ) );
         add_action( 'wp_ajax_accept_my_cookies_cleanup', array( $this, 'ajax_cleanup' ) );
         add_action( 'wp_ajax_accept_my_cookies_save_settings', array( $this, 'ajax_save_settings' ) );
     }
@@ -101,7 +103,7 @@ class AdminController {
             add_settings_field(
                 $option['key'],
                 $option['label'],
-                array( $this->admin_view, 'render_option_field' ),
+                array( $this->admin_view, 'renderOptionField' ),
                 $page,
                 $section,
                 array( 'option_name' => $option_name )

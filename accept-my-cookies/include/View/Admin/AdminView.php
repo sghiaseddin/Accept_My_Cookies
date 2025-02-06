@@ -12,7 +12,7 @@ class AdminView {
      *
      * @param array $args The field arguments.
      */
-    public function render_option_field( $args ) {
+    public function renderOptionField( $args ) {
         $option_name = $args['option_name'];
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
         $option = $schema[ $option_name ];
@@ -128,7 +128,7 @@ class AdminView {
     /**
      * Enqueue scripts and styles for the admin area.
      */
-    public function enqueue_scripts() {
+    public function enqueueScripts() {
         wp_enqueue_script(
             'accept-my-cookies-deactivate',
             ACCEPT_MY_COOKIES_URL . 'assets/js/deactivate.js',
