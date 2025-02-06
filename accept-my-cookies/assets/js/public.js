@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
     // Check if the user has already consented
-    function hasUserConsented() {
+    function hasUserConsented()
+    {
         const storageMethod = acceptMyCookiesData.options.storage_method;
 
         if (storageMethod === 'cookies') {
@@ -14,7 +15,8 @@ jQuery(document).ready(function ($) {
     }
 
     // Show the consent banner after a delay
-    function showBannerAfterDelay() {
+    function showBannerAfterDelay()
+    {
         const delaySeconds = acceptMyCookiesData.options.banner_delay_seconds;
 
         setTimeout(function () {
@@ -49,9 +51,10 @@ jQuery(document).ready(function ($) {
         setConsent(true, true);
         hideBanner();
     });
-    
+
     // Set consent preference
-    function setConsent(consent, acceptAll = false) {
+    function setConsent(consent, acceptAll = false)
+    {
         const storageMethod = acceptMyCookiesData.options.storage_method;
 
         // Determine consent values for each parameter
@@ -64,17 +67,17 @@ jQuery(document).ready(function ($) {
 
         var consentValues = {};
         for (const param of consentParameters) {
-            if ($(`.accept-my-cookies-banner__toggle[data-consent-type="${param}"]`).length) {
+            if ($(`.accept - my - cookies - banner__toggle[data - consent - type = "${param}"]`).length) {
                 consentValues[param] = acceptAll || getToggleValue(param);
             }
         }
-        
+
         // Store consent in cookies or local storage
         if (storageMethod === 'cookies') {
             const expirationDays = acceptMyCookiesData.options.cookie_expiration_days;
-            document.cookie = `accept_my_cookies_consent=${consent}; max-age=${expirationDays * 86400}; path=/`;
+            document.cookie = `accept_my_cookies_consent = ${consent}; max - age = ${expirationDays * 86400}; path = / `;
             for (const [key, value] of Object.entries(consentValues)) {
-                document.cookie = `${key}=${value}; max-age=${expirationDays * 86400}; path=/`;
+                document.cookie = `${key} = ${value}; max - age = ${expirationDays * 86400}; path = / `;
             }
         } else {
             localStorage.setItem('accept_my_cookies_consent', consent);
@@ -90,19 +93,22 @@ jQuery(document).ready(function ($) {
     }
 
     // Get the value of a toggle
-    function getToggleValue(consentType) {
-        const toggle = $(`.accept-my-cookies-banner__toggle[data-consent-type="${consentType}"]`);
+    function getToggleValue(consentType)
+    {
+        const toggle = $(`.accept - my - cookies - banner__toggle[data - consent - type = "${consentType}"]`);
         return toggle.prop('checked');
     }
 
     // Hide the consent banner
-    function hideBanner() {
+    function hideBanner()
+    {
         $('#accept-my-cookies-banner').fadeOut();
         $('.accept-my-cookies-banner-overlay').fadeOut();
     }
 
     // Update Google Consent Mode
-    function updateGoogleConsentMode(consentValues) {
+    function updateGoogleConsentMode(consentValues)
+    {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'update_consent',
@@ -114,7 +120,8 @@ jQuery(document).ready(function ($) {
     }
 
     // Initialize the banner
-    function initBanner() {
+    function initBanner()
+    {
         if (!hasUserConsented()) {
             showBannerAfterDelay();
         }

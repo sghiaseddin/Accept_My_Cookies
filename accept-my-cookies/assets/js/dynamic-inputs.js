@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
     // Function to toggle visibility of dependent inputs
-    function toggleDependentInputs() {
+    function toggleDependentInputs()
+    {
         $('[data-depends-on]').each(function () {
             var $dependentInput = $(this);
             var dependsOn = $dependentInput.data('depends-on');

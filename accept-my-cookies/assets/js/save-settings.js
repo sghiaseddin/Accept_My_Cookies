@@ -10,10 +10,10 @@ jQuery(document).ready(function ($) {
         var formData = $(this).serialize();
 
         // include unchecked checkboxes with value 0
-        $('#accept-my-cookies-settings-form input[type=checkbox]').each( function(el) {
+        $('#accept-my-cookies-settings-form input[type=checkbox]').each(function (el) {
             if ( $(this).prop('checked') === false ) {
                 formData += '&' + $(this).attr('name') + '=0';
-            }            
+            }
         });
 
         $('.wrap #message').addClass('notice-info').fadeIn();
@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
         $.ajax({
             url: ajaxurl,
             type: 'POST',
-            data: formData + '&action=accept_my_cookies_save_settings' + '&nonce=' + acceptMyCookiesSaveSettings.nonce, 
+            data: formData + '&action=accept_my_cookies_save_settings' + '&nonce=' + acceptMyCookiesSaveSettings.nonce,
             success: function (response) {
                 if (response.success) {
                     $('.wrap #message').addClass('notice-success').fadeIn();
@@ -42,7 +42,7 @@ jQuery(document).ready(function ($) {
                 $('.wrap #message').addClass('notice-error').fadeIn();
                 $('.wrap #message').removeClass('notice-info');
                 $('.wrap #message').removeClass('notice-success');
-            $('.wrap #message > p').text('Cannot make a connection with server. Something is wrong!');
+                $('.wrap #message > p').text('Cannot make a connection with server. Something is wrong!');
             }
         });
     });

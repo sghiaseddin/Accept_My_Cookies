@@ -32,7 +32,7 @@
             $('.accept-my-cookies-deactivate-modal-wrapper').fadeIn();
 
             // Handle Remove data and deactivation button clicks
-            $('.accept-my-cookies-deactivate-modal .accept-my-cookies-remove-data').click(function() {
+            $('.accept-my-cookies-deactivate-modal .accept-my-cookies-remove-data').click(function () {
                 // Trigger deactivation with data removal
                 $.ajax({
                     url: ajaxurl, // WordPress AJAX URL
@@ -53,13 +53,13 @@
             });
 
             // Handle deactivation button
-            $('.accept-my-cookies-deactivate-modal .accept-my-cookies-deactivate').click(function() {
+            $('.accept-my-cookies-deactivate-modal .accept-my-cookies-deactivate').click(function () {
                 // Proceed with normal deactivation without data removal
                 window.location.href = $(e.target).attr('href');
             });
 
             // Handel Cancel button
-            $('.accept-my-cookies-deactivate-modal .accept-my-cookies-cancel').click(function() {
+            $('.accept-my-cookies-deactivate-modal .accept-my-cookies-cancel').click(function () {
                 $('.accept-my-cookies-deactivate-modal-wrapper').fadeOut();
             });
         });

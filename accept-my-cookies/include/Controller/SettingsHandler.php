@@ -1,18 +1,20 @@
 <?php
+
 namespace AcceptMyCookies\Controller;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class SettingsHandler {
-
+class SettingsHandler
+{
     /**
      * Get the default options.
      *
      * @return array
      */
-    private function getOptionsSchema() {
+    private function getOptionsSchema()
+    {
         return include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
     }
 
@@ -22,11 +24,12 @@ class SettingsHandler {
      * @param string $option_name The option name (e.g., 'sample_option').
      * @return mixed
      */
-    public function getOption( $option_name ) {
+    public function getOption($option_name)
+    {
         $schema = $this->getOptionsSchema();
-        if ( isset( $schema[ $option_name ] ) ) {
+        if (isset($schema[ $option_name ])) {
             $key = $schema[ $option_name ]['key'];
-            return get_option( $key, $schema[ $option_name ]['default'] );
+            return get_option($key, $schema[ $option_name ]['default']);
         }
         return '';
     }
@@ -38,11 +41,12 @@ class SettingsHandler {
      * @param mixed  $value       The value to save.
      * @return bool
      */
-    public function saveOption( $option_name, $value ) {
+    public function saveOption($option_name, $value)
+    {
         $schema = $this->getOptionsSchema();
-        if ( isset( $schema[ $option_name ] ) ) {
+        if (isset($schema[ $option_name ])) {
             $key = $schema[ $option_name ]['key'];
-            return update_option( $key, sanitize_text_field( $value ) );
+            return update_option($key, sanitize_text_field($value));
         }
         return false;
     }
@@ -50,11 +54,12 @@ class SettingsHandler {
     /**
      * Save default options on plugin activation.
      */
-    public function saveDefaultOptions() {
+    public function saveDefaultOptions()
+    {
         $schema = $this->getOptionsSchema();
-        foreach ( $schema as $key => $option ) {
-            if ( ! get_option( $option['key'] ) ) {
-                update_option( $option['key'], $option['default'] );
+        foreach ($schema as $key => $option) {
+            if (! get_option($option['key'])) {
+                update_option($option['key'], $option['default']);
             }
         }
     }
@@ -62,10 +67,11 @@ class SettingsHandler {
     /**
      * Delete all plugin options.
      */
-    public function deleteAllOptions() {
+    public function deleteAllOptions()
+    {
         $schema = $this->getOptionsSchema();
-        foreach ( $schema as $key => $option ) {
-            delete_option( $option['key'] );
+        foreach ($schema as $key => $option) {
+            delete_option($option['key']);
         }
     }
 }

@@ -71,7 +71,7 @@
     .accept-my-cookies-banner {
         z-index: <?php echo esc_attr($banner_z_index); ?>;
     }
-    <?php if ( $banner_color_style == 'custom' ) : ?>
+    <?php if ($banner_color_style == 'custom') : ?>
     .accept-my-cookies-banner-overlay {
         background-color: <?php echo esc_attr($banner_overlay_color); ?>;
     }    
