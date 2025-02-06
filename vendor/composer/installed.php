@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-codeSniffersExperiment',
-        'version' => 'dev-codeSniffersExperiment',
-        'reference' => 'fcaaa79effe447881b9efea76a5990c5ea873afc',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '8c179d0ddb04527134c404e4a36f004d163767e6',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-codeSniffersExperiment',
-            'version' => 'dev-codeSniffersExperiment',
-            'reference' => 'fcaaa79effe447881b9efea76a5990c5ea873afc',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '8c179d0ddb04527134c404e4a36f004d163767e6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
