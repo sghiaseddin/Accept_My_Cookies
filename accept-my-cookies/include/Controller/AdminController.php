@@ -153,7 +153,7 @@ class AdminController
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
         foreach ($schema as $input => $option) {
             if (isset($_POST[ $option['key'] ])) {
-                if ( $input !== 'learn_more_url' ) {
+                if ($input !== 'learn_more_url') {
                     $value = sanitize_text_field(wp_unslash($_POST[ $option['key'] ]));
                 } else {
                     $value = sanitize_url(wp_unslash($_POST[ $option['key'] ]));

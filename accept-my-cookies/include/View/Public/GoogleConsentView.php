@@ -36,7 +36,7 @@ class GoogleConsentView
         $ad_storage = $this->options['ad_storage'] ? 'granted' : 'denied';
         $ad_user_data = $this->options['ad_user_data'] ? 'granted' : 'denied';
         $ad_personalization = $this->options['ad_personalization'] ? 'granted' : 'denied';
-        
+
         // Check if Google Consent Mode is enabled and GA ID is set
         if ($this->options['google_consent_mode_enabled'] && !empty($this->options['ga_id'])) {
             wp_register_script(
@@ -54,7 +54,7 @@ class GoogleConsentView
             // Include the templates
             $before_script = include ACCEPT_MY_COOKIES_DIR . 'include/View/Public/templates/before-google-consent-script.php';
             $after_script = include ACCEPT_MY_COOKIES_DIR . 'include/View/Public/templates/after-google-consent-script.php';
-            
+
             wp_add_inline_script('gtm-script', $before_script, 'before');
             wp_enqueue_script('gtm-script');
             wp_add_inline_script('gtm-script', $after_script, 'after');
