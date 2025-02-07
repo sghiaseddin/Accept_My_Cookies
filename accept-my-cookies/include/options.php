@@ -24,6 +24,7 @@ return array(
         'placeholder' => __('Enter the URL for the "Learn More" link', 'accept-my-cookies'),
         'description' => __('The URL where users can learn more about your cookie policy.', 'accept-my-cookies'),
         'validation-type'   => 'url',
+        'sanitize_callback' => 'sanitize_url',
     ),
     'learn_more_text' => array(
         'key'     => 'accept_my_cookies_learn_more_text',
@@ -94,25 +95,6 @@ return array(
         'tab'     => 'general',
         'description' => __('Choose how consent preferences are stored; cookies or local storage. We recommend cookies, as it checked and processed during php execution. However local storage could be checked only on browser runtime using javascript.', 'accept-my-cookies'),
         'validation-type'   => 'options',
-    ),
-    'logging_enabled' => array(
-        'key'     => 'accept_my_cookies_logging_enabled',
-        'default' => '0', // 0 for disabled, 1 for enabled
-        'label'   => __('Enable Logging', 'accept-my-cookies'),
-        'type'    => 'checkbox',
-        'tab'     => 'general',
-        'description' => __('Enable storing consent decisions of users in a log file (wp-contents/uploads/accept-my-cookies/consents.log).', 'accept-my-cookies'),
-        'validation-type'   => 'boolean',
-    ),
-    'custom_html_head' => array(
-        'key'     => 'accept_my_cookies_custom_html_head',
-        'default' => '', // Default empty
-        'label'   => __('Custom HTML (Head)', 'accept-my-cookies'),
-        'type'    => 'textarea',
-        'tab'     => 'general',
-        'placeholder' => __('Enter custom HTML to be added to the <head> section', 'accept-my-cookies'),
-        'description' => __('Add custom HTML code that will be injected into the <head> section of your site.', 'accept-my-cookies'),
-        'validation-type'   => 'html',
     ),
 
     // Google Property Tab Options

@@ -12,34 +12,34 @@
                     <label class="accept-my-cookies-banner__toggle-label-essentials">
                         <input type="checkbox" class="accept-my-cookies-banner__toggle_essentials" disabled checked>
                         <span class="accept-my-cookies-banner__toggle-slider"></span>
-                        <?php _e('Essentials', 'accept-my-cookies'); ?>
+                        <?php esc_html_e('Essentials', 'accept-my-cookies'); ?>
                     </label>
                 <?php if ($analytics_storage) : ?>
                     <label class="accept-my-cookies-banner__toggle-label">
                         <input type="checkbox" class="accept-my-cookies-banner__toggle" data-consent-type="analytics_storage" disabled checked>
                         <span class="accept-my-cookies-banner__toggle-slider"></span>
-                        <?php _e('Analytics Storage', 'accept-my-cookies'); ?>
+                        <?php esc_html_e('Analytics Storage', 'accept-my-cookies'); ?>
                     </label>
                 <?php endif; ?>
                 <?php if ($ad_storage) : ?>
                     <label class="accept-my-cookies-banner__toggle-label">
                         <input type="checkbox" class="accept-my-cookies-banner__toggle" data-consent-type="ad_storage" disabled checked>
                         <span class="accept-my-cookies-banner__toggle-slider"></span>
-                        <?php _e('Ad Storage', 'accept-my-cookies'); ?>
+                        <?php esc_html_e('Ad Storage', 'accept-my-cookies'); ?>
                     </label>
                 <?php endif; ?>
                 <?php if ($ad_user_data) : ?>
                     <label class="accept-my-cookies-banner__toggle-label">
                         <input type="checkbox" class="accept-my-cookies-banner__toggle" data-consent-type="ad_user_data" disabled checked>
                         <span class="accept-my-cookies-banner__toggle-slider"></span>
-                        <?php _e('Ad User Data', 'accept-my-cookies'); ?>
+                        <?php esc_html_e('Ad User Data', 'accept-my-cookies'); ?>
                     </label>
                 <?php endif; ?>
                 <?php if ($ad_personalization) : ?>
                     <label class="accept-my-cookies-banner__toggle-label">
                         <input type="checkbox" class="accept-my-cookies-banner__toggle" data-consent-type="ad_personalization" disabled checked>
                         <span class="accept-my-cookies-banner__toggle-slider"></span>
-                        <?php _e('Ad Personalization', 'accept-my-cookies'); ?>
+                        <?php esc_html_e('Ad Personalization', 'accept-my-cookies'); ?>
                     </label>
                 <?php endif; ?>
             </div>

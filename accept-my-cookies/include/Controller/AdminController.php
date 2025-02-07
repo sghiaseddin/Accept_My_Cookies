@@ -86,7 +86,8 @@ class AdminController
         foreach ($schema as $option_name => $option) {
             register_setting(
                 'accept_my_cookies_options_group',
-                $option['key']
+                $option['key'],
+                'sanitize_text_field'
             );
 
             switch ($option['tab']) {
@@ -130,7 +131,7 @@ class AdminController
     public function ajaxCleanup()
     {
         // Verify nonce for security
-        if (! isset($_POST['nonce']) || ! wp_verify_nonce($_POST['nonce'], 'accept_my_cookies_cleanup_nonce')) {
+        if (! isset($_POST['nonce']) || ! wp_verify_nonce(sanitize_key(wp_unslash($_POST['nonce'])), 'accept_my_cookies_cleanup_nonce')) {
             wp_send_json_error(__('Invalid nonce.', 'accept-my-cookies'));
         }
 
@@ -142,7 +143,7 @@ class AdminController
     public function ajaxSaveSettings()
     {
         // Verify nonce for security
-        if (! isset($_POST['nonce']) || ! wp_verify_nonce($_POST['nonce'], 'accept_my_cookies_save_settings_nonce')) {
+        if (! isset($_POST['nonce']) || ! wp_verify_nonce(sanitize_key(wp_unslash($_POST['nonce'])), 'accept_my_cookies_save_settings_nonce')) {
             wp_send_json_error(__('Your browser session is expired. Please reload this page.', 'accept-my-cookies'));
         }
 
@@ -152,14 +153,20 @@ class AdminController
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
         foreach ($schema as $input => $option) {
             if (isset($_POST[ $option['key'] ])) {
-                $value = $validator::validate(
+                if ( $input !== 'learn_more_url' ) {
+                    $value = sanitize_text_field(wp_unslash($_POST[ $option['key'] ]));
+                } else {
+                    $value = sanitize_url(wp_unslash($_POST[ $option['key'] ]));
+                }
+                $validated_value = $validator::validate(
                     $option['validation-type'],
-                    $_POST[ $option['key'] ],
+                    $value,
                     isset($option['options']) ? array_keys($option['options']) : array()
                 );
                 if ($value !== false) {
-                    update_option($option['key'], $value);
+                    update_option($option['key'], $validated_value);
                 } else {
+                    /* translators: here %s is the option label that is not valid. */
                     wp_send_json_error(sprintf(__('The value for "%s" is not valid. Please review it.', 'accept-my-cookies'), $option['label']));
                 }
             }

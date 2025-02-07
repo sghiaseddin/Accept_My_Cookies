@@ -132,44 +132,49 @@ class AdminView
      */
     public function enqueueScripts()
     {
-        wp_enqueue_script(
+        wp_register_script(
             'accept-my-cookies-deactivate',
             ACCEPT_MY_COOKIES_URL . 'assets/js/deactivate.js',
             array( 'jquery' ),
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-deactivate');
 
-        wp_enqueue_script(
+        wp_register_script(
             'accept-my-cookies-save-settings',
             ACCEPT_MY_COOKIES_URL . 'assets/js/save-settings.js',
             array( 'jquery' ),
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-save-settings');
 
-        wp_enqueue_script(
+        wp_register_script(
             'accept-my-cookies-tabs',
             ACCEPT_MY_COOKIES_URL . 'assets/js/tabs.js',
             array( 'jquery' ),
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-tabs');
 
-        wp_enqueue_style(
+        wp_register_style(
             'accept-my-cookies-admin',
             ACCEPT_MY_COOKIES_URL . 'assets/css/admin.css',
             array(),
             ACCEPT_MY_COOKIES_VERSION
         );
+        wp_enqueue_style('accept-my-cookies-admin');
 
-        wp_enqueue_script(
+        wp_register_script(
             'accept-my-cookies-dynamic-inputs',
             ACCEPT_MY_COOKIES_URL . 'assets/js/dynamic-inputs.js',
             array( 'jquery' ),
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-dynamic-inputs');
 
         wp_localize_script(
             'accept-my-cookies-save-settings',

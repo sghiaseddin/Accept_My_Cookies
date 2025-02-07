@@ -24,7 +24,7 @@ class GoogleConsentController
         $this->options = $this->loadSavedOptions();
 
         // Register the hook to inject the Google Consent Mode script
-        add_action('wp_head', array($this, 'injectGoogleConsentScript'));
+        add_action('wp_head', array($this, 'injectGoogleConsentScript'), -10);
     }
 
     /**
@@ -55,7 +55,7 @@ class GoogleConsentController
             $google_consent_view = new GoogleConsentView($this->options);
 
             // Render the script
-            $google_consent_view->render();
+            $google_consent_view->enqueueGoogleConsentScript();
         }
     }
 }

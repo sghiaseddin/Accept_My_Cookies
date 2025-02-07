@@ -111,10 +111,22 @@
     color: #ffffff;
 }
 
+.accept-my-cookies-banner--dark label,
+.accept-my-cookies-banner--dark p {
+    color: #ffffff;
+}
+
+
 .accept-my-cookies-banner--bright {
     background-color: #ffffff;
     color: #1e1e1e;
 }
+
+.accept-my-cookies-banner--bright label,
+.accept-my-cookies-banner--bright p {
+    color: #1e1e1e;
+}
+
 
 .accept-my-cookies-banner__toggle-label {
     display: flex;

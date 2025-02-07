@@ -1,4 +1,11 @@
-<script>
+<?php
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+ob_start();
+?>
     // Define dataLayer and the gtag function.
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -33,14 +40,7 @@
             [parameter]: consentStatus,
         });
     }
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr($ga_id); ?>"></script>
-<script>
-    gtag('js', new Date());
-    gtag('config', '<?php echo esc_attr($ga_id); ?>');
-</script>
-<script>
+
     // Check and handle consent
     const storageMethod = '<?php echo esc_js($this->options['storage_method']); ?>';
     const consentKey = 'accept_my_cookies_consent';
@@ -63,7 +63,5 @@
             }
         });
     }
-
-    // Update consent based on stored values
-    updateStoredConsent();
-</script>
+<?php
+return ob_get_clean();
