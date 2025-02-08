@@ -38,6 +38,7 @@ class ConsentBanner
     private function renderBanner()
     {
         // Extract options for easier access
+        $banner_title                   = $this->options['banner_title'];
         $consent_text                   = $this->options['consent_text'];
         $learn_more_url                 = $this->options['learn_more_url'];
         $learn_more_text                = $this->options['learn_more_text'];
@@ -49,6 +50,7 @@ class ConsentBanner
         $banner_size                    = $this->options['banner_size'];
         $banner_button_size             = $this->options['banner_button_size'];
         $banner_text_size               = $this->options['banner_text_size'];
+        $banner_title_text_size         = $this->options['banner_title_text_size'];
         $banner_button_text_size        = $this->options['banner_button_text_size'];
         $banner_z_index                 = $this->options['banner_z_index'];
         $google_consent_mode_enabled    = $this->options['google_consent_mode_enabled'];

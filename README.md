@@ -108,5 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 0.4.3
+- Adding title for consent banner
+- Fixing text-domain load
+- Adding Persian language glossary
+
 ### 0.3.9
 - Ready to submit in Wordpress plugin's repo

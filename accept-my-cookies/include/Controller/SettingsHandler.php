@@ -54,12 +54,13 @@ class SettingsHandler
     /**
      * Save default options on plugin activation.
      */
-    public function saveDefaultOptions()
+    public function saveDefaultOptions($translations)
     {
         $schema = $this->getOptionsSchema();
         foreach ($schema as $key => $option) {
             if (! get_option($option['key'])) {
-                update_option($option['key'], $option['default']);
+                $default = isset($translations[$option['default']]) ? $translations[$option['default']]->translations[0] : $option['default'];
+                update_option($option['key'], $default);
             }
         }
     }

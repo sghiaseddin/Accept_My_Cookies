@@ -4,7 +4,7 @@ Donate link: https://sghiaseddin.com
 Tags: gdpr, cookies, consent, google consent mode, privacy
 Requires at least: 5.6
 Tested up to: 6.7.1
-Stable tag: 0.3.9
+Stable tag: 0.4.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,13 +80,23 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 
 == Changelog ==
 
-= 1.0.0 =
-- Initial release.
+= 0.4.3 =
+
+- Adding title for consent banner
+- Fixing text-domain load
+- Adding Persian language glossary
+
+= 0.3.9 =
+
+- Submiting the plugin to Wordpress plugin's repo
 
 == Upgrade Notice ==
 
-= 1.0.0 =
-Initial release of Accept My Cookies.
+= 0.4.3 =
+
+- Adding title for consent banner
+- Fixing text-domain load
+- Adding Persian language glossary
 
 == License ==
 

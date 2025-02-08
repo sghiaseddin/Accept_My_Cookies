@@ -11,7 +11,7 @@
  * @license  https://github.com/sghiaseddin/Accept_My_Cookies/blob/main/LICENSE GPL-3.0
  * @version  GIT: <https://github.com/sghiaseddin/Accept_My_Cookies>
  * @link     https://sghiaseddin.com
- * @tag      pre-release
+ * @tag      fix text-domain loading
  */
 
 /*
@@ -19,7 +19,7 @@ Plugin Name: Accept My Cookies
 Plugin URI: http://wordpress.org/plugins/accept-my-cookies/
 Description: Accept My Cookies is a lightweight and customizable WordPress plugin that helps you comply with GDPR and other privacy regulations. It displays a user-friendly consent modal, allowing visitors to accept or reject tracking cookies. The plugin supports Google Consent Mode for seamless integration with Google Analytics, Ads, and Tag Manager.
 Author: Shayan Ghiaseddin
-Version: 0.3.9
+Version: 0.4.3
 Author URI: https://sghiaseddin.com/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -34,7 +34,7 @@ if (! defined('ABSPATH')) {
 }
 
 // Define useful constants
-define('ACCEPT_MY_COOKIES_VERSION', '0.3.9');
+define('ACCEPT_MY_COOKIES_VERSION', '0.4.3');
 define('ACCEPT_MY_COOKIES_DIR', plugin_dir_path(__FILE__));
 define('ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__));
 
@@ -45,7 +45,7 @@ define('ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__));
  */
 function Accept_My_Cookies_Load_textdomain()
 {
-    load_plugin_textdomain('accept-my-cookies', false, ACCEPT_MY_COOKIES_DIR . 'languages/');
+    load_plugin_textdomain('accept-my-cookies', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 add_action('init', 'Accept_My_Cookies_Load_textdomain');
 
@@ -68,9 +68,9 @@ spl_autoload_register(
     }
 );
 
+// Activation actions: loading translation and saving default data
 require_once ACCEPT_MY_COOKIES_DIR . 'activate.php';
-
-register_activation_hook(__FILE__, 'Accept_My_Cookies_Activate');
+register_activation_hook(__FILE__, 'Accept_My_Cookies_Activate');  
 
 /**
  * Initialize the plugin
@@ -89,3 +89,14 @@ function Accept_My_Cookies_init()
     new GoogleConsentController();
 }
 add_action('plugins_loaded', 'Accept_My_Cookies_init');
+
+/**
+ * Add settings page link in plugins listing
+ *
+ * @return array
+ */
+function Accept_My_Cookies_Add_settings_link( $actions ) {
+    $settings_link = array('<a href="' . admin_url( 'options-general.php?page=accept-my-cookies' ) . '">' . esc_html__('Settings', 'accept-my-cookies') . '</a>');
+    return array_merge( $actions, $settings_link );
+}
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'Accept_My_Cookies_Add_settings_link' );

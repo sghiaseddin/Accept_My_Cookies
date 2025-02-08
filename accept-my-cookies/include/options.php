@@ -6,6 +6,14 @@ if (! defined('ABSPATH')) {
 
 return array(
     // General Tab Options
+    'banner_title'          => array(
+        'key'               => 'accept_my_cookies_banner_title',
+        'default'           => __('Privacy & Cookies', 'accept-my-cookies'),
+        'label'             => __('Banner Title', 'accept-my-cookies'),
+        'type'              => 'text',
+        'tab'               => 'general',
+        'validation-type'   => 'text',
+    ),
     'consent_text'          => array(
         'key'               => 'accept_my_cookies_consent_text',
         'default'           => __('We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.', 'accept-my-cookies'),
@@ -198,6 +206,15 @@ return array(
         'tab'     => 'styling',
         'description' => __('Choose the size of the buttons in the consent banner.', 'accept-my-cookies'),
         'validation-type'   => 'options',
+    ),
+    'banner_title_text_size' => array(
+        'key'     => 'accept_my_cookies_banner_title_text_size',
+        'default' => '18', // Default text size in pixels
+        'label'   => __('Banner Title Text Size (px)', 'accept-my-cookies'),
+        'type'    => 'number',
+        'tab'     => 'styling',
+        'description' => __('Set the font size of the title in the consent banner.', 'accept-my-cookies'),
+        'validation-type'   => 'number',
     ),
     'banner_text_size' => array(
         'key'     => 'accept_my_cookies_banner_text_size',

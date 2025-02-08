@@ -2,6 +2,7 @@
 <div id="accept-my-cookies-banner" class="accept-my-cookies-banner accept-my-cookies-banner--<?php echo esc_attr($banner_position); ?> accept-my-cookies-banner-size--<?php echo esc_attr($banner_size); ?> accept-my-cookies-banner-button-size--<?php echo esc_attr($banner_button_size); ?> accept-my-cookies-banner--<?php echo esc_attr($banner_color_style); ?>" style="display: none;">
     <div class="accept-my-cookies-banner__content">
         <div class="accept-my-cookies-banner__info">
+            <p class="accept-my-cookies-banner__title"><?php echo esc_html($banner_title); ?></p>
             <p class="accept-my-cookies-banner__text">
                 <?php echo esc_html($consent_text); ?>
                 <a href="<?php echo esc_url($learn_more_url); ?>" class="accept-my-cookies-banner__link" target="_blank">
@@ -67,13 +68,16 @@
     #accept-my-cookies-banner, .accept-my-cookies-banner__text {
         font-size: <?php echo esc_attr($banner_text_size); ?>px;
     }
+    .accept-my-cookies-banner__title {
+        font-size: <?php echo esc_attr($banner_title_text_size); ?>px;
+    }
     .accept-my-cookies-banner__actions button {
         font-size: <?php echo esc_attr($banner_button_text_size); ?>px;
     }
     .accept-my-cookies-banner__button {
         font-size: <?php echo esc_attr($banner_button_text_size); ?>px;
     }
-    .accept-my-cookies-banner {
+    .accept-my-cookies-banner, .accept-my-cookies-banner-overlay {
         z-index: <?php echo esc_attr($banner_z_index); ?>;
     }
     <?php if ($banner_color_style == 'custom') : ?>

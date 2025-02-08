@@ -139,7 +139,6 @@ class AdminView
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
-        wp_enqueue_script('accept-my-cookies-deactivate');
 
         wp_register_script(
             'accept-my-cookies-save-settings',
@@ -148,7 +147,6 @@ class AdminView
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
-        wp_enqueue_script('accept-my-cookies-save-settings');
 
         wp_register_script(
             'accept-my-cookies-tabs',
@@ -157,7 +155,6 @@ class AdminView
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
-        wp_enqueue_script('accept-my-cookies-tabs');
 
         wp_register_style(
             'accept-my-cookies-admin',
@@ -165,7 +162,6 @@ class AdminView
             array(),
             ACCEPT_MY_COOKIES_VERSION
         );
-        wp_enqueue_style('accept-my-cookies-admin');
 
         wp_register_script(
             'accept-my-cookies-dynamic-inputs',
@@ -174,7 +170,6 @@ class AdminView
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
-        wp_enqueue_script('accept-my-cookies-dynamic-inputs');
 
         wp_localize_script(
             'accept-my-cookies-save-settings',
@@ -193,5 +188,17 @@ class AdminView
                 'nonce'   => wp_create_nonce('accept_my_cookies_cleanup_nonce')
             )
         );
+
+        // Get the current screen object
+        $screen = get_current_screen();
+
+        // Check if we are on the plugin settings page
+        if ($screen && $screen->id === 'settings_page_accept-my-cookies') {
+            wp_enqueue_script('accept-my-cookies-save-settings');
+            wp_enqueue_script('accept-my-cookies-tabs');
+            wp_enqueue_script('accept-my-cookies-dynamic-inputs');
+        }
+        wp_enqueue_script('accept-my-cookies-deactivate');
+        wp_enqueue_style('accept-my-cookies-admin');
     }
 }

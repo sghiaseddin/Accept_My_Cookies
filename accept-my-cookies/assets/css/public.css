@@ -36,6 +36,11 @@
     row-gap: 5px;
 }
 
+.accept-my-cookies-banner__title {
+    font-weight: 700;
+}
+
+
 .accept-my-cookies-banner--bottom {
     bottom: 0;
     left: 0;

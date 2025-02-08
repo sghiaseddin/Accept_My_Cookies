@@ -1,7 +1,7 @@
 (function ($) {
     $(document).ready(function () {
         // Define modal markup
-        const acceptMyCookiesDeactivateModalHtml = '<div class="accept-my-cookies-deactivate-modal-wrapper' +
+        const acceptMyCookiesDeactivateModalHtml = '<div class="accept-my-cookies-deactivate-modal-wrapper"' +
         ' style="display:none;">' +
         '<div class="accept-my-cookies-deactivate-modal">' +
         '<h3>Confirm Deactivation</h3>' +
@@ -25,7 +25,7 @@
         });
 
         // Handle the deactivate link click
-        $('tr[data-slug="accept-my-cookies"] .deactivate a').on('click', function (e) {
+        $('tr[data-plugin="accept-my-cookies/accept-my-cookies.php"] .deactivate a').on('click', function (e) {
             e.preventDefault(); // Prevent the default deactivation behavior
 
             // Show the modal
