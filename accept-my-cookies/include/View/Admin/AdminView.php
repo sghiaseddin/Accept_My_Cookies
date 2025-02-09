@@ -176,7 +176,11 @@ class AdminView
             'acceptMyCookiesSaveSettings',
             array(
                 'ajaxurl' => admin_url('admin-ajax.php'),
-                'nonce'   => wp_create_nonce('accept_my_cookies_save_settings_nonce')
+                'nonce'   => wp_create_nonce('accept_my_cookies_save_settings_nonce'),
+                'saving'  => __('Saving...', 'accept-my-cookies'),
+                'saved'   => __('Setting Saved!', 'accept-my-cookies'),
+                'failed'  => __('Saving failed!', 'accept-my-cookies'),
+                'save'    => __('Save Settings', 'accept-my-cookies'),
             )
         );
 

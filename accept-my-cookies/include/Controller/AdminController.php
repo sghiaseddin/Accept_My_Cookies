@@ -153,17 +153,22 @@ class AdminController
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
         foreach ($schema as $input => $option) {
             if (isset($_POST[ $option['key'] ])) {
+                // Check sanitization
                 if ($input !== 'learn_more_url') {
                     $value = sanitize_text_field(wp_unslash($_POST[ $option['key'] ]));
                 } else {
                     $value = sanitize_url(wp_unslash($_POST[ $option['key'] ]));
                 }
+
+                // Validate values by datatype logic
                 $validated_value = $validator::validate(
                     $option['validation-type'],
                     $value,
                     isset($option['options']) ? array_keys($option['options']) : array()
                 );
-                if ($value !== false) {
+
+                // Store value in database, options table
+                if ($validated_value !== false) {
                     update_option($option['key'], $validated_value);
                 } else {
                     /* translators: here %s is the option label that is not valid. */

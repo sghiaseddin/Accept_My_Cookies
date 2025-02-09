@@ -108,6 +108,11 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 0.4.5
+
+- Adding status to submit button in settings page
+- Fixing input validator
+
 ### 0.4.3
 - Adding title for consent banner
 - Fixing text-domain load
