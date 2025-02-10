@@ -67,6 +67,10 @@ class PublicController
 
         // Render the consent banner
         add_action('wp_footer', array($this, 'renderConsentBanner'));
+
+        // Logging request handllers
+        add_action('wp_ajax_accept_my_cookies_log_consent', array($this, 'handle_log_consent'));
+        add_action('wp_ajax_nopriv_accept_my_cookies_log_consent', array($this, 'handle_log_consent'));
     }
 
     /**
@@ -134,5 +138,30 @@ class PublicController
             // Check local storage (handled via JavaScript)
             return false;
         }
+    }
+
+    /**
+     * Handle the AJAX request to log consent.
+     */
+    public function handle_log_consent()
+    {
+        // Verify nonce for security
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'accept_my_cookies_nonce')) {
+            wp_send_json_error('Invalid nonce.');
+        }
+
+        // Get the consent data
+        $consent_data = array(
+            'ip'         => sanitize_text_field($_SERVER['REMOTE_ADDR']),
+            'user_agent' => sanitize_text_field($_SERVER['HTTP_USER_AGENT']),
+            'consent'    => (bool) $_POST['consent'],
+            'parameters' => $_POST['parameters'], 
+        );
+
+        // Log the consent data
+        $log_handler = new LogHandler();
+        $log_handler->log_consent($consent_data);
+
+        wp_send_json_success('Consent logged.');
     }
 }

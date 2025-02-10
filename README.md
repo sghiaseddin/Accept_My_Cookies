@@ -108,6 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 0.5.0
+
+- Logging functionality has added
+
 ### 0.4.5
 
 - Adding status to submit button in settings page
