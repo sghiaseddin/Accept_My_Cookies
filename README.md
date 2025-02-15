@@ -108,6 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 0.6.0 
+
+- Getting the custom HTML
+
 ### 0.5.1 
 
 - Credit tab added to settings

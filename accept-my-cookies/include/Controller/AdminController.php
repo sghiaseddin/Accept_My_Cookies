@@ -154,10 +154,12 @@ class AdminController
         foreach ($schema as $input => $option) {
             if (isset($_POST[ $option['key'] ])) {
                 // Check sanitization
-                if ($input !== 'learn_more_url') {
-                    $value = sanitize_text_field(wp_unslash($_POST[ $option['key'] ]));
-                } else {
+                if ($input === 'custom_html_head') {
+                    $value = wp_unslash($_POST[ $option['key'] ]);
+                } else if ($input === 'learn_more_url') {
                     $value = sanitize_url(wp_unslash($_POST[ $option['key'] ]));
+                } else {
+                    $value = sanitize_text_field(wp_unslash($_POST[ $option['key'] ]));
                 }
 
                 // Validate values by datatype logic
@@ -169,7 +171,11 @@ class AdminController
 
                 // Store value in database, options table
                 if ($validated_value !== false) {
-                    update_option($option['key'], $validated_value);
+                    if ($input === 'custom_html_head') {
+                        $is_updated = update_option($option['key'], wp_json_encode($validated_value, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_QUOT));
+                    } else {
+                        $is_updated = update_option($option['key'], $validated_value);
+                    }
                 } else {
                     /* translators: here %s is the option label that is not valid. */
                     wp_send_json_error(sprintf(__('The value for "%s" is not valid. Please review it.', 'accept-my-cookies'), $option['label']));

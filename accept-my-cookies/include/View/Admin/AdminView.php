@@ -19,6 +19,9 @@ class AdminView
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
         $option = $schema[ $option_name ];
         $value = get_option($option['key'], $option['default']);
+        if ($option_name === 'custom_html_head') {
+            $value = json_decode($value, true);
+        }
 
         // Add a wrapper div for styling and dynamic visibility
         echo '<div class="accept-my-cookies-field"';
@@ -51,7 +54,7 @@ class AdminView
                 <textarea id="<?php echo esc_attr($option['key']); ?>" 
                           name="<?php echo esc_attr($option['key']); ?>" 
                           class="large-text" 
-                          placeholder="<?php echo esc_attr($option['placeholder'] ?? ''); ?>"><?php echo esc_textarea($value); ?></textarea>
+                          placeholder="<?php echo esc_attr($option['placeholder'] ?? ''); ?>"><?php echo $value; ?></textarea>
                 <?php
                 break;
 

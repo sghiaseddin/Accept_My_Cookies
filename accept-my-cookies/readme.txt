@@ -80,6 +80,10 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 
 == Changelog ==
 
+= 0.6.0 =
+
+- Getting the custom HTML
+
 = 0.5.1 =
 
 - Credit tab added to settings

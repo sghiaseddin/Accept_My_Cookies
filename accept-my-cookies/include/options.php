@@ -113,7 +113,16 @@ return array(
         'description' => __( 'Enable storing consent decisions of users in a log file (wp-contents/uploads/accept-my-cookies/consents.log).', 'accept-my-cookies' ),
         'validation-type'   => 'boolean',
     ),
-
+    'custom_html_head' => array(
+        'key'     => 'accept_my_cookies_custom_html_head',
+        'default' => '', // Default empty
+        'label'   => __( 'Custom HTML (Head)', 'accept-my-cookies' ),
+        'type'    => 'textarea',
+        'tab'     => 'general',
+        'placeholder' => __( 'Enter custom HTML to be added to the <head> section', 'accept-my-cookies' ),
+        'description' => __( 'Add custom HTML code that will be injected into the <head> section of your site.', 'accept-my-cookies' ),
+        'validation-type'   => 'html',
+    ),
 
     // Google Property Tab Options
     'google_consent_mode_enabled' => array(
