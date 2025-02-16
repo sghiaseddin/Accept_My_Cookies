@@ -108,9 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
-### 0.6.0 
+### 0.6.1 
 
 - Getting the custom HTML
+- Rendering custom HTML in the <head>
 
 ### 0.5.1 
 

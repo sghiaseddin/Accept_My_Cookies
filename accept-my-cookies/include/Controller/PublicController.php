@@ -2,8 +2,9 @@
 
 namespace AcceptMyCookies\Controller;
 
-use AcceptMyCookies\View\Public\ConsentBanner;
 use AcceptMyCookies\Controller\SettingsHandler;
+use AcceptMyCookies\View\Public\ConsentBanner;
+use AcceptMyCookies\View\Public\CustomHtml;
 
 /**
  * PublicController
@@ -65,6 +66,9 @@ class PublicController
         // Enqueue frontend scripts and styles
         add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
 
+        // 
+        add_action('wp_head', array($this, 'renderCustomHtml'));
+
         // Render the consent banner
         add_action('wp_footer', array($this, 'renderConsentBanner'));
 
@@ -119,6 +123,21 @@ class PublicController
 
             // Render the consent banner
             $consent_banner->render();
+        }
+    }
+
+    /**
+     * Render the consent banner.
+     */
+    public function renderCustomHtml()
+    {   
+        // Only render if custom html is not empty
+        if ( $this->options['custom_html_head'] ) {
+            // Initialize the ConsentBanner view
+            $custom_html = new CustomHtml($this->options);
+
+            // Render the custom html in the head
+            $custom_html->render();
         }
     }
 

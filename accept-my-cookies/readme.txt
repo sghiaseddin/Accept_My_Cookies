@@ -3,7 +3,7 @@ Contributors: sghiaseddin
 Donate link: https://sghiaseddin.com
 Tags: gdpr, cookies, consent, google consent mode, privacy
 Requires at least: 5.6
-Tested up to: 6.7.1
+Tested up to: 6.7
 Stable tag: 0.5.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -80,9 +80,10 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 
 == Changelog ==
 
-= 0.6.0 =
+= 0.6.1 =
 
 - Getting the custom HTML
+- Rendering custom HTML in the <head>
 
 = 0.5.1 =
 
