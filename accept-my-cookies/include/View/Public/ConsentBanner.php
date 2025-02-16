@@ -49,25 +49,12 @@ class ConsentBanner
         $banner_position                = $this->options['banner_position'];
         $banner_size                    = $this->options['banner_size'];
         $banner_button_size             = $this->options['banner_button_size'];
-        $banner_text_size               = $this->options['banner_text_size'];
-        $banner_title_text_size         = $this->options['banner_title_text_size'];
-        $banner_button_text_size        = $this->options['banner_button_text_size'];
-        $banner_z_index                 = $this->options['banner_z_index'];
         $google_consent_mode_enabled    = $this->options['google_consent_mode_enabled'];
         $analytics_storage              = $this->options['analytics_storage'];
         $ad_storage                     = $this->options['ad_storage'];
         $ad_user_data                   = $this->options['ad_user_data'];
         $ad_personalization             = $this->options['ad_personalization'];
-
         $banner_color_style             = $this->options['banner_color_style'];
-        if ($banner_color_style == 'custom') {
-            $banner_background_color        = $this->addOpacityToHex($this->options['banner_background_color'], $this->options['banner_background_opacity']);
-            $banner_overlay_color           = $this->addOpacityToHex($this->options['banner_overlay_color'], $this->options['banner_overlay_opacity']);
-            $banner_text_color              = $this->options['banner_text_color'];
-            $banner_link_color              = $this->options['banner_link_color'];
-            $banner_button_background_color = $this->options['banner_button_background_color'];
-            $banner_button_text_color       = $this->options['banner_button_text_color'];
-        }
 
         // Include the banner template
         include ACCEPT_MY_COOKIES_DIR . 'include/View/Public/templates/consent-banner.php';

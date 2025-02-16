@@ -11,7 +11,7 @@
  * @license  https://github.com/sghiaseddin/Accept_My_Cookies/blob/main/LICENSE GPL-3.0
  * @version  GIT: <https://github.com/sghiaseddin/Accept_My_Cookies>
  * @link     https://sghiaseddin.com
- * @tag      Rendering custom HTML in the <head>
+ * @tag      Fixing wordpress plugin reviewer issues
  */
 
 /*
@@ -19,7 +19,7 @@ Plugin Name: Accept My Cookies
 Plugin URI: http://wordpress.org/plugins/accept-my-cookies/
 Description: Accept My Cookies displays a user-friendly consent banner, allowing visitors to accept or reject tracking cookies and it supports Google Consent Mode.
 Author: Shayan Ghiaseddin
-Version: 0.6.1
+Version: 0.6.2
 Author URI: https://sghiaseddin.com/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -34,20 +34,9 @@ if (! defined('ABSPATH')) {
 }
 
 // Define useful constants
-define('ACCEPT_MY_COOKIES_VERSION', '0.6.1');
+define('ACCEPT_MY_COOKIES_VERSION', '0.6.2');
 define('ACCEPT_MY_COOKIES_DIR', plugin_dir_path(__FILE__));
 define('ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__));
-
-/**
- * Load text domain for translations
- *
- * @return void
- */
-function Accept_My_Cookies_Load_textdomain()
-{
-    load_plugin_textdomain('accept-my-cookies', false, dirname(plugin_basename(__FILE__)) . '/languages/');
-}
-add_action('init', 'Accept_My_Cookies_Load_textdomain');
 
 // Include necessary files
 // Autoload classes

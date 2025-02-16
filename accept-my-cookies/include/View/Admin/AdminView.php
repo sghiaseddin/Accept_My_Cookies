@@ -54,7 +54,7 @@ class AdminView
                 <textarea id="<?php echo esc_attr($option['key']); ?>" 
                           name="<?php echo esc_attr($option['key']); ?>" 
                           class="large-text" 
-                          placeholder="<?php echo esc_attr($option['placeholder'] ?? ''); ?>"><?php echo $value; ?></textarea>
+                          placeholder="<?php echo esc_attr($option['placeholder'] ?? ''); ?>"><?php echo esc_textarea($value); ?></textarea>
                 <?php
                 break;
 
@@ -174,6 +174,22 @@ class AdminView
             true
         );
 
+        wp_register_script(
+            'accept-my-cookies-credit',
+            'https://www.paypalobjects.com/donate/sdk/donate-sdk.js',
+            array(),
+            ACCEPT_MY_COOKIES_VERSION,
+            true,
+        );
+
+        wp_register_script(
+            'accept-my-cookies-credit-after',
+            ACCEPT_MY_COOKIES_URL . 'assets/js/credit-after.js',
+            array(),
+            ACCEPT_MY_COOKIES_VERSION,
+            true
+        );
+
         wp_localize_script(
             'accept-my-cookies-save-settings',
             'acceptMyCookiesSaveSettings',
@@ -204,6 +220,8 @@ class AdminView
             wp_enqueue_script('accept-my-cookies-save-settings');
             wp_enqueue_script('accept-my-cookies-tabs');
             wp_enqueue_script('accept-my-cookies-dynamic-inputs');
+            wp_enqueue_script('accept-my-cookies-credit');
+            wp_enqueue_script('accept-my-cookies-credit-after');
         }
         wp_enqueue_script('accept-my-cookies-deactivate');
         wp_enqueue_style('accept-my-cookies-admin');

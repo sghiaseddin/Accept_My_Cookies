@@ -9,7 +9,7 @@ if (! defined('ABSPATH')) {
 /**
  * Manually load translations during activation.
  */
-function Accept_My_Cookies_Load_Activation_Translations($locale)
+function Accept_My_Cookies_Load_activation_translations($locale)
 {
     $domain = 'accept-my-cookies';
     $languages_path = ACCEPT_MY_COOKIES_DIR . 'languages/';
@@ -31,7 +31,7 @@ function Accept_My_Cookies_Activate()
 {
     global $wpdb;
     $locale = get_locale(); // Get the current language
-    $translations = Accept_My_Cookies_Load_Activation_Translations($locale);
+    $translations = Accept_My_Cookies_Load_activation_translations($locale);
 
     $settings_handler = new SettingsHandler();
     $settings_handler->saveDefaultOptions($translations);

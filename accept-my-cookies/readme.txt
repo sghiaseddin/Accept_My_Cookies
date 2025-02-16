@@ -4,7 +4,7 @@ Donate link: https://sghiaseddin.com
 Tags: gdpr, cookies, consent, google consent mode, privacy
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 0.5.1
+Stable tag: 0.6.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,6 +34,20 @@ You can customize the following aspects of the consent banner:
 - **Size**: Set the banner size to tiny, normal, or wide.
 - **Colors**: Customize the banner's background, text, and button colors.
 - **Delay**: Set a delay (in seconds) before the banner appears.
+
+== External services ==
+This plugin provide options to you to connects to Google Tag Manager in order to enable Google Consent Mode, which is used to manage user consent for Google services such as Google Analytics, Google Ads, and Google Tag Manager.
+
+= What data is sent and when? =
+- **Data Sent**: The plugin sends the user's consent preferences (e.g., analytics_storage, ad_storage, ad_user_data, ad_personalization) to Google Tag Manager (https://www.googletagmanager.com/gtag/js?id=########).
+- **When**: This data is sent when the user interacts with the consent banner (e.g., accepting or rejecting cookies).
+
+Links to Service Policies:
+[Google Tag Manager Terms of Service](https://marketingplatform.google.com/about/tag-manager/use-policy/)
+[Google Privacy Policy](https://policies.google.com/privacy)
+
+= Why is this necessary? =
+Google Consent Mode is required to ensure that no tracking occurs without user consent, helping you comply with GDPR and other privacy regulations. The plugin does not send any personally identifiable information (PII) to Google.
 
 == Installation ==
 
@@ -79,6 +93,16 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 7. Plugin Settings - Styling
 
 == Changelog ==
+
+= 0.6.2 =
+
+Fixing wordpress plugin reviewer issues:
+- Tested Up To Value is Out of Date, Invalid, or Missing
+- Use wp_enqueue commands
+- Undocumented use of a 3rd Party / external service
+- Using load_plugin_textdomain() for loading the plugin translations is not needed for WordPress.org directory since WordPress 4.6.
+- Variables and options must be escaped when echo'd
+- Allowing Direct File Access to plugin files
 
 = 0.6.1 =
 

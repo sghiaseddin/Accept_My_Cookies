@@ -66,7 +66,10 @@ class PublicController
         // Enqueue frontend scripts and styles
         add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
 
-        // 
+        // Enqueue inline custom styles for consent banner
+        add_action('wp_enqueue_scripts', array($this, 'renderConsentBannerStyles'));
+
+        // Add custom html
         add_action('wp_head', array($this, 'renderCustomHtml'));
 
         // Render the consent banner
@@ -82,22 +85,24 @@ class PublicController
      */
     public function enqueueScripts()
     {
-        // Enqueue CSS
-        wp_enqueue_style(
+        // Register and enqueue CSS
+        wp_register_style(
             'accept-my-cookies-public',
             ACCEPT_MY_COOKIES_URL . 'assets/css/public.css',
             array(),
             ACCEPT_MY_COOKIES_VERSION
         );
+        wp_enqueue_style('accept-my-cookies-public');
 
         // Enqueue JavaScript
-        wp_enqueue_script(
+        wp_register_script(
             'accept-my-cookies-public',
             ACCEPT_MY_COOKIES_URL . 'assets/js/public.js',
             array('jquery'),
             ACCEPT_MY_COOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-public');
 
         // Localize script for passing PHP variables to JavaScript
         wp_localize_script(
@@ -109,6 +114,30 @@ class PublicController
                 'options' => $this->options, // Pass saved options, not the schema
             )
         );
+    }
+
+    /**
+     * Render custom inline styles for consent banner.
+     */
+    public function renderConsentBannerStyles()
+    {
+        $banner_text_size                   = $this->options['banner_text_size'];
+        $banner_title_text_size             = $this->options['banner_title_text_size'];
+        $banner_button_text_size            = $this->options['banner_button_text_size'];
+        $banner_z_index                     = $this->options['banner_z_index'];
+        $banner_color_style                 = $this->options['banner_color_style'];
+        if ($banner_color_style === 'custom') {
+            $banner_background_color        = $this->addOpacityToHex($this->options['banner_background_color'], $this->options['banner_background_opacity']);
+            $banner_overlay_color           = $this->addOpacityToHex($this->options['banner_overlay_color'], $this->options['banner_overlay_opacity']);
+            $banner_text_color              = $this->options['banner_text_color'];
+            $banner_link_color              = $this->options['banner_link_color'];
+            $banner_button_background_color = $this->options['banner_button_background_color'];
+            $banner_button_text_color       = $this->options['banner_button_text_color'];
+        }
+
+        // genreate the custom styles and enqueue to current css handler
+        $custom_styles = include ACCEPT_MY_COOKIES_DIR . 'include/View/Public/templates/consent-banner-style.php';
+        wp_add_inline_style('accept-my-cookies-public', esc_html(wp_strip_all_tags($custom_styles)));
     }
 
     /**
@@ -165,16 +194,16 @@ class PublicController
     public function handle_log_consent()
     {
         // Verify nonce for security
-        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'accept_my_cookies_nonce')) {
+        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'accept_my_cookies_nonce')) {
             wp_send_json_error('Invalid nonce.');
         }
 
         // Get the consent data
         $consent_data = array(
-            'ip'         => sanitize_text_field($_SERVER['REMOTE_ADDR']),
-            'user_agent' => sanitize_text_field($_SERVER['HTTP_USER_AGENT']),
-            'consent'    => (bool) $_POST['consent'],
-            'parameters' => $_POST['parameters'], 
+            'ip'         => isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '',
+            'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'])) : '',
+            'consent'    => (bool) isset($_POST['consent']) ? sanitize_text_field(wp_unslash($_POST['consent'])) : true,
+            'parameters' => isset($_POST['parameters']) ? sanitize_text_field(wp_unslash($_POST['parameters'])) : '', 
         );
 
         // Log the consent data

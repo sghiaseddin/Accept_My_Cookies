@@ -37,7 +37,7 @@ class LogHandler
         }
 
         // Set the current log file
-        $this->log_file = $this->log_dir . 'consents-' . date('Y-m') . '.log';
+        $this->log_file = $this->log_dir . 'consents-' . gmdate('Y-m') . '.log';
 
         // Archive last month's log file if it exists
         $this->archive_old_logs();
@@ -48,7 +48,7 @@ class LogHandler
      */
     private function archive_old_logs()
     {
-        $last_month = date('Y-m', strtotime('last month'));
+        $last_month = gmdate('Y-m', strtotime('last month'));
         $old_log_file = $this->log_dir . 'consents-' . $last_month . '.log';
 
         if (file_exists($old_log_file)) {
@@ -58,7 +58,7 @@ class LogHandler
                 if ($zip->open($archive_file, \ZipArchive::CREATE) === true) {
                     $zip->addFile($old_log_file, 'consents-' . $last_month . '.log');
                     $zip->close();
-                    unlink($old_log_file); // Delete the old log file after archiving
+                    wp_delete_file($old_log_file); // Delete the old log file after archiving
                 }
             }
         }
@@ -75,15 +75,15 @@ class LogHandler
 
         // Check for shared or proxy IPs
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_CLIENT_IP']));
+        } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             // HTTP_X_FORWARDED_FOR can contain multiple IPs (e.g., client, proxy1, proxy2)
-            $ip_list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            $ip_list = explode(',', sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR'])));
             $ip = trim($ip_list[0]); // The first IP is the client's IP
-        } elseif (!empty($_SERVER['HTTP_X_REAL_IP'])) {
-            $ip = $_SERVER['HTTP_X_REAL_IP'];
-        } else {
-            $ip = $_SERVER['REMOTE_ADDR']; // Fallback to REMOTE_ADDR
+        } else if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+            $ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_X_REAL_IP']));
+        } else if (!empty($_SERVER['REMOTE_ADDR'])) {
+            $ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])); // Fallback to REMOTE_ADDR
         }
 
         // Sanitize the IP address
@@ -113,7 +113,7 @@ class LogHandler
         // Prepare the log entry
         $log_entry = sprintf(
             "[%s] IP: %s | User-Agent: %s | essentials: %s %s\n",
-            date('Y-m-d H:i:s'),
+            gmdate('Y-m-d H:i:s'),
             $data['ip'],
             $data['user_agent'],
             $data['consent'] ? '1' : '0',

@@ -108,6 +108,16 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 0.6.2 ###
+
+Fixing wordpress plugin reviewer issues:
+- Tested Up To Value is Out of Date, Invalid, or Missing
+- Use wp_enqueue commands
+- Undocumented use of a 3rd Party / external service
+- Using load_plugin_textdomain() for loading the plugin translations is not needed for WordPress.org directory since WordPress 4.6.
+- Variables and options must be escaped when echo'd
+- Allowing Direct File Access to plugin files
+
 ### 0.6.1 
 
 - Getting the custom HTML

@@ -15,19 +15,7 @@ if (! defined('ABSPATH')) {
     <h3>Support the Development</h3>
     <p>If this plugin has been helpful, consider supporting future updates by making a donation:</p>
     <div id="donate-button-container">
-    <div id="donate-button"></div>
-        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
-        <script>
-            PayPal.Donation.Button({
-                env:'production',
-                hosted_button_id:'HMMAN7FYSQPYQ',
-                image: {
-                    src:'https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif',
-                    alt:'Donate with PayPal button',
-                    title:'PayPal - The safer, easier way to pay online!',
-                }
-            }).render('#donate-button');
-        </script>
+        <div id="donate-button"></div>
     </div>
     <p>Thank you for using this plugin! Your support helps keep it free and regularly updated.</p>
     <p>You can also support this plugin by writing a review on <a href="http://wordpress.org/plugins/accept-my-cookies/" target="_blank">plugin page</a> or submiting an issue in <a href="https://github.com/sghiaseddin/accept-my-cookies" target="_blank">Github repository</a></p>
