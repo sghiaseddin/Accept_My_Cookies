@@ -4,7 +4,7 @@ Donate link: https://sghiaseddin.com
 Tags: gdpr, cookies, consent, google consent mode, privacy
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 0.6.2
+Stable tag: 0.3.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -45,9 +45,6 @@ This plugin provide options to you to connects to Google Tag Manager in order to
 Links to Service Policies:
 [Google Tag Manager Terms of Service](https://marketingplatform.google.com/about/tag-manager/use-policy/)
 [Google Privacy Policy](https://policies.google.com/privacy)
-
-= Why is this necessary? =
-Google Consent Mode is required to ensure that no tracking occurs without user consent, helping you comply with GDPR and other privacy regulations. The plugin does not send any personally identifiable information (PII) to Google.
 
 == Installation ==
 
@@ -94,51 +91,8 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 
 == Changelog ==
 
-= 0.6.2 =
-
-Fixing wordpress plugin reviewer issues:
-- Tested Up To Value is Out of Date, Invalid, or Missing
-- Use wp_enqueue commands
-- Undocumented use of a 3rd Party / external service
-- Using load_plugin_textdomain() for loading the plugin translations is not needed for WordPress.org directory since WordPress 4.6.
-- Variables and options must be escaped when echo'd
-- Allowing Direct File Access to plugin files
-
-= 0.6.1 =
-
-- Getting the custom HTML
-- Rendering custom HTML in the <head>
-
-= 0.5.1 =
-
-- Credit tab added to settings
-
-= 0.5.0 =
-
-- Logging functionality has added
-
-= 0.4.5 =
-
-- Adding status to submit button in settings page
-- Fixing input validator
-
-= 0.4.3 =
-
-- Adding title for consent banner
-- Fixing text-domain load
-- Adding Persian language glossary
-
-= 0.3.9 =
-
-- Submiting the plugin to Wordpress plugin's repo
-
-== Upgrade Notice ==
-
-= 0.4.3 =
-
-- Adding title for consent banner
-- Fixing text-domain load
-- Adding Persian language glossary
+= 0.3.10 =
+- Initial release.
 
 == License ==
 

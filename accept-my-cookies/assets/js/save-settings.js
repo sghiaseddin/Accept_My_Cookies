@@ -6,12 +6,6 @@ jQuery(document).ready(function ($) {
     $('#accept-my-cookies-settings-form').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
 
-        // Submit button
-        var submitButton = $('form#accept-my-cookies-settings-form p.submit input');
-
-        // Adjust submit button state
-        submitButton.val(acceptMyCookiesSaveSettings.saving).prop('disabled', true);
-
         // Serialize the form data
         var formData = $(this).serialize();
 
@@ -36,20 +30,12 @@ jQuery(document).ready(function ($) {
                     $('.wrap #message').removeClass('notice-info');
                     $('.wrap #message').removeClass('notice-error');
                     $('.wrap #message > p').text(response.data);
-                    submitButton.val(acceptMyCookiesSaveSettings.saved);
-                    setTimeout( function() {
-                        submitButton.val(acceptMyCookiesSaveSettings.save).prop('disabled', false);
-                    }, 2000);
                 } else {
                     $('.wrap #message').addClass('notice-error').fadeIn();
                     $('.wrap #message').removeClass('notice-info');
                     $('.wrap #message').removeClass('notice-success');
                     $('.wrap #message > p').text(response.data);
-                    submitButton.val(acceptMyCookiesSaveSettings.failed);
-                    setTimeout( function() {
-                        submitButton.val(acceptMyCookiesSaveSettings.save).prop('disabled', false);
-                    }, 2000);
-                        console.log(response);
+                    console.log(response);
                 }
             },
             error: function () {
@@ -57,11 +43,7 @@ jQuery(document).ready(function ($) {
                 $('.wrap #message').removeClass('notice-info');
                 $('.wrap #message').removeClass('notice-success');
                 $('.wrap #message > p').text('Cannot make a connection with server. Something is wrong!');
-                submitButton.val(acceptMyCookiesSaveSettings.failed);
-                setTimeout( function() {
-                    submitButton.val(acceptMyCookiesSaveSettings.save).prop('disabled', false);
-                }, 2000);
-        }
+            }
         });
     });
 

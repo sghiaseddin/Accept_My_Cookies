@@ -34,7 +34,7 @@ class GoogleConsentController
      */
     private function loadSavedOptions()
     {
-        $schema = include ACCEPT_MY_COOKIES_DIR . 'include/options.php';
+        $schema = include ACCEPTMYCOOKIES_DIR . 'include/options.php';
         $saved_options = [];
 
         foreach ($schema as $option_name => $option_details) {

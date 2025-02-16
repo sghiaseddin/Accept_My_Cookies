@@ -2,9 +2,8 @@
 
 namespace AcceptMyCookies\Controller;
 
-use AcceptMyCookies\Controller\SettingsHandler;
 use AcceptMyCookies\View\Public\ConsentBanner;
-use AcceptMyCookies\View\Public\CustomHtml;
+use AcceptMyCookies\Controller\SettingsHandler;
 
 /**
  * PublicController
@@ -48,7 +47,7 @@ class PublicController
      */
     private function loadSavedOptions()
     {
-        $schema = include ACCEPT_MY_COOKIES_DIR . 'include/options.php';
+        $schema = include ACCEPTMYCOOKIES_DIR . 'include/options.php';
         $saved_options = array();
 
         foreach ($schema as $option_name => $option_details) {
@@ -69,15 +68,8 @@ class PublicController
         // Enqueue inline custom styles for consent banner
         add_action('wp_enqueue_scripts', array($this, 'renderConsentBannerStyles'));
 
-        // Add custom html
-        add_action('wp_head', array($this, 'renderCustomHtml'));
-
         // Render the consent banner
         add_action('wp_footer', array($this, 'renderConsentBanner'));
-
-        // Logging request handllers
-        add_action('wp_ajax_accept_my_cookies_log_consent', array($this, 'handle_log_consent'));
-        add_action('wp_ajax_nopriv_accept_my_cookies_log_consent', array($this, 'handle_log_consent'));
     }
 
     /**
@@ -88,18 +80,18 @@ class PublicController
         // Register and enqueue CSS
         wp_register_style(
             'accept-my-cookies-public',
-            ACCEPT_MY_COOKIES_URL . 'assets/css/public.css',
+            ACCEPTMYCOOKIES_URL . 'assets/css/public.css',
             array(),
-            ACCEPT_MY_COOKIES_VERSION
+            ACCEPTMYCOOKIES_VERSION
         );
         wp_enqueue_style('accept-my-cookies-public');
 
         // Enqueue JavaScript
         wp_register_script(
             'accept-my-cookies-public',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/public.js',
+            ACCEPTMYCOOKIES_URL . 'assets/js/public.js',
             array('jquery'),
-            ACCEPT_MY_COOKIES_VERSION,
+            ACCEPTMYCOOKIES_VERSION,
             true
         );
         wp_enqueue_script('accept-my-cookies-public');
@@ -136,9 +128,10 @@ class PublicController
         }
 
         // genreate the custom styles and enqueue to current css handler
-        $custom_styles = include ACCEPT_MY_COOKIES_DIR . 'include/View/Public/templates/consent-banner-style.php';
+        $custom_styles = include ACCEPTMYCOOKIES_DIR . 'include/View/Public/templates/consent-banner-style.php';
         wp_add_inline_style('accept-my-cookies-public', esc_html(wp_strip_all_tags($custom_styles)));
     }
+
 
     /**
      * Render the consent banner.
@@ -152,21 +145,6 @@ class PublicController
 
             // Render the consent banner
             $consent_banner->render();
-        }
-    }
-
-    /**
-     * Render the consent banner.
-     */
-    public function renderCustomHtml()
-    {   
-        // Only render if custom html is not empty
-        if ( $this->options['custom_html_head'] ) {
-            // Initialize the ConsentBanner view
-            $custom_html = new CustomHtml($this->options);
-
-            // Render the custom html in the head
-            $custom_html->render();
         }
     }
 
@@ -186,30 +164,5 @@ class PublicController
             // Check local storage (handled via JavaScript)
             return false;
         }
-    }
-
-    /**
-     * Handle the AJAX request to log consent.
-     */
-    public function handle_log_consent()
-    {
-        // Verify nonce for security
-        if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'accept_my_cookies_nonce')) {
-            wp_send_json_error('Invalid nonce.');
-        }
-
-        // Get the consent data
-        $consent_data = array(
-            'ip'         => isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '',
-            'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'])) : '',
-            'consent'    => (bool) isset($_POST['consent']) ? sanitize_text_field(wp_unslash($_POST['consent'])) : true,
-            'parameters' => isset($_POST['parameters']) ? sanitize_text_field(wp_unslash($_POST['parameters'])) : '', 
-        );
-
-        // Log the consent data
-        $log_handler = new LogHandler();
-        $log_handler->log_consent($consent_data);
-
-        wp_send_json_success('Consent logged.');
     }
 }

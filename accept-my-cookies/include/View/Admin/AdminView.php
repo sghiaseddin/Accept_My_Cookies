@@ -16,12 +16,9 @@ class AdminView
     public function renderOptionField($args)
     {
         $option_name = $args['option_name'];
-        $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
+        $schema = include ACCEPTMYCOOKIES_DIR . '/include/options.php';
         $option = $schema[ $option_name ];
         $value = get_option($option['key'], $option['default']);
-        if ($option_name === 'custom_html_head') {
-            $value = json_decode($value, true);
-        }
 
         // Add a wrapper div for styling and dynamic visibility
         echo '<div class="accept-my-cookies-field"';
@@ -137,69 +134,54 @@ class AdminView
     {
         wp_register_script(
             'accept-my-cookies-deactivate',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/deactivate.js',
+            ACCEPTMYCOOKIES_URL . 'assets/js/deactivate.js',
             array( 'jquery' ),
-            ACCEPT_MY_COOKIES_VERSION,
+            ACCEPTMYCOOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-deactivate');
 
         wp_register_script(
             'accept-my-cookies-save-settings',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/save-settings.js',
+            ACCEPTMYCOOKIES_URL . 'assets/js/save-settings.js',
             array( 'jquery' ),
-            ACCEPT_MY_COOKIES_VERSION,
+            ACCEPTMYCOOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-save-settings');
 
         wp_register_script(
             'accept-my-cookies-tabs',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/tabs.js',
+            ACCEPTMYCOOKIES_URL . 'assets/js/tabs.js',
             array( 'jquery' ),
-            ACCEPT_MY_COOKIES_VERSION,
+            ACCEPTMYCOOKIES_VERSION,
             true
         );
+        wp_enqueue_script('accept-my-cookies-tabs');
 
         wp_register_style(
             'accept-my-cookies-admin',
-            ACCEPT_MY_COOKIES_URL . 'assets/css/admin.css',
+            ACCEPTMYCOOKIES_URL . 'assets/css/admin.css',
             array(),
-            ACCEPT_MY_COOKIES_VERSION
+            ACCEPTMYCOOKIES_VERSION
         );
+        wp_enqueue_style('accept-my-cookies-admin');
 
         wp_register_script(
             'accept-my-cookies-dynamic-inputs',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/dynamic-inputs.js',
+            ACCEPTMYCOOKIES_URL . 'assets/js/dynamic-inputs.js',
             array( 'jquery' ),
-            ACCEPT_MY_COOKIES_VERSION,
+            ACCEPTMYCOOKIES_VERSION,
             true
         );
-
-        wp_register_script(
-            'accept-my-cookies-credit',
-            'https://www.paypalobjects.com/donate/sdk/donate-sdk.js',
-            array(),
-            ACCEPT_MY_COOKIES_VERSION,
-            true,
-        );
-
-        wp_register_script(
-            'accept-my-cookies-credit-after',
-            ACCEPT_MY_COOKIES_URL . 'assets/js/credit-after.js',
-            array(),
-            ACCEPT_MY_COOKIES_VERSION,
-            true
-        );
+        wp_enqueue_script('accept-my-cookies-dynamic-inputs');
 
         wp_localize_script(
             'accept-my-cookies-save-settings',
             'acceptMyCookiesSaveSettings',
             array(
                 'ajaxurl' => admin_url('admin-ajax.php'),
-                'nonce'   => wp_create_nonce('accept_my_cookies_save_settings_nonce'),
-                'saving'  => __('Saving...', 'accept-my-cookies'),
-                'saved'   => __('Setting Saved!', 'accept-my-cookies'),
-                'failed'  => __('Saving failed!', 'accept-my-cookies'),
-                'save'    => __('Save Settings', 'accept-my-cookies'),
+                'nonce'   => wp_create_nonce('accept_my_cookies_save_settings_nonce')
             )
         );
 
@@ -211,19 +193,5 @@ class AdminView
                 'nonce'   => wp_create_nonce('accept_my_cookies_cleanup_nonce')
             )
         );
-
-        // Get the current screen object
-        $screen = get_current_screen();
-
-        // Check if we are on the plugin settings page
-        if ($screen && $screen->id === 'settings_page_accept-my-cookies') {
-            wp_enqueue_script('accept-my-cookies-save-settings');
-            wp_enqueue_script('accept-my-cookies-tabs');
-            wp_enqueue_script('accept-my-cookies-dynamic-inputs');
-            wp_enqueue_script('accept-my-cookies-credit');
-            wp_enqueue_script('accept-my-cookies-credit-after');
-        }
-        wp_enqueue_script('accept-my-cookies-deactivate');
-        wp_enqueue_style('accept-my-cookies-admin');
     }
 }

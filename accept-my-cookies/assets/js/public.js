@@ -86,11 +86,6 @@ jQuery(document).ready(function ($) {
             }
         }
 
-        // Log the consent data
-        if (acceptMyCookiesData.options.logging_enabled) {
-            logConsent(consent, consentValues);
-        }
-
         // Update Google Consent Mode
         if (acceptMyCookiesData.options.google_consent_mode_enabled) {
             updateGoogleConsentMode(consentValues);
@@ -118,26 +113,6 @@ jQuery(document).ready(function ($) {
     {
         $('#accept-my-cookies-banner').fadeOut();
         $('.accept-my-cookies-banner-overlay').fadeOut();
-    }
-
-    // Log the consent data by an ajax request
-    function logConsent(consent, parameters) {
-        $.ajax({
-            url: acceptMyCookiesData.ajaxUrl,
-            type: 'POST',
-            data: {
-                action: 'accept_my_cookies_log_consent',
-                nonce: acceptMyCookiesData.nonce,
-                consent: consent,
-                parameters: parameters,
-            },
-            success: function (response) {
-                console.log('Consent logged:', response);
-            },
-            error: function (error) {
-                console.error('Error logging consent:', error);
-            },
-        });
     }
 
     // Initialize the banner

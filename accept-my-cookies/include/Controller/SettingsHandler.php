@@ -15,7 +15,7 @@ class SettingsHandler
      */
     private function getOptionsSchema()
     {
-        return include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
+        return include ACCEPTMYCOOKIES_DIR . '/include/options.php';
     }
 
     /**
@@ -54,13 +54,12 @@ class SettingsHandler
     /**
      * Save default options on plugin activation.
      */
-    public function saveDefaultOptions($translations)
+    public function saveDefaultOptions()
     {
         $schema = $this->getOptionsSchema();
         foreach ($schema as $key => $option) {
             if (! get_option($option['key'])) {
-                $default = isset($translations[$option['default']]) ? $translations[$option['default']]->translations[0] : $option['default'];
-                update_option($option['key'], $default);
+                update_option($option['key'], $option['default']);
             }
         }
     }

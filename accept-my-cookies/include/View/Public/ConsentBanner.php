@@ -57,7 +57,7 @@ class ConsentBanner
         $banner_color_style             = $this->options['banner_color_style'];
 
         // Include the banner template
-        include ACCEPT_MY_COOKIES_DIR . 'include/View/Public/templates/consent-banner.php';
+        include ACCEPTMYCOOKIES_DIR . 'include/View/Public/templates/consent-banner.php';
     }
 
     private function addOpacityToHex($hexColor, $opacity)

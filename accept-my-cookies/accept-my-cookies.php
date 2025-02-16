@@ -11,15 +11,15 @@
  * @license  https://github.com/sghiaseddin/Accept_My_Cookies/blob/main/LICENSE GPL-3.0
  * @version  GIT: <https://github.com/sghiaseddin/Accept_My_Cookies>
  * @link     https://sghiaseddin.com
- * @tag      Fixing wordpress plugin reviewer issues
+ * @tag      pre-release
  */
 
 /*
 Plugin Name: Accept My Cookies
 Plugin URI: http://wordpress.org/plugins/accept-my-cookies/
-Description: Accept My Cookies displays a user-friendly consent banner, allowing visitors to accept or reject tracking cookies and it supports Google Consent Mode.
+Description: Accept My Cookies is a lightweight and customizable WordPress plugin that helps you comply with GDPR and other privacy regulations. It displays a user-friendly consent modal, allowing visitors to accept or reject tracking cookies. The plugin supports Google Consent Mode for seamless integration with Google Analytics, Ads, and Tag Manager.
 Author: Shayan Ghiaseddin
-Version: 0.6.2
+Version: 0.3.10
 Author URI: https://sghiaseddin.com/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -34,9 +34,9 @@ if (! defined('ABSPATH')) {
 }
 
 // Define useful constants
-define('ACCEPT_MY_COOKIES_VERSION', '0.6.2');
-define('ACCEPT_MY_COOKIES_DIR', plugin_dir_path(__FILE__));
-define('ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__));
+define('ACCEPTMYCOOKIES_VERSION', '0.3.10');
+define('ACCEPTMYCOOKIES_DIR', plugin_dir_path(__FILE__));
+define('ACCEPTMYCOOKIES_URL', plugin_dir_url(__FILE__));
 
 // Include necessary files
 // Autoload classes
@@ -47,7 +47,7 @@ spl_autoload_register(
         }
 
         // Replace MK\MyPlugin in the class name with the path to src:
-        $className = str_replace('AcceptMyCookies\\', ACCEPT_MY_COOKIES_DIR . '/include/', $className);
+        $className = str_replace('AcceptMyCookies\\', ACCEPTMYCOOKIES_DIR . '/include/', $className);
 
         // Replace the remaining backslashes with directory separators
         $classFile =  str_replace('\\', '/', $className) . '.php';
@@ -57,16 +57,16 @@ spl_autoload_register(
     }
 );
 
-// Activation actions: loading translation and saving default data
-require_once ACCEPT_MY_COOKIES_DIR . 'activate.php';
-register_activation_hook(__FILE__, 'Accept_My_Cookies_Activate');  
+require_once ACCEPTMYCOOKIES_DIR . 'activate.php';
+
+register_activation_hook(__FILE__, 'AcceptMyCookies_Activate');
 
 /**
  * Initialize the plugin
  *
  * @return void
  */
-function Accept_My_Cookies_init()
+function AcceptMyCookies_init()
 {
     // Initialize AdminController for backend functionality
     new AdminController();
@@ -77,15 +77,4 @@ function Accept_My_Cookies_init()
     // Initialize GoogleConsentController for Google Consent Mode
     new GoogleConsentController();
 }
-add_action('plugins_loaded', 'Accept_My_Cookies_init');
-
-/**
- * Add settings page link in plugins listing
- *
- * @return array
- */
-function Accept_My_Cookies_Add_settings_link( $actions ) {
-    $settings_link = array('<a href="' . admin_url( 'options-general.php?page=accept-my-cookies' ) . '">' . esc_html__('Settings', 'accept-my-cookies') . '</a>');
-    return array_merge( $actions, $settings_link );
-}
-add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'Accept_My_Cookies_Add_settings_link' );
+add_action('plugins_loaded', 'AcceptMyCookies_init');

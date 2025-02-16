@@ -33,9 +33,9 @@ class GoogleConsentView
         if ($this->options['google_consent_mode_enabled'] && !empty($this->options['ga_id'])) {
             wp_register_script(
                 'gtm-script-before', 
-                ACCEPT_MY_COOKIES_URL . 'assets/js/gtm-script-before.js',
+                ACCEPTMYCOOKIES_URL . 'assets/js/gtm-script-before.js',
                 array(),
-                ACCEPT_MY_COOKIES_VERSION,
+                ACCEPTMYCOOKIES_VERSION,
                 false,
                 array(
                     'strategy'  => 'async',
@@ -57,7 +57,7 @@ class GoogleConsentView
                 'gtm-script',
                 "https://www.googletagmanager.com/gtag/js?id={$ga_id}",
                 array(),
-                ACCEPT_MY_COOKIES_VERSION,
+                ACCEPTMYCOOKIES_VERSION,
                 false,
                 array(
                     'strategy'  => 'async',
@@ -67,9 +67,9 @@ class GoogleConsentView
 
             wp_register_script(
                 'gtm-script-after', 
-                ACCEPT_MY_COOKIES_URL . 'assets/js/gtm-script-after.js',
+                ACCEPTMYCOOKIES_URL . 'assets/js/gtm-script-after.js',
                 array(),
-                ACCEPT_MY_COOKIES_VERSION,
+                ACCEPTMYCOOKIES_VERSION,
                 false,
                 array(
                     'strategy'  => 'async',

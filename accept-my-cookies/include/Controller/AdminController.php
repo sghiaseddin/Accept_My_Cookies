@@ -56,7 +56,7 @@ class AdminController
      */
     public function registerSettings()
     {
-        $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
+        $schema = include ACCEPTMYCOOKIES_DIR . '/include/options.php';
 
         // Register settings for the General tab
         add_settings_section(
@@ -122,7 +122,7 @@ class AdminController
     public function renderSettingsPage()
     {
         // Include the view file
-        include_once ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/settings-page.php';
+        include_once ACCEPTMYCOOKIES_DIR . '/include/View/Admin/templates/settings-page.php';
     }
 
     /**
@@ -150,32 +150,21 @@ class AdminController
         // Validate and save the settings
         $validator = new InputValidator();
 
-        $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
+        $schema = include ACCEPTMYCOOKIES_DIR . '/include/options.php';
         foreach ($schema as $input => $option) {
             if (isset($_POST[ $option['key'] ])) {
-                // Check sanitization
-                if ($input === 'custom_html_head') {
-                    $value = wp_unslash($_POST[ $option['key'] ]);
-                } else if ($input === 'learn_more_url') {
-                    $value = sanitize_url(wp_unslash($_POST[ $option['key'] ]));
-                } else {
+                if ( $input !== 'learn_more_url' ) {
                     $value = sanitize_text_field(wp_unslash($_POST[ $option['key'] ]));
+                } else {
+                    $value = sanitize_url(wp_unslash($_POST[ $option['key'] ]));
                 }
-
-                // Validate values by datatype logic
                 $validated_value = $validator::validate(
                     $option['validation-type'],
                     $value,
                     isset($option['options']) ? array_keys($option['options']) : array()
                 );
-
-                // Store value in database, options table
-                if ($validated_value !== false) {
-                    if ($input === 'custom_html_head') {
-                        $is_updated = update_option($option['key'], wp_json_encode($validated_value, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_QUOT));
-                    } else {
-                        $is_updated = update_option($option['key'], $validated_value);
-                    }
+                if ($value !== false) {
+                    update_option($option['key'], $validated_value);
                 } else {
                     /* translators: here %s is the option label that is not valid. */
                     wp_send_json_error(sprintf(__('The value for "%s" is not valid. Please review it.', 'accept-my-cookies'), $option['label']));

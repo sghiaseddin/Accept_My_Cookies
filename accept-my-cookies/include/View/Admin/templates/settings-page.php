@@ -30,9 +30,6 @@ $active_tab = 'general';
         <a href="#styling" class="nav-tab <?php echo $active_tab === 'styling' ? 'nav-tab-active' : ''; ?>" data-tab="styling">
             <?php esc_html_e('Styling', 'accept-my-cookies'); ?>
         </a>
-        <a href="#credit" class="nav-tab <?php echo $active_tab === 'credit' ? 'nav-tab-active' : ''; ?>" data-tab="credit">
-            <?php esc_html_e('Credit', 'accept-my-cookies'); ?>
-        </a>
     </h2>
 
     <!-- Tab Content -->
@@ -43,22 +40,17 @@ $active_tab = 'general';
 
         <!-- General Tab Content -->
         <div id="general-tab" class="tab-content" style="<?php echo $active_tab === 'general' ? 'display: block;' : 'display: none;'; ?>">
-            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/general-tab.php'; ?>
+            <?php include ACCEPTMYCOOKIES_DIR . '/include/View/Admin/templates/general-tab.php'; ?>
         </div>
 
         <!-- Google Property Tab Content -->
         <div id="google_property-tab" class="tab-content" style="<?php echo $active_tab === 'google_property' ? 'display: block;' : 'display: none;'; ?>">
-            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/google-property-tab.php'; ?>
+            <?php include ACCEPTMYCOOKIES_DIR . '/include/View/Admin/templates/google-property-tab.php'; ?>
         </div>
 
         <!-- Styling Tab Content -->
         <div id="styling-tab" class="tab-content" style="<?php echo $active_tab === 'styling' ? 'display: block;' : 'display: none;'; ?>">
-            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/styling-tab.php'; ?>
-        </div>
-
-        <!-- Credit Tab Content -->
-        <div id="credit-tab" class="tab-content" style="<?php echo $active_tab === 'credit' ? 'display: block;' : 'display: none;'; ?>">
-            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/credit-tab.php'; ?>
+            <?php include ACCEPTMYCOOKIES_DIR . '/include/View/Admin/templates/styling-tab.php'; ?>
         </div>
 
         <?php submit_button(__('Save Settings', 'accept-my-cookies')); ?>
