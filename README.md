@@ -108,6 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 0.6.3 ###
+
+- Minor bug fix in stylings
+
 ### 0.6.2 ###
 
 Fixing wordpress plugin reviewer issues:

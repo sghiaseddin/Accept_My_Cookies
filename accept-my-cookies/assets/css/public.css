@@ -26,7 +26,7 @@
     flex-wrap: wrap;
     max-width: var(--wp--style--global--wide-size);
     gap: 30px;
-    align-items: baseline;
+    align-items: end;
 }
 
 .accept-my-cookies-banner__content #accept-my-cookies-banner__toggles {
@@ -39,7 +39,6 @@
 .accept-my-cookies-banner__title {
     font-weight: 700;
 }
-
 
 .accept-my-cookies-banner--bottom {
     bottom: 0;
@@ -116,22 +115,18 @@
     color: #ffffff;
 }
 
-.accept-my-cookies-banner--dark label,
-.accept-my-cookies-banner--dark p {
+.accept-my-cookies-banner--dark label, .accept-my-cookies-banner--dark p {
     color: #ffffff;
 }
-
 
 .accept-my-cookies-banner--bright {
     background-color: #ffffff;
     color: #1e1e1e;
 }
 
-.accept-my-cookies-banner--bright label,
-.accept-my-cookies-banner--bright p {
+.accept-my-cookies-banner--bright label, .accept-my-cookies-banner--bright p {
     color: #1e1e1e;
 }
-
 
 .accept-my-cookies-banner__toggle-label {
     display: flex;
@@ -181,15 +176,13 @@
     background-color: #0073aa;
 }
 
-.accept-my-cookies-banner__toggle_essentials:checked + .accept-my-cookies-banner__toggle-slider::before,
-.accept-my-cookies-banner__toggle:checked + .accept-my-cookies-banner__toggle-slider::before {
+.accept-my-cookies-banner__toggle_essentials:checked + .accept-my-cookies-banner__toggle-slider::before, .accept-my-cookies-banner__toggle:checked + .accept-my-cookies-banner__toggle-slider::before {
     transform: translateX(20px);
 }
 
 .accept-my-cookies-banner__toggle_essentials + .accept-my-cookies-banner__toggle-slider {
     background-color: #aaa;
 }
-
 
 /* Link and Button Styles */
 .accept-my-cookies-banner__link {
@@ -204,6 +197,7 @@
 .accept-my-cookies-banner__actions {
     display: flex;
     gap: 10px;
+    margin-bottom: 7px;
 }
 
 .accept-my-cookies-banner__button {
