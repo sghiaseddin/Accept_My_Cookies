@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Accept My Cookies\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-08 13:31+0000\n"
+"POT-Creation-Date: 2025-02-18 16:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,6 +15,10 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.7.1; wp-6.7.1\n"
 "X-Domain: accept-my-cookies"
+
+#: include/View/Admin/templates/credit-tab.php:9
+msgid "About This Plugin"
+msgstr ""
 
 #: include/options.php:48
 msgid "Accept"
@@ -39,11 +43,8 @@ msgstr ""
 
 #. Description of the plugin
 msgid ""
-"Accept My Cookies is a lightweight and customizable WordPress plugin that "
-"helps you comply with GDPR and other privacy regulations. It displays a user-"
-"friendly consent modal, allowing visitors to accept or reject tracking "
-"cookies. The plugin supports Google Consent Mode for seamless integration "
-"with Google Analytics, Ads, and Tag Manager."
+"Accept My Cookies displays a user-friendly consent banner, allowing visitors "
+"to accept or reject tracking cookies and it supports Google Consent Mode."
 msgstr ""
 
 #: include/Controller/AdminController.php:46
@@ -51,67 +52,73 @@ msgstr ""
 msgid "Accept My Cookies Settings"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:43
+#: include/View/Public/templates/consent-banner.php:50
 msgid "Ad Personalization"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:29
+#: include/View/Public/templates/consent-banner.php:36
 msgid "Ad Storage"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:36
+#: include/View/Public/templates/consent-banner.php:43
 msgid "Ad User Data"
 msgstr ""
 
-#: include/Controller/AdminController.php:174
+#: include/options.php:123
+msgid ""
+"Add custom HTML code that will be injected into the <head> section of your "
+"site."
+msgstr ""
+
+#: include/Controller/AdminController.php:185
 msgid "All options have successfully saved."
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:22
+#: include/View/Public/templates/consent-banner.php:29
 msgid "Analytics Storage"
 msgstr ""
 
-#: include/options.php:272
+#: include/options.php:291
 msgid "Banner Background Color"
 msgstr ""
 
-#: include/options.php:282
+#: include/options.php:301
 msgid "Banner Background Opacity"
 msgstr ""
 
-#: include/options.php:258
+#: include/options.php:277
 msgid "Banner Color Style"
 msgstr ""
 
-#: include/options.php:249
+#: include/options.php:268
 msgid "Banner Delay (Seconds)"
 msgstr ""
 
-#: include/options.php:331
+#: include/options.php:350
 msgid "Banner Link Color"
 msgstr ""
 
-#: include/options.php:296
+#: include/options.php:315
 msgid "Banner Overlay Color"
 msgstr ""
 
-#: include/options.php:307
+#: include/options.php:326
 msgid "Banner Overlay Opacity"
 msgstr ""
 
-#: include/options.php:169
+#: include/options.php:188
 msgid "Banner Position"
 msgstr ""
 
-#: include/options.php:185
+#: include/options.php:204
 msgid "Banner Size"
 msgstr ""
 
-#: include/options.php:321
+#: include/options.php:340
 msgid "Banner Text Color"
 msgstr ""
 
-#: include/options.php:222
+#: include/options.php:241
 msgid "Banner Text Size (px)"
 msgstr ""
 
@@ -119,43 +126,43 @@ msgstr ""
 msgid "Banner Title"
 msgstr ""
 
-#: include/options.php:213
+#: include/options.php:232
 msgid "Banner Title Text Size (px)"
 msgstr ""
 
-#: include/options.php:240
+#: include/options.php:259
 msgid "Banner Z-Index"
 msgstr ""
 
-#: include/options.php:172
+#: include/options.php:191
 msgid "Bottom"
 msgstr ""
 
-#: include/options.php:262
+#: include/options.php:281
 msgid "Bright"
 msgstr ""
 
-#: include/options.php:342
+#: include/options.php:361
 msgid "Button Background Color"
 msgstr ""
 
-#: include/options.php:199
+#: include/options.php:218
 msgid "Button Size"
 msgstr ""
 
-#: include/options.php:352
+#: include/options.php:371
 msgid "Button Text Color"
 msgstr ""
 
-#: include/options.php:231
+#: include/options.php:250
 msgid "Button Text Size (px)"
 msgstr ""
 
-#: include/options.php:176
+#: include/options.php:195
 msgid "Center"
 msgstr ""
 
-#: include/options.php:266
+#: include/options.php:285
 msgid "Choose a predefined color style or customize it."
 msgstr ""
 
@@ -166,15 +173,15 @@ msgid ""
 "local storage could be checked only on browser runtime using javascript."
 msgstr ""
 
-#: include/options.php:207
+#: include/options.php:226
 msgid "Choose the size of the buttons in the consent banner."
 msgstr ""
 
-#: include/options.php:193
+#: include/options.php:212
 msgid "Choose the size of the consent banner."
 msgstr ""
 
-#: include/options.php:179
+#: include/options.php:198
 msgid "Choose where the consent banner appears on the screen."
 msgstr ""
 
@@ -194,8 +201,16 @@ msgstr ""
 msgid "Cookies"
 msgstr ""
 
-#: include/options.php:263
+#: include/View/Admin/templates/settings-page.php:34
+msgid "Credit"
+msgstr ""
+
+#: include/options.php:282
 msgid "Custom"
+msgstr ""
+
+#: include/options.php:119
+msgid "Custom HTML (Head)"
 msgstr ""
 
 #: include/options.php:66
@@ -206,7 +221,7 @@ msgstr ""
 msgid "Customize Button Text"
 msgstr ""
 
-#: include/options.php:261
+#: include/options.php:280
 msgid "Dark"
 msgstr ""
 
@@ -214,19 +229,19 @@ msgstr ""
 msgid "Dismiss this notice."
 msgstr ""
 
-#: include/options.php:158
+#: include/options.php:177
 msgid "Enable Ad Personalization"
 msgstr ""
 
-#: include/options.php:140
+#: include/options.php:159
 msgid "Enable Ad Storage"
 msgstr ""
 
-#: include/options.php:149
+#: include/options.php:168
 msgid "Enable Ad User Data"
 msgstr ""
 
-#: include/options.php:131
+#: include/options.php:150
 msgid "Enable Analytics Storage"
 msgstr ""
 
@@ -234,12 +249,22 @@ msgstr ""
 msgid "Enable Customize Button"
 msgstr ""
 
-#: include/options.php:112
+#: include/options.php:131
 msgid "Enable Google Consent Mode"
 msgstr ""
 
-#: include/options.php:115
+#: include/options.php:134
 msgid "Enable Google Consent Mode to manage user consent for Google services."
+msgstr ""
+
+#: include/options.php:110
+msgid "Enable Logging"
+msgstr ""
+
+#: include/options.php:113
+msgid ""
+"Enable storing consent decisions of users in a log file (wp-"
+"contents/uploads/accept-my-cookies/consents.log)."
 msgstr ""
 
 #: include/options.php:61
@@ -247,6 +272,10 @@ msgid ""
 "Enable the \"Customize\" button to allow users to adjust their consent "
 "preferences in details. This option make sense when you enable Google "
 "Consent Mode too."
+msgstr ""
+
+#: include/options.php:122
+msgid "Enter custom HTML to be added to the <head> section"
 msgstr ""
 
 #: include/options.php:90
@@ -273,11 +302,11 @@ msgstr ""
 msgid "Enter the URL for the \"Learn More\" link"
 msgstr ""
 
-#: include/options.php:124
+#: include/options.php:143
 msgid "Enter your Google Property ID (e.g., G-123456)"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:16
+#: include/View/Public/templates/consent-banner.php:23
 msgid "Essentials"
 msgstr ""
 
@@ -289,11 +318,19 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
+#: include/View/Admin/templates/credit-tab.php:17
+msgid "get in touch"
+msgstr ""
+
+#: include/View/Admin/templates/credit-tab.php:28
+msgid "Github repository"
+msgstr ""
+
 #: include/View/Admin/templates/settings-page.php:28
 msgid "Google Property"
 msgstr ""
 
-#: include/options.php:121
+#: include/options.php:140
 msgid "Google Property ID"
 msgstr ""
 
@@ -309,11 +346,24 @@ msgstr ""
 msgid "https://sghiaseddin.com/"
 msgstr ""
 
+#: include/View/Admin/templates/credit-tab.php:20
+msgid ""
+"If this plugin has been helpful, consider supporting future updates by "
+"making a donation:"
+msgstr ""
+
+#: include/View/Admin/templates/credit-tab.php:16
+#, php-format
+msgid ""
+"If you like this plugin, and need a custom WordPress development or plugin "
+"customization, feel free to %s."
+msgstr ""
+
 #: include/Controller/AdminController.php:135
 msgid "Invalid nonce."
 msgstr ""
 
-#: include/options.php:204
+#: include/options.php:223
 msgid "Large"
 msgstr ""
 
@@ -329,7 +379,7 @@ msgstr ""
 msgid "Learn More URL"
 msgstr ""
 
-#: include/options.php:174
+#: include/options.php:193
 msgid "Left"
 msgstr ""
 
@@ -337,59 +387,80 @@ msgstr ""
 msgid "Local Storage"
 msgstr ""
 
-#: include/options.php:189 include/options.php:203
+#: include/View/Admin/templates/credit-tab.php:14
+msgid "Need a Custom WordPress Solution?"
+msgstr ""
+
+#: include/options.php:208 include/options.php:222
 msgid "Normal"
+msgstr ""
+
+#: include/View/Admin/templates/credit-tab.php:27
+msgid "plugin page"
 msgstr ""
 
 #: include/options.php:11
 msgid "Privacy & Cookies"
 msgstr ""
 
-#: include/options.php:175
+#: include/options.php:194
 msgid "Right"
 msgstr ""
 
-#: include/View/Admin/templates/settings-page.php:56
+#: include/View/Admin/AdminView.php:202
+#: include/View/Admin/templates/settings-page.php:64
 msgid "Save Settings"
 msgstr ""
 
-#: include/options.php:336
+#: include/View/Admin/AdminView.php:201
+msgid "Saving failed!"
+msgstr ""
+
+#: include/View/Admin/AdminView.php:199
+msgid "Saving..."
+msgstr ""
+
+#: include/options.php:355
 msgid "Set the color of \"Learn More\" link in the consent banner."
 msgstr ""
 
-#: include/options.php:301
+#: include/options.php:320
 msgid "Set the color of the overlay behind the consent banner."
 msgstr ""
 
-#: include/options.php:252
+#: include/options.php:271
 msgid "Set the delay (in seconds) before the consent banner appears."
 msgstr ""
 
-#: include/options.php:234
+#: include/options.php:253
 msgid "Set the font size of the text in the consent banner buttons."
 msgstr ""
 
-#: include/options.php:225
+#: include/options.php:244
 msgid "Set the font size of the text in the consent banner."
 msgstr ""
 
-#: include/options.php:216
+#: include/options.php:235
 msgid "Set the font size of the title in the consent banner."
 msgstr ""
 
-#: include/options.php:290
+#: include/options.php:309
 msgid "Set the opacity of the consent banner background."
 msgstr ""
 
-#: include/options.php:315
+#: include/options.php:334
 msgid "Set the opacity of the overlay behind the consent banner."
 msgstr ""
 
-#: include/options.php:243
+#: include/options.php:262
 msgid "Set the z-index of the consent banner to control its stacking order."
 msgstr ""
 
-#: accept-my-cookies.php:93
+#: include/View/Admin/AdminView.php:200
+msgid "Setting Saved!"
+msgstr ""
+
+#: accept-my-cookies.php:99
 msgid "Settings"
 msgstr ""
 
@@ -397,7 +468,7 @@ msgstr ""
 msgid "Shayan Ghiaseddin"
 msgstr ""
 
-#: include/options.php:202
+#: include/options.php:221
 msgid "Small"
 msgstr ""
 
@@ -413,6 +484,16 @@ msgstr ""
 msgid "Styling Settings"
 msgstr ""
 
+#: include/View/Admin/templates/credit-tab.php:19
+msgid "Support the Development"
+msgstr ""
+
+#: include/View/Admin/templates/credit-tab.php:24
+msgid ""
+"Thank you for using this plugin! Your support helps keep it free and "
+"regularly updated."
+msgstr ""
+
 #: include/options.php:91
 msgid "The number of days before the consent cookie expires."
 msgstr ""
@@ -426,16 +507,21 @@ msgid "The URL where users can learn more about your cookie policy."
 msgstr ""
 
 #. here %s is the option label that is not valid.
-#: include/Controller/AdminController.php:170
+#: include/Controller/AdminController.php:181
 #, php-format
 msgid "The value for \"%s\" is not valid. Please review it."
 msgstr ""
 
-#: include/options.php:188
+#: include/View/Admin/templates/credit-tab.php:11
+#, php-format
+msgid "This plugin was created by %s, a developer."
+msgstr ""
+
+#: include/options.php:207
 msgid "Tiny"
 msgstr ""
 
-#: include/options.php:173
+#: include/options.php:192
 msgid "Top"
 msgstr ""
 
@@ -445,8 +531,15 @@ msgid ""
 "you agree to our use of cookies."
 msgstr ""
 
-#: include/options.php:190
+#: include/options.php:209
 msgid "Wide"
+msgstr ""
+
+#: include/View/Admin/templates/credit-tab.php:26
+#, php-format
+msgid ""
+"You can also support this plugin by writing a review on %s or submiting an "
+"issue in %s."
 msgstr ""
 
 #: include/Controller/AdminController.php:147

@@ -6,7 +6,7 @@ if (! defined('ABSPATH')) {
 
 // Get the active tab from the URL
 // $active_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'general';
-$active_tab = 'general';
+$active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
 ?>
 
 <div class="wrap">

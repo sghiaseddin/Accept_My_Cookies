@@ -108,6 +108,12 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 0.6.4
+
+- Bug fix in stylings
+- Bug fix in default custom html value
+- Adding and editing Persian translation
+
 ### 0.6.3 ###
 
 - Minor bug fix in stylings

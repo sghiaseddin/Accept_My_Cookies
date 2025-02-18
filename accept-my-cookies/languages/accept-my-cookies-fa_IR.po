@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Accept My Cookies\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-08 10:34+0000\n"
-"PO-Revision-Date: 2025-02-08 13:31+0000\n"
+"PO-Revision-Date: 2025-02-18 16:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: فارسی\n"
 "Language: fa_IR\n"
@@ -14,6 +14,10 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.7.1; wp-6.7.1\n"
 "X-Domain: accept-my-cookies"
+
+#: include/View/Admin/templates/credit-tab.php:9
+msgid "About This Plugin"
+msgstr "درباره‌ی این افزونه"
 
 #: include/options.php:48
 msgid "Accept"
@@ -34,88 +38,90 @@ msgstr "متن دکمه پذیرفتن"
 #. Name of the plugin
 #: include/Controller/AdminController.php:47
 msgid "Accept My Cookies"
-msgstr "کوکی‌هایم را بپذیر"
+msgstr "Accept My Cookies"
 
 #. Description of the plugin
 msgid ""
-"Accept My Cookies is a lightweight and customizable WordPress plugin that "
-"helps you comply with GDPR and other privacy regulations. It displays a user-"
-"friendly consent modal, allowing visitors to accept or reject tracking "
-"cookies. The plugin supports Google Consent Mode for seamless integration "
-"with Google Analytics, Ads, and Tag Manager."
+"Accept My Cookies displays a user-friendly consent banner, allowing visitors "
+"to accept or reject tracking cookies and it supports Google Consent Mode."
 msgstr ""
-"«کوکی‌هایم را بپذیر» یک افزونه سبک و قابل تنظیم برای وردپرس است که به شما در "
-"رعایت مقررات GDPR و سایر قوانین حریم خصوصی کمک می‌کند. این افزونه یک بنر "
-"کاربرپسند نمایش می‌دهد و به بازدیدکنندگان اجازه می‌دهد کوکی‌های ردیابی را "
-"بپذیرند یا رد کنند. این افزونه از Google Consent Mode برای یکپارچه‌سازی با "
-"Google Analytics، Ads و Tag Manager پشتیبانی می‌کند."
+"افزونه‌ی Accept My Cookies یک بنر کاربردی نمایش می‌دهد تا کاربر بتواند ثبت "
+"کوکی‌هایی که منجر به ردگیری رفتارش می‌شود، بپذیرد یا رد کند. این افزونه از "
+"Google Consent Mode پشتیبانی می‌کند."
 
 #: include/Controller/AdminController.php:46
 #: include/View/Admin/templates/settings-page.php:20
 msgid "Accept My Cookies Settings"
-msgstr "تنظیمات «کوکی‌هایم را بپذیر»"
+msgstr "تنظیمات Accept My Cookies"
 
-#: include/View/Public/templates/consent-banner.php:43
+#: include/View/Public/templates/consent-banner.php:50
 msgid "Ad Personalization"
 msgstr "شخصی‌سازی تبلیغات"
 
-#: include/View/Public/templates/consent-banner.php:29
+#: include/View/Public/templates/consent-banner.php:36
 msgid "Ad Storage"
 msgstr "ذخیره تبلیغات"
 
-#: include/View/Public/templates/consent-banner.php:36
+#: include/View/Public/templates/consent-banner.php:43
 msgid "Ad User Data"
 msgstr "داده‌های کاربری تبلیغات"
 
-#: include/Controller/AdminController.php:174
+#: include/options.php:123
+msgid ""
+"Add custom HTML code that will be injected into the <head> section of your "
+"site."
+msgstr ""
+"در اینجا کد HTML سفارشی خود را که می‌خواهید در <head> افزوده شود، درج کنید."
+
+#: include/Controller/AdminController.php:185
 msgid "All options have successfully saved."
 msgstr "همه‌ی گزینه‌ها با موفقیت ذخیره شد."
 
-#: include/View/Public/templates/consent-banner.php:22
+#: include/View/Public/templates/consent-banner.php:29
 msgid "Analytics Storage"
 msgstr "ذخیره تحلیل‌ها"
 
-#: include/options.php:272
+#: include/options.php:291
 msgid "Banner Background Color"
 msgstr "رنگ پس‌زمینه بنر"
 
-#: include/options.php:282
+#: include/options.php:301
 msgid "Banner Background Opacity"
 msgstr "شفافیت پس‌زمینه بنر"
 
-#: include/options.php:258
+#: include/options.php:277
 msgid "Banner Color Style"
 msgstr "استایل رنگ بنر"
 
-#: include/options.php:249
+#: include/options.php:268
 msgid "Banner Delay (Seconds)"
 msgstr "تاخیر اجرای بنر (ثانیه)"
 
-#: include/options.php:331
+#: include/options.php:350
 msgid "Banner Link Color"
 msgstr "رنگ لینک در بنر"
 
-#: include/options.php:296
+#: include/options.php:315
 msgid "Banner Overlay Color"
 msgstr "رنگ روکش بنر"
 
-#: include/options.php:307
+#: include/options.php:326
 msgid "Banner Overlay Opacity"
 msgstr "شفافیت روکش بنر"
 
-#: include/options.php:169
+#: include/options.php:188
 msgid "Banner Position"
 msgstr "جایگاه بنر"
 
-#: include/options.php:185
+#: include/options.php:204
 msgid "Banner Size"
 msgstr "سایز بنر"
 
-#: include/options.php:321
+#: include/options.php:340
 msgid "Banner Text Color"
 msgstr "رنگ متن بنر"
 
-#: include/options.php:222
+#: include/options.php:241
 msgid "Banner Text Size (px)"
 msgstr "اندازه متن بنر (px)"
 
@@ -123,43 +129,43 @@ msgstr "اندازه متن بنر (px)"
 msgid "Banner Title"
 msgstr "عنوان بنر"
 
-#: include/options.php:213
+#: include/options.php:232
 msgid "Banner Title Text Size (px)"
 msgstr "اندازه متن عنوان بنر (px)"
 
-#: include/options.php:240
+#: include/options.php:259
 msgid "Banner Z-Index"
 msgstr "Z-Index بنر"
 
-#: include/options.php:172
+#: include/options.php:191
 msgid "Bottom"
 msgstr "پایین"
 
-#: include/options.php:262
+#: include/options.php:281
 msgid "Bright"
 msgstr "روشن"
 
-#: include/options.php:342
+#: include/options.php:361
 msgid "Button Background Color"
 msgstr "رنگ پس‌زمینه دکمه"
 
-#: include/options.php:199
+#: include/options.php:218
 msgid "Button Size"
 msgstr "اندازه دکمه"
 
-#: include/options.php:352
+#: include/options.php:371
 msgid "Button Text Color"
 msgstr "رنگ متن دکمه"
 
-#: include/options.php:231
+#: include/options.php:250
 msgid "Button Text Size (px)"
 msgstr "اندازه متن دکمه (px)"
 
-#: include/options.php:176
+#: include/options.php:195
 msgid "Center"
 msgstr "مرکز"
 
-#: include/options.php:266
+#: include/options.php:285
 msgid "Choose a predefined color style or customize it."
 msgstr "یک استایل رنگ از پیش تعریف شده انتخاب کنید یا آن را سفارشی کنید."
 
@@ -174,15 +180,15 @@ msgstr ""
 "می‌شوند. با این حال، حافظه محلی فقط در زمان اجرای مرورگر و با استفاده از "
 "جاوااسکریپت قابل بررسی است."
 
-#: include/options.php:207
+#: include/options.php:226
 msgid "Choose the size of the buttons in the consent banner."
 msgstr "اندازه دکمه‌ها در بنر Consent را انتخاب کنید."
 
-#: include/options.php:193
+#: include/options.php:212
 msgid "Choose the size of the consent banner."
 msgstr "اندازه بنر Consent را انتخاب کنید."
 
-#: include/options.php:179
+#: include/options.php:198
 msgid "Choose where the consent banner appears on the screen."
 msgstr "انتخاب کنید که بنر Consent در کجای صفحه نمایش داده شود."
 
@@ -202,9 +208,17 @@ msgstr "انقضای کوکی (روز)"
 msgid "Cookies"
 msgstr "کوکی‌ها"
 
-#: include/options.php:263
+#: include/View/Admin/templates/settings-page.php:34
+msgid "Credit"
+msgstr "سازنده"
+
+#: include/options.php:282
 msgid "Custom"
 msgstr "سفارشی"
+
+#: include/options.php:119
+msgid "Custom HTML (Head)"
+msgstr "کد HTML سفارشی (برای head)"
 
 #: include/options.php:66
 msgid "Customize"
@@ -214,7 +228,7 @@ msgstr "سفارشی کردن"
 msgid "Customize Button Text"
 msgstr "متن دکمه سفارشی کردن"
 
-#: include/options.php:261
+#: include/options.php:280
 msgid "Dark"
 msgstr "تیره"
 
@@ -222,19 +236,19 @@ msgstr "تیره"
 msgid "Dismiss this notice."
 msgstr "رد این اعلان."
 
-#: include/options.php:158
+#: include/options.php:177
 msgid "Enable Ad Personalization"
 msgstr "فعال‌سازی Ad Personalization"
 
-#: include/options.php:140
+#: include/options.php:159
 msgid "Enable Ad Storage"
 msgstr "فعال‌سازی Ad Storage"
 
-#: include/options.php:149
+#: include/options.php:168
 msgid "Enable Ad User Data"
 msgstr "فعال‌سازی Ad User Data"
 
-#: include/options.php:131
+#: include/options.php:150
 msgid "Enable Analytics Storage"
 msgstr "فعال‌سازی Analytics Storage"
 
@@ -242,14 +256,26 @@ msgstr "فعال‌سازی Analytics Storage"
 msgid "Enable Customize Button"
 msgstr "فعال‌سازی دکمه‌ی سفارشی کردن"
 
-#: include/options.php:112
+#: include/options.php:131
 msgid "Enable Google Consent Mode"
 msgstr "فعال‌سازی Google Consent Mode"
 
-#: include/options.php:115
+#: include/options.php:134
 msgid "Enable Google Consent Mode to manage user consent for Google services."
 msgstr ""
 "Google Consent Mode را فعال کنید تا رضایت کاربران برای خدمات گوگل مدیریت شود."
+
+#: include/options.php:110
+msgid "Enable Logging"
+msgstr "فعال‌سازی ثبت لاگ"
+
+#: include/options.php:113
+msgid ""
+"Enable storing consent decisions of users in a log file (wp-"
+"contents/uploads/accept-my-cookies/consents.log)."
+msgstr ""
+"تصمیم کاربران درباره‌ي پذیرش یا عدم پذیرش کوکی‌ها را ذخیره کنید (در آدرس wp-"
+"contents/uploads/accept-my-cookies/consents.log)."
 
 #: include/options.php:61
 msgid ""
@@ -260,6 +286,10 @@ msgstr ""
 "دکمه «سفارشی کردن» را فعال کنید تا کاربران بتوانند ترجیحات خود را به طور "
 "دقیق تنظیم کنند. این گزینه زمانی معنا دارد که Google Consent Mode را نیز "
 "فعال کرده باشید."
+
+#: include/options.php:122
+msgid "Enter custom HTML to be added to the <head> section"
+msgstr "در اینجا کد HTML سفارشی خود را وارد کنید تا در <head> افزوده شود."
 
 #: include/options.php:90
 msgid "Enter the number of days for cookie expiration"
@@ -285,11 +315,11 @@ msgstr "متن لینک «اطلاعات بیشتر» را وارد کنید"
 msgid "Enter the URL for the \"Learn More\" link"
 msgstr "آدرس لینک «اطلاعات بیشتر» را وارد کنید"
 
-#: include/options.php:124
+#: include/options.php:143
 msgid "Enter your Google Property ID (e.g., G-123456)"
 msgstr "شناسه Google Property خود را وارد کنید (مثلاً G-123456)"
 
-#: include/View/Public/templates/consent-banner.php:16
+#: include/View/Public/templates/consent-banner.php:23
 msgid "Essentials"
 msgstr "ضروری‌ها"
 
@@ -301,11 +331,19 @@ msgstr "عمومی"
 msgid "General Settings"
 msgstr "تنظیمات عمومی"
 
+#: include/View/Admin/templates/credit-tab.php:17
+msgid "get in touch"
+msgstr "تماس بگیرید"
+
+#: include/View/Admin/templates/credit-tab.php:28
+msgid "Github repository"
+msgstr "مخزن گیت‌هاب"
+
 #: include/View/Admin/templates/settings-page.php:28
 msgid "Google Property"
 msgstr "ردیابی"
 
-#: include/options.php:121
+#: include/options.php:140
 msgid "Google Property ID"
 msgstr "شناسه Google Property"
 
@@ -321,11 +359,28 @@ msgstr "http://wordpress.org/plugins/accept-my-cookies/"
 msgid "https://sghiaseddin.com/"
 msgstr "https://sghiaseddin.com/"
 
+#: include/View/Admin/templates/credit-tab.php:20
+msgid ""
+"If this plugin has been helpful, consider supporting future updates by "
+"making a donation:"
+msgstr ""
+"اگر این افزونه برای شما مفید بود، می‌توانید برای حمایت و بهبود آن در آینده "
+"کمک کنید:"
+
+#: include/View/Admin/templates/credit-tab.php:16
+#, php-format
+msgid ""
+"If you like this plugin, and need a custom WordPress development or plugin "
+"customization, feel free to %s."
+msgstr ""
+"اگر این افزونه را دوست دارید و نیاز به توسعه‌ی وبسایت خود دارید یا می‌خواهید "
+"یک افزونه‌ی اختصاصی داشته باشید، حتما %s."
+
 #: include/Controller/AdminController.php:135
 msgid "Invalid nonce."
 msgstr "Nonce نامعتبر."
 
-#: include/options.php:204
+#: include/options.php:223
 msgid "Large"
 msgstr "بزرگ"
 
@@ -341,7 +396,7 @@ msgstr "متن لینک اطلاعات بیشتر"
 msgid "Learn More URL"
 msgstr "آدرس لینک اطلاعات بیشتر"
 
-#: include/options.php:174
+#: include/options.php:193
 msgid "Left"
 msgstr "چپ"
 
@@ -349,59 +404,80 @@ msgstr "چپ"
 msgid "Local Storage"
 msgstr "حافظه محلی (Local Storage)"
 
-#: include/options.php:189 include/options.php:203
+#: include/View/Admin/templates/credit-tab.php:14
+msgid "Need a Custom WordPress Solution?"
+msgstr "در به یک کارکرد اختصاصی در وردپرس نیاز دارید؟"
+
+#: include/options.php:208 include/options.php:222
 msgid "Normal"
 msgstr "متوسط"
+
+#: include/View/Admin/templates/credit-tab.php:27
+msgid "plugin page"
+msgstr "برگه‌ی افزونه"
 
 #: include/options.php:11
 msgid "Privacy & Cookies"
 msgstr "حریم خصوصی و کوکی‌ها"
 
-#: include/options.php:175
+#: include/options.php:194
 msgid "Right"
 msgstr "راست"
 
-#: include/View/Admin/templates/settings-page.php:56
+#: include/View/Admin/AdminView.php:202
+#: include/View/Admin/templates/settings-page.php:64
 msgid "Save Settings"
 msgstr "ذخیره تنظیمات"
 
-#: include/options.php:336
+#: include/View/Admin/AdminView.php:201
+msgid "Saving failed!"
+msgstr "ذخیره‌سازی عمل نکرد!"
+
+#: include/View/Admin/AdminView.php:199
+msgid "Saving..."
+msgstr "در حال ذخیره‌سازی"
+
+#: include/options.php:355
 msgid "Set the color of \"Learn More\" link in the consent banner."
 msgstr "رنگ لینک «اطلاعات بیشتر» در بنر Consent را تنظیم کنید."
 
-#: include/options.php:301
+#: include/options.php:320
 msgid "Set the color of the overlay behind the consent banner."
 msgstr "رنگ روکش پشت بنر Consent را تنظیم کنید."
 
-#: include/options.php:252
+#: include/options.php:271
 msgid "Set the delay (in seconds) before the consent banner appears."
 msgstr "تاخیر (به ثانیه) قبل از نمایش بنر Consent را تنظیم کنید."
 
-#: include/options.php:234
+#: include/options.php:253
 msgid "Set the font size of the text in the consent banner buttons."
 msgstr "اندازه فونت متن دکمه‌های بنر Consent را تنظیم کنید."
 
-#: include/options.php:225
+#: include/options.php:244
 msgid "Set the font size of the text in the consent banner."
 msgstr "اندازه فونت متن بنر Consent را تنظیم کنید."
 
-#: include/options.php:216
+#: include/options.php:235
 msgid "Set the font size of the title in the consent banner."
 msgstr "اندازه فونت عنوان بنر Consent را تنظیم کنید."
 
-#: include/options.php:290
+#: include/options.php:309
 msgid "Set the opacity of the consent banner background."
 msgstr "شفافیت پس‌زمینه بنر Consent را تنظیم کنید."
 
-#: include/options.php:315
+#: include/options.php:334
 msgid "Set the opacity of the overlay behind the consent banner."
 msgstr "شفافیت روکش پشت بنر Consent را تنظیم کنید."
 
-#: include/options.php:243
+#: include/options.php:262
 msgid "Set the z-index of the consent banner to control its stacking order."
 msgstr "Z-Index بنر Consent را برای کنترل ترتیب چیدمان آن تنظیم کنید."
 
-#: accept-my-cookies.php:93
+#: include/View/Admin/AdminView.php:200
+msgid "Setting Saved!"
+msgstr "تنظیمات ذخیره شد!"
+
+#: accept-my-cookies.php:99
 msgid "Settings"
 msgstr "تنظیمات"
 
@@ -409,7 +485,7 @@ msgstr "تنظیمات"
 msgid "Shayan Ghiaseddin"
 msgstr "Shayan Ghiaseddin"
 
-#: include/options.php:202
+#: include/options.php:221
 msgid "Small"
 msgstr "کوچک"
 
@@ -425,6 +501,18 @@ msgstr "طراحی"
 msgid "Styling Settings"
 msgstr "تنظیمات طراحی"
 
+#: include/View/Admin/templates/credit-tab.php:19
+msgid "Support the Development"
+msgstr "پشتیبانی از توسعه"
+
+#: include/View/Admin/templates/credit-tab.php:24
+msgid ""
+"Thank you for using this plugin! Your support helps keep it free and "
+"regularly updated."
+msgstr ""
+"سپاسگزارم که از این افزونه استفاده می‌کنید! حمایت شما کمک می‌کند که رایگان "
+"باقی بماند و به طور منظم به روز‌رسانی شود."
+
 #: include/options.php:91
 msgid "The number of days before the consent cookie expires."
 msgstr "تعداد روزهای قبل از انقضای کوکی Consent."
@@ -439,16 +527,21 @@ msgstr ""
 "آدرسی که کاربران می‌توانند در آن درباره سیاست کوکی‌های شما بیشتر بدانند."
 
 #. here %s is the option label that is not valid.
-#: include/Controller/AdminController.php:170
+#: include/Controller/AdminController.php:181
 #, php-format
 msgid "The value for \"%s\" is not valid. Please review it."
 msgstr "مقدار برای «%s» معتبر نیست. لطفاً آن را بررسی کنید."
 
-#: include/options.php:188
+#: include/View/Admin/templates/credit-tab.php:11
+#, php-format
+msgid "This plugin was created by %s, a developer."
+msgstr "این افزونه توسط %s توسعه یافته است."
+
+#: include/options.php:207
 msgid "Tiny"
 msgstr "باریک"
 
-#: include/options.php:173
+#: include/options.php:192
 msgid "Top"
 msgstr "بالا"
 
@@ -460,9 +553,18 @@ msgstr ""
 "ما از کوکی‌ها برای بهبود تجربه‌ی شما استفاده می‌کنیم. برای ادامه‌ی بازدید از "
 "این وب‌سایت، استفاده از کوکی‌ها را بپذیرید."
 
-#: include/options.php:190
+#: include/options.php:209
 msgid "Wide"
 msgstr "پهن"
+
+#: include/View/Admin/templates/credit-tab.php:26
+#, php-format
+msgid ""
+"You can also support this plugin by writing a review on %s or submiting an "
+"issue in %s."
+msgstr ""
+"شما همچنین می‌توانید با نوشتن نقد خود در %s یا افزودن issue در %s از این "
+"افزونه پشتبانی کنید."
 
 #: include/Controller/AdminController.php:147
 msgid "Your browser session is expired. Please reload this page."

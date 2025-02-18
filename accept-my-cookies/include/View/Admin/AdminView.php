@@ -19,7 +19,7 @@ class AdminView
         $schema = include ACCEPT_MY_COOKIES_DIR . '/include/options.php';
         $option = $schema[ $option_name ];
         $value = get_option($option['key'], $option['default']);
-        if ($option_name === 'custom_html_head') {
+        if ($option_name === 'custom_html_head' && $value != '') {
             $value = json_decode($value, true);
         }
 

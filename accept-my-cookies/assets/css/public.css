@@ -133,6 +133,7 @@
     align-items: center;
     margin: 10px 0;
     cursor: pointer;
+    gap: 10px;
 }
 
 .accept-my-cookies-banner__toggle {
@@ -144,6 +145,7 @@
     align-items: center;
     margin: 10px 0;
     cursor: pointer;
+    gap: 10px;
 }
 
 .accept-my-cookies-banner__toggle_essentials {
@@ -156,7 +158,6 @@
     background-color: #ccc;
     border-radius: 20px;
     position: relative;
-    margin-right: 10px;
     transition: background-color 0.3s;
 }
 
