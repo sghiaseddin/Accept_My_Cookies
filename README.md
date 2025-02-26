@@ -108,6 +108,9 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 1.0.0
+- Release to Wordpress Plugin Repository
+
 ### 0.6.4
 
 - Bug fix in stylings
