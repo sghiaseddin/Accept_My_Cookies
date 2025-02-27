@@ -108,6 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 1.0.3
+
+- Minor bug fix in initial language detection
+
 ### 1.0.0
 - Release to Wordpress Plugin Repository
 

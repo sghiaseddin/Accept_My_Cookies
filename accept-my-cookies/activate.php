@@ -12,7 +12,7 @@ if (! defined('ABSPATH')) {
 function Accept_My_Cookies_Load_activation_translations($locale)
 {
     $domain = 'accept-my-cookies';
-    $languages_path = ACCEPT_MY_COOKIES_DIR . 'languages/';
+    $languages_path = ACCEPT_MY_COOKIES_DIR . '/languages/';
     $mo_file = $languages_path . "$domain-$locale.mo";
 
     if (file_exists($mo_file)) {

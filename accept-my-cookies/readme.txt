@@ -4,7 +4,7 @@ Donate link: https://sghiaseddin.com
 Tags: gdpr, cookies, consent, google consent mode, privacy
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 1.0.0
+Stable tag: 1.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,7 @@ Accept My Cookies displays a user-friendly consent banner, allowing visitors to 
 - **Storage Options**: Choose between cookies or local storage for consent preferences.
 - **Customizable Toggles**: Allow users to customize their consent preferences for specific tracking parameters.
 - **Lightweight**: Minimal impact on site performance.
+- **Cache and CDN Compatible**: No need to worry about interference with caching systems or CDN.
 
 = Google Consent Mode =
 The plugin supports **Google Consent Mode**, allowing you to manage user consent for Google services. When enabled, the plugin will:
@@ -78,6 +79,8 @@ Google Consent Mode allows you to manage user consent for Google services like A
 = I've installed and setup the plugin, but Google property still doesn't show consent signals. What do I do? =
 Ensure you are using the correct Google Analytics ID (e.g., G-XXXXXXXXXX). Test the consent implementation using [Google Tag Assistant](https://tagassistant.google.com) to verify that consent signals are being sent correctly. Note that it may take up to 24 hours for Google Analytics to collect and display the consent data in your reports. If issues persist, double-check your plugin settings and ensure Google Consent Mode is enabled.
 
+= I've created a new property in Google Analytic and saved the ID (e.g., G-XXXXXXXXXX) in the plugin settings. But the test wizard shows the script is not embeded in the page. What is wrong? =
+Ensure you are using the correct Google Analytics ID (e.g., G-XXXXXXXXXX) and purge the caching system on your host and CDN. Then skip the test wizard in the Google Analytics property creation and move forward to main page of Analytics. There you will see the tracking is working.
 
 = Can I customize the consent banner? =
 Yes, the consent banner is fully customizable. You can change its text, colors, position, size, and delay.
@@ -93,6 +96,10 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 7. Plugin Settings - Styling
 
 == Changelog ==
+
+= 1.0.3 =
+
+- Minor bug fix in initial language detection
 
 = 1.0.0 =
 
