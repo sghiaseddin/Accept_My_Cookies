@@ -1,12 +1,24 @@
 jQuery(document).ready(function ($) {
+    // Function to get a cookie value by name
+    function getCookie(name) {
+        const cookies = document.cookie.split('; ');
+        for (let i = 0; i < cookies.length; i++) {
+            const [cookieName, cookieValue] = cookies[i].split('=');
+            if (cookieName === name) {
+                return decodeURIComponent(cookieValue);
+            }
+        }
+        return null;
+    }
+
     // Check if the user has already consented
     function hasUserConsented()
     {
         const storageMethod = acceptMyCookiesData.options.storage_method;
-
         if (storageMethod === 'cookies') {
-            // Check cookies (handled in PHP)
-            return false; // PHP will handle this
+            // This needs to be check again in runtime, to works fine with the caching systems on
+            const consent = getCookie('accept_my_cookies_consent');
+            return consent === 'true'; // Return true if consent is granted
         } else {
             // Check local storage
             const consent = localStorage.getItem('accept_my_cookies_consent');

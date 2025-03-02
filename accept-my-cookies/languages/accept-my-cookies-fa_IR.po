@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: Accept My Cookies\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-08 10:34+0000\n"
-"PO-Revision-Date: 2025-02-18 16:38+0000\n"
+"PO-Revision-Date: 2025-03-02 06:53+0000\n"
 "Last-Translator: \n"
-"Language-Team: فارسی\n"
+"Language-Team: Persian\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
@@ -274,8 +274,8 @@ msgid ""
 "Enable storing consent decisions of users in a log file (wp-"
 "contents/uploads/accept-my-cookies/consents.log)."
 msgstr ""
-"تصمیم کاربران درباره‌ي پذیرش یا عدم پذیرش کوکی‌ها را ذخیره کنید (در آدرس wp-"
-"contents/uploads/accept-my-cookies/consents.log)."
+"تصمیم کاربران درباره‌ی پذیرش یا عدم پذیرش کوکی‌ها را ذخیره کنید (در آدرس wp-"
+"contents/uploads/accept-my-cookies/consents-yyyy-mm.log)."
 
 #: include/options.php:61
 msgid ""
@@ -406,7 +406,7 @@ msgstr "حافظه محلی (Local Storage)"
 
 #: include/View/Admin/templates/credit-tab.php:14
 msgid "Need a Custom WordPress Solution?"
-msgstr "در به یک کارکرد اختصاصی در وردپرس نیاز دارید؟"
+msgstr "به یک کارکرد اختصاصی در وردپرس نیاز دارید؟"
 
 #: include/options.php:208 include/options.php:222
 msgid "Normal"

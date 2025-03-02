@@ -108,6 +108,12 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+### 1.1.0
+
+- Logging bug fixed to log all parameters with consent options
+- Cookies must be check by JavaScript too, to make work on caching systems on
+- Minor change in Persian translation 
+
 ### 1.0.3
 
 - Minor bug fix in initial language detection

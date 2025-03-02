@@ -203,7 +203,9 @@ class PublicController
             'ip'         => isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '',
             'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'])) : '',
             'consent'    => (bool) isset($_POST['consent']) ? sanitize_text_field(wp_unslash($_POST['consent'])) : true,
-            'parameters' => isset($_POST['parameters']) ? sanitize_text_field(wp_unslash($_POST['parameters'])) : '', 
+            'parameters' => isset($_POST['parameters']) && is_array($_POST['parameters']) 
+                ? array_map('sanitize_text_field', wp_unslash($_POST['parameters'])) 
+                : array(),
         );
 
         // Log the consent data
