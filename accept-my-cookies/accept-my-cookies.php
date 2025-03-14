@@ -11,7 +11,7 @@
  * @license  https://github.com/sghiaseddin/Accept_My_Cookies/blob/main/LICENSE GPL-3.0
  * @version  GIT: <https://github.com/sghiaseddin/Accept_My_Cookies>
  * @link     https://sghiaseddin.com
- * @tag      Major bug fix
+ * @tag      Reduced exposed options
  */
 
 /*
@@ -19,7 +19,7 @@ Plugin Name: Accept My Cookies
 Plugin URI: http://wordpress.org/plugins/accept-my-cookies/
 Description: Accept My Cookies displays a user-friendly consent banner, allowing visitors to accept or reject tracking cookies and it supports Google Consent Mode.
 Author: Shayan Ghiaseddin
-Version: 1.1.0
+Version: 1.2.0
 Author URI: https://sghiaseddin.com/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -34,7 +34,7 @@ if (! defined('ABSPATH')) {
 }
 
 // Define useful constants
-define('ACCEPT_MY_COOKIES_VERSION', '1.1.0');
+define('ACCEPT_MY_COOKIES_VERSION', '1.2.0');
 define('ACCEPT_MY_COOKIES_DIR', plugin_dir_path(__FILE__));
 define('ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__));
 
@@ -82,11 +82,11 @@ function Accept_My_Cookies_init()
     // Initialize AdminController for backend functionality
     new AdminController();
 
-    // Initialize PublicController for frontend functionality
-    new PublicController();
+    // Initialize PublicController for frontend functionality and store instance
+    $publicController = new PublicController();
 
-    // Initialize GoogleConsentController for Google Consent Mode
-    new GoogleConsentController();
+    // Initialize GoogleConsentController for Google Consent Mode and pass the PublicController instance
+    new GoogleConsentController($publicController);
 }
 add_action('plugins_loaded', 'Accept_My_Cookies_init');
 

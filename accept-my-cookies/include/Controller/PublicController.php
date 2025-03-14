@@ -46,13 +46,43 @@ class PublicController
      *
      * @return array Saved plugin options.
      */
-    private function loadSavedOptions()
+    public function loadSavedOptions()
     {
         $schema = include ACCEPT_MY_COOKIES_DIR . 'include/options.php';
         $saved_options = array();
 
         foreach ($schema as $option_name => $option_details) {
             $saved_options[$option_name] = $this->settings_handler->getOption($option_name);
+        }
+
+        return $saved_options;
+    }
+
+    /**
+     * Filter plugin options to expose on public.
+     *
+     * @return array Filtered plugin options.
+     */
+    public function filterSavedOptions()
+    {
+        $saved_options = $this->options;
+        $public_options = array(
+            'ad_personalization',
+            'ad_storage',
+            'ad_user_data',
+            'analytics_storage',
+            'banner_delay_seconds',
+            'cookie_expiration_days',
+            'ga_id',
+            'google_consent_mode_enabled',
+            'logging_enabled',
+            'storage_method',
+        );
+
+        foreach ($saved_options as $key => $value) {
+            if (! in_array($key, $public_options)) {
+                unset($saved_options[$key]);
+            }
         }
 
         return $saved_options;
@@ -111,7 +141,7 @@ class PublicController
             array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'nonce'   => wp_create_nonce('accept_my_cookies_nonce'),
-                'options' => $this->options, // Pass saved options, not the schema
+                'options' => $this->filterSavedOptions(), // Pass filtered options to expose on public, not the whole schema
             )
         );
     }

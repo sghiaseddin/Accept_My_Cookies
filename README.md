@@ -108,6 +108,11 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+## 1.2.0
+
+- Reduced exposed options as js object to only those needed
+- Restructured the classes dependency 
+
 ### 1.1.0
 
 - Logging bug fixed to log all parameters with consent options
