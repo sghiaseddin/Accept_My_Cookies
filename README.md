@@ -108,6 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+## 1.2.1
+
+- Passed the test with Wordpress 6.8
+
 ## 1.2.0
 
 - Reduced exposed options as js object to only those needed
