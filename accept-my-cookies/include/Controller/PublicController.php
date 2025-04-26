@@ -73,8 +73,10 @@ class PublicController
             'analytics_storage',
             'banner_delay_seconds',
             'cookie_expiration_days',
-            'ga_id',
             'google_consent_mode_enabled',
+            'ga_id',
+            'clarity_consent_enabled',
+            'cl_id',
             'logging_enabled',
             'storage_method',
         );

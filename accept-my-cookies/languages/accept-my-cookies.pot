@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Accept My Cookies\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 16:31+0000\n"
+"POT-Creation-Date: 2025-04-26 20:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -70,7 +70,7 @@ msgid ""
 "site."
 msgstr ""
 
-#: include/Controller/AdminController.php:185
+#: include/Controller/AdminController.php:197
 msgid "All options have successfully saved."
 msgstr ""
 
@@ -78,47 +78,47 @@ msgstr ""
 msgid "Analytics Storage"
 msgstr ""
 
-#: include/options.php:291
+#: include/options.php:321
 msgid "Banner Background Color"
 msgstr ""
 
-#: include/options.php:301
+#: include/options.php:331
 msgid "Banner Background Opacity"
 msgstr ""
 
-#: include/options.php:277
+#: include/options.php:307
 msgid "Banner Color Style"
 msgstr ""
 
-#: include/options.php:268
+#: include/options.php:298
 msgid "Banner Delay (Seconds)"
 msgstr ""
 
-#: include/options.php:350
+#: include/options.php:380
 msgid "Banner Link Color"
 msgstr ""
 
-#: include/options.php:315
+#: include/options.php:345
 msgid "Banner Overlay Color"
 msgstr ""
 
-#: include/options.php:326
+#: include/options.php:356
 msgid "Banner Overlay Opacity"
 msgstr ""
 
-#: include/options.php:188
+#: include/options.php:218
 msgid "Banner Position"
 msgstr ""
 
-#: include/options.php:204
+#: include/options.php:234
 msgid "Banner Size"
 msgstr ""
 
-#: include/options.php:340
+#: include/options.php:370
 msgid "Banner Text Color"
 msgstr ""
 
-#: include/options.php:241
+#: include/options.php:271
 msgid "Banner Text Size (px)"
 msgstr ""
 
@@ -126,43 +126,43 @@ msgstr ""
 msgid "Banner Title"
 msgstr ""
 
-#: include/options.php:232
+#: include/options.php:262
 msgid "Banner Title Text Size (px)"
 msgstr ""
 
-#: include/options.php:259
+#: include/options.php:289
 msgid "Banner Z-Index"
 msgstr ""
 
-#: include/options.php:191
+#: include/options.php:221
 msgid "Bottom"
 msgstr ""
 
-#: include/options.php:281
+#: include/options.php:311
 msgid "Bright"
 msgstr ""
 
-#: include/options.php:361
+#: include/options.php:391
 msgid "Button Background Color"
 msgstr ""
 
-#: include/options.php:218
+#: include/options.php:248
 msgid "Button Size"
 msgstr ""
 
-#: include/options.php:371
+#: include/options.php:401
 msgid "Button Text Color"
 msgstr ""
 
-#: include/options.php:250
+#: include/options.php:280
 msgid "Button Text Size (px)"
 msgstr ""
 
-#: include/options.php:195
+#: include/options.php:225
 msgid "Center"
 msgstr ""
 
-#: include/options.php:285
+#: include/options.php:315
 msgid "Choose a predefined color style or customize it."
 msgstr ""
 
@@ -173,19 +173,32 @@ msgid ""
 "local storage could be checked only on browser runtime using javascript."
 msgstr ""
 
-#: include/options.php:226
+#: include/options.php:256
 msgid "Choose the size of the buttons in the consent banner."
 msgstr ""
 
-#: include/options.php:212
+#: include/options.php:242
 msgid "Choose the size of the consent banner."
 msgstr ""
 
-#: include/options.php:198
+#: include/options.php:228
 msgid "Choose where the consent banner appears on the screen."
 msgstr ""
 
-#: include/Controller/AdminController.php:140
+#: include/View/Public/templates/consent-banner.php:57
+#: include/View/Admin/templates/settings-page.php:31
+msgid "Clarity Tracking"
+msgstr ""
+
+#: include/options.php:197
+msgid "Clarity Tracking ID"
+msgstr ""
+
+#: include/Controller/AdminController.php:80
+msgid "Clarity Tracking Settings"
+msgstr ""
+
+#: include/Controller/AdminController.php:152
 msgid "Cleanup completed."
 msgstr ""
 
@@ -201,11 +214,11 @@ msgstr ""
 msgid "Cookies"
 msgstr ""
 
-#: include/View/Admin/templates/settings-page.php:34
+#: include/View/Admin/templates/settings-page.php:37
 msgid "Credit"
 msgstr ""
 
-#: include/options.php:282
+#: include/options.php:312
 msgid "Custom"
 msgstr ""
 
@@ -221,7 +234,7 @@ msgstr ""
 msgid "Customize Button Text"
 msgstr ""
 
-#: include/options.php:280
+#: include/options.php:310
 msgid "Dark"
 msgstr ""
 
@@ -243,6 +256,19 @@ msgstr ""
 
 #: include/options.php:150
 msgid "Enable Analytics Storage"
+msgstr ""
+
+#: include/options.php:188
+msgid "Enable Clarity Consent"
+msgstr ""
+
+#: include/options.php:191
+msgid ""
+"Enable Clarity Consent to manage user consent for Microsoft Clarity services."
+msgstr ""
+
+#: include/options.php:207
+msgid "Enable Clarity Tracking"
 msgstr ""
 
 #: include/options.php:58
@@ -302,6 +328,10 @@ msgstr ""
 msgid "Enter the URL for the \"Learn More\" link"
 msgstr ""
 
+#: include/options.php:200
+msgid "Enter your Clarity Tracking ID (e.g., ra12345678)"
+msgstr ""
+
 #: include/options.php:143
 msgid "Enter your Google Property ID (e.g., G-123456)"
 msgstr ""
@@ -359,11 +389,11 @@ msgid ""
 "customization, feel free to %s."
 msgstr ""
 
-#: include/Controller/AdminController.php:135
+#: include/Controller/AdminController.php:147
 msgid "Invalid nonce."
 msgstr ""
 
-#: include/options.php:223
+#: include/options.php:253
 msgid "Large"
 msgstr ""
 
@@ -379,7 +409,7 @@ msgstr ""
 msgid "Learn More URL"
 msgstr ""
 
-#: include/options.php:193
+#: include/options.php:223
 msgid "Left"
 msgstr ""
 
@@ -391,7 +421,7 @@ msgstr ""
 msgid "Need a Custom WordPress Solution?"
 msgstr ""
 
-#: include/options.php:208 include/options.php:222
+#: include/options.php:238 include/options.php:252
 msgid "Normal"
 msgstr ""
 
@@ -403,12 +433,12 @@ msgstr ""
 msgid "Privacy & Cookies"
 msgstr ""
 
-#: include/options.php:194
+#: include/options.php:224
 msgid "Right"
 msgstr ""
 
 #: include/View/Admin/AdminView.php:202
-#: include/View/Admin/templates/settings-page.php:64
+#: include/View/Admin/templates/settings-page.php:72
 msgid "Save Settings"
 msgstr ""
 
@@ -420,39 +450,39 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
-#: include/options.php:355
+#: include/options.php:385
 msgid "Set the color of \"Learn More\" link in the consent banner."
 msgstr ""
 
-#: include/options.php:320
+#: include/options.php:350
 msgid "Set the color of the overlay behind the consent banner."
 msgstr ""
 
-#: include/options.php:271
+#: include/options.php:301
 msgid "Set the delay (in seconds) before the consent banner appears."
 msgstr ""
 
-#: include/options.php:253
+#: include/options.php:283
 msgid "Set the font size of the text in the consent banner buttons."
 msgstr ""
 
-#: include/options.php:244
+#: include/options.php:274
 msgid "Set the font size of the text in the consent banner."
 msgstr ""
 
-#: include/options.php:235
+#: include/options.php:265
 msgid "Set the font size of the title in the consent banner."
 msgstr ""
 
-#: include/options.php:309
+#: include/options.php:339
 msgid "Set the opacity of the consent banner background."
 msgstr ""
 
-#: include/options.php:334
+#: include/options.php:364
 msgid "Set the opacity of the overlay behind the consent banner."
 msgstr ""
 
-#: include/options.php:262
+#: include/options.php:292
 msgid "Set the z-index of the consent banner to control its stacking order."
 msgstr ""
 
@@ -460,7 +490,7 @@ msgstr ""
 msgid "Setting Saved!"
 msgstr ""
 
-#: accept-my-cookies.php:99
+#: accept-my-cookies.php:103
 msgid "Settings"
 msgstr ""
 
@@ -468,7 +498,7 @@ msgstr ""
 msgid "Shayan Ghiaseddin"
 msgstr ""
 
-#: include/options.php:221
+#: include/options.php:251
 msgid "Small"
 msgstr ""
 
@@ -476,11 +506,11 @@ msgstr ""
 msgid "Storage Method"
 msgstr ""
 
-#: include/View/Admin/templates/settings-page.php:31
+#: include/View/Admin/templates/settings-page.php:34
 msgid "Styling"
 msgstr ""
 
-#: include/Controller/AdminController.php:80
+#: include/Controller/AdminController.php:88
 msgid "Styling Settings"
 msgstr ""
 
@@ -507,7 +537,7 @@ msgid "The URL where users can learn more about your cookie policy."
 msgstr ""
 
 #. here %s is the option label that is not valid.
-#: include/Controller/AdminController.php:181
+#: include/Controller/AdminController.php:193
 #, php-format
 msgid "The value for \"%s\" is not valid. Please review it."
 msgstr ""
@@ -517,11 +547,11 @@ msgstr ""
 msgid "This plugin was created by %s, a developer."
 msgstr ""
 
-#: include/options.php:207
+#: include/options.php:237
 msgid "Tiny"
 msgstr ""
 
-#: include/options.php:192
+#: include/options.php:222
 msgid "Top"
 msgstr ""
 
@@ -531,7 +561,7 @@ msgid ""
 "you agree to our use of cookies."
 msgstr ""
 
-#: include/options.php:209
+#: include/options.php:239
 msgid "Wide"
 msgstr ""
 
@@ -542,6 +572,6 @@ msgid ""
 "issue in %s."
 msgstr ""
 
-#: include/Controller/AdminController.php:147
+#: include/Controller/AdminController.php:159
 msgid "Your browser session is expired. Please reload this page."
 msgstr ""

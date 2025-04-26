@@ -27,6 +27,8 @@ class InputValidator
                 return self::isColor($value);
             case 'ga_id':
                 return self::isGaId($value);
+            case 'cl_id':
+                return self::isClId($value);
             case 'html':
                 return self::isHtml($value);
             default:
@@ -99,6 +101,16 @@ class InputValidator
     {
         // Google Analytics ID format: UA-XXXXX-Y
         if (preg_match('/(G-\w{10}|UA-\d{4,9}-\d{1,3})/', $value) || ! $value) {
+            return $value;
+        } else {
+            return false;
+        }
+    }
+
+    private static function isClId($value)
+    {
+        // Clarity Property ID format: 10 letters and numbers
+        if (preg_match('/\w{10}/', $value) || ! $value) {
             return $value;
         } else {
             return false;

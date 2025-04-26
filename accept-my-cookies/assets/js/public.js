@@ -12,8 +12,7 @@ jQuery(document).ready(function ($) {
     }
 
     // Check if the user has already consented
-    function hasUserConsented()
-    {
+    function hasUserConsented() {
         const storageMethod = acceptMyCookiesData.options.storage_method;
         if (storageMethod === 'cookies') {
             // This needs to be check again in runtime, to works fine with the caching systems on
@@ -27,8 +26,7 @@ jQuery(document).ready(function ($) {
     }
 
     // Show the consent banner after a delay
-    function showBannerAfterDelay()
-    {
+    function showBannerAfterDelay() {
         const delaySeconds = acceptMyCookiesData.options.banner_delay_seconds;
 
         setTimeout(function () {
@@ -65,8 +63,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Set consent preference
-    function setConsent(consent, acceptAll = false)
-    {
+    function setConsent(consent, acceptAll = false) {
         const storageMethod = acceptMyCookiesData.options.storage_method;
 
         // Determine consent values for each parameter
@@ -75,6 +72,7 @@ jQuery(document).ready(function ($) {
             'ad_storage',
             'ad_user_data',
             'ad_personalization',
+            'clarity_tracking'
         ];
 
         var consentValues = {};
@@ -107,11 +105,15 @@ jQuery(document).ready(function ($) {
         if (acceptMyCookiesData.options.google_consent_mode_enabled) {
             updateGoogleConsentMode(consentValues);
         }
+
+        // Update Clarity Consent
+        if (acceptMyCookiesData.options.clarity_consent_enabled) {
+            updateClarityConsent(consentValues);
+        }
     }
 
     // Get the value of a toggle
-    function getToggleValue(consentType)
-    {
+    function getToggleValue(consentType) {
         const toggle = $(`.accept-my-cookies-banner__toggle[data-consent-type="${consentType}"]`);
         return toggle.prop('checked');
     }
@@ -119,15 +121,23 @@ jQuery(document).ready(function ($) {
     // Function to update Google Consent Mode
     function updateGoogleConsentMode(consentValues) {
         for (const [param, value] of Object.entries(consentValues)) {
-            if (value) {
+            if (value && param != 'clarity_tracking') {
                 updateConsent(param, value ? 'granted' : 'denied');
             }
         }
     }
-    
+
+    // Function to update Google Consent Mode
+    function updateClarityConsent(consentValues) {
+        for (const [param, value] of Object.entries(consentValues)) {
+            if (value && param == 'clarity_tracking') {
+                loadClarityScript();
+            }
+        }
+    }
+
     // Hide the consent banner
-    function hideBanner()
-    {
+    function hideBanner() {
         $('#accept-my-cookies-banner').fadeOut();
         $('.accept-my-cookies-banner-overlay').fadeOut();
     }
@@ -153,8 +163,7 @@ jQuery(document).ready(function ($) {
     }
 
     // Initialize the banner
-    function initBanner()
-    {
+    function initBanner() {
         if (!hasUserConsented()) {
             showBannerAfterDelay();
         }

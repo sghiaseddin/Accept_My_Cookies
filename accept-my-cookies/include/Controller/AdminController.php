@@ -74,6 +74,14 @@ class AdminController
             'accept-my-cookies-google-property'
         );
 
+        // Register settings for the Clarity Property tab
+        add_settings_section(
+            'accept_my_cookies_clarity_property_section',
+            __('Clarity Tracking Settings', 'accept-my-cookies'),
+            null,
+            'accept-my-cookies-clarity-property'
+        );
+
         // Register settings for the Styling tab
         add_settings_section(
             'accept_my_cookies_styling_section',
@@ -98,6 +106,10 @@ class AdminController
                 case 'google_property':
                     $page = 'accept-my-cookies-google-property';
                     $section = 'accept_my_cookies_google_property_section';
+                    break;
+                case 'clarity_property':
+                    $page = 'accept-my-cookies-clarity-property';
+                    $section = 'accept_my_cookies_clarity_property_section';
                     break;
                 case 'styling':
                     $page = 'accept-my-cookies-styling';

@@ -1,7 +1,6 @@
 jQuery(document).ready(function ($) {
     // Function to toggle visibility of dependent inputs
-    function toggleDependentInputs()
-    {
+    function toggleDependentInputs() {
         $('[data-depends-on]').each(function () {
             var $dependentInput = $(this);
             var dependsOn = $dependentInput.data('depends-on');
@@ -29,7 +28,7 @@ jQuery(document).ready(function ($) {
     toggleDependentInputs();
 
     // Toggle on change of critical inputs
-    $('[id="accept_my_cookies_customize_button_enabled"], [id="accept_my_cookies_google_consent_mode_enabled"], [id="accept_my_cookies_banner_color_style"]').on('change', function () {
+    $('[id="accept_my_cookies_customize_button_enabled"], [id="accept_my_cookies_google_consent_mode_enabled"], [id="accept_my_cookies_clarity_consent_enabled"], [id="accept_my_cookies_banner_color_style"]').on('change', function () {
         toggleDependentInputs();
     });
 });

@@ -108,6 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+## 1.3.0
+
+- Microsoft Clarity has added as an option to consent banner
+
 ## 1.2.1
 
 - Passed the test with Wordpress 6.8

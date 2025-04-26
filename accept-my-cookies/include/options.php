@@ -181,6 +181,36 @@ return array(
         'validation-type'   => 'boolean',
     ),
 
+    // Clarity Property Tab Options
+    'clarity_consent_enabled' => array(
+        'key'     => 'accept_my_cookies_clarity_consent_enabled',
+        'default' => '0', // 0 for disabled, 1 for enabled
+        'label'   => __('Enable Clarity Consent', 'accept-my-cookies'),
+        'type'    => 'checkbox',
+        'tab'     => 'clarity_property',
+        'description' => __('Enable Clarity Consent to manage user consent for Microsoft Clarity services.', 'accept-my-cookies'),
+        'validation-type'   => 'boolean',
+    ),
+    'cl_id' => array(
+        'key'     => 'accept_my_cookies_cl_id',
+        'default' => '', // Default empty
+        'label'   => __('Clarity Tracking ID', 'accept-my-cookies'),
+        'type'    => 'text',
+        'tab'     => 'clarity_property',
+        'placeholder' => __('Enter your Clarity Tracking ID (e.g., ra12345678)', 'accept-my-cookies'),
+        'data-depends-on' => 'accept_my_cookies_clarity_consent_enabled',
+        'validation-type'   => 'cl_id',
+    ),
+    'clarity_tracking' => array(
+        'key'     => 'accept_my_cookies_clarity_tracking',
+        'default' => '1', // 1 for enabled, 0 for disabled
+        'label'   => __('Enable Clarity Tracking', 'accept-my-cookies'),
+        'type'    => 'checkbox',
+        'tab'     => 'clarity_property',
+        'data-depends-on' => 'accept_my_cookies_clarity_consent_enabled',
+        'validation-type'   => 'boolean',
+    ),
+
     // Styling Tab Options
     'banner_position' => array(
         'key'     => 'accept_my_cookies_banner_position',

@@ -27,6 +27,9 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
         <a href="#google_property" class="nav-tab <?php echo $active_tab === 'google_property' ? 'nav-tab-active' : ''; ?>" data-tab="google_property">
             <?php esc_html_e('Google Property', 'accept-my-cookies'); ?>
         </a>
+        <a href="#clarity_property" class="nav-tab <?php echo $active_tab === 'clarity_property' ? 'nav-tab-active' : ''; ?>" data-tab="clarity_property">
+            <?php esc_html_e('Clarity Tracking', 'accept-my-cookies'); ?>
+        </a>
         <a href="#styling" class="nav-tab <?php echo $active_tab === 'styling' ? 'nav-tab-active' : ''; ?>" data-tab="styling">
             <?php esc_html_e('Styling', 'accept-my-cookies'); ?>
         </a>
@@ -49,6 +52,11 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
         <!-- Google Property Tab Content -->
         <div id="google_property-tab" class="tab-content" style="<?php echo $active_tab === 'google_property' ? 'display: block;' : 'display: none;'; ?>">
             <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/google-property-tab.php'; ?>
+        </div>
+
+        <!-- Clarity Property Tab Content -->
+        <div id="clarity_property-tab" class="tab-content" style="<?php echo $active_tab === 'clarity_property' ? 'display: block;' : 'display: none;'; ?>">
+            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/clarity-property-tab.php'; ?>
         </div>
 
         <!-- Styling Tab Content -->

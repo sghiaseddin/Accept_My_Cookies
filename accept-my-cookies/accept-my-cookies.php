@@ -11,7 +11,7 @@
  * @license  https://github.com/sghiaseddin/Accept_My_Cookies/blob/main/LICENSE GPL-3.0
  * @version  GIT: <https://github.com/sghiaseddin/Accept_My_Cookies>
  * @link     https://sghiaseddin.com
- * @tag      Passed the test with Wordpress 6.8
+ * @tag      Microsoft Clarity added
  */
 
 /*
@@ -19,7 +19,7 @@ Plugin Name: Accept My Cookies
 Plugin URI: http://wordpress.org/plugins/accept-my-cookies/
 Description: Accept My Cookies displays a user-friendly consent banner, allowing visitors to accept or reject tracking cookies and it supports Google Consent Mode.
 Author: Shayan Ghiaseddin
-Version: 1.2.1
+Version: 1.3.0
 Author URI: https://sghiaseddin.com/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -28,13 +28,14 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 use AcceptMyCookies\Controller\AdminController;
 use AcceptMyCookies\Controller\PublicController;
 use AcceptMyCookies\Controller\GoogleConsentController;
+use AcceptMyCookies\Controller\ClarityConsentController;
 
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
 // Define useful constants
-define('ACCEPT_MY_COOKIES_VERSION', '1.2.0');
+define('ACCEPT_MY_COOKIES_VERSION', '1.3.0');
 define('ACCEPT_MY_COOKIES_DIR', plugin_dir_path(__FILE__));
 define('ACCEPT_MY_COOKIES_URL', plugin_dir_url(__FILE__));
 
@@ -87,8 +88,11 @@ function Accept_My_Cookies_init()
 
     // Initialize GoogleConsentController for Google Consent Mode and pass the PublicController instance
     new GoogleConsentController($publicController);
+
+    // Initialize ClarityConsentController for Clarity Consent and pass the PublicController instance
+    new ClarityConsentController($publicController);
 }
-add_action('plugins_loaded', 'Accept_My_Cookies_init');
+add_action('init', 'Accept_My_Cookies_init');
 
 /**
  * Add settings page link in plugins listing

@@ -4,7 +4,7 @@ Donate link: https://sghiaseddin.com
 Tags: gdpr, cookies, consent, google consent mode, privacy
 Requires at least: 5.6
 Tested up to: 6.8
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -99,6 +99,10 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 7. Plugin Settings - Styling
 
 == Changelog ==
+
+= 1.3.0 =
+
+- Microsoft Clarity has added as an option to consent banner
 
 = 1.2.1 =
 

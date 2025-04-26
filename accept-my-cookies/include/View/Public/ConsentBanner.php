@@ -54,6 +54,8 @@ class ConsentBanner
         $ad_storage                     = $this->options['ad_storage'];
         $ad_user_data                   = $this->options['ad_user_data'];
         $ad_personalization             = $this->options['ad_personalization'];
+        $clarity_consent_enabled        = $this->options['clarity_consent_enabled'];
+        $clarity_tracking               = $this->options['clarity_tracking'];
         $banner_color_style             = $this->options['banner_color_style'];
 
         // Include the banner template
