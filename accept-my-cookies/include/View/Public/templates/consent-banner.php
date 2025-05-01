@@ -50,7 +50,7 @@ if (!defined('ABSPATH')) {
                         <?php esc_html_e('Ad Personalization', 'accept-my-cookies'); ?>
                     </label>
                 <?php endif; ?>
-                <?php if ($clarity_tracking) : ?>
+                <?php if ($clarity_tracking && $clarity_consent_enabled) : ?>
                     <label class="accept-my-cookies-banner__toggle-label">
                         <input type="checkbox" class="accept-my-cookies-banner__toggle" data-consent-type="clarity_tracking" disabled checked>
                         <span class="accept-my-cookies-banner__toggle-slider"></span>

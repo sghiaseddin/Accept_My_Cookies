@@ -246,4 +246,29 @@ class PublicController
 
         wp_send_json_success('Consent logged.');
     }
+
+    /**
+     * Convert a hex color and opacity to an 8-character hex with alpha.
+     *
+     * @param string $hex     Hex color code (e.g., 'ffffff').
+     * @param float  $opacity Opacity value from 0 to 1.
+     *
+     * @return string 8-character hex code with alpha channel.
+     */
+    private function addOpacityToHex($hex, $opacity)
+    {
+        $hex = ltrim($hex, '#');
+        if (strlen($hex) === 3) {
+            $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+        }
+
+        $opacity = max(0, min(1, floatval($opacity)));
+        $alpha = dechex((int) round($opacity * 255));
+
+        if (strlen($alpha) < 2) {
+            $alpha = '0' . $alpha;
+        }
+
+        return $hex . $alpha;
+    }
 }

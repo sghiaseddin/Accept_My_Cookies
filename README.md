@@ -108,6 +108,11 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+## 1.3.1
+
+- Bug fix with showing Clarity toggle
+- Bug fix with adding opacity to hex colors
+
 ## 1.3.0
 
 - Microsoft Clarity has added as an option to consent banner
