@@ -269,6 +269,6 @@ class PublicController
             $alpha = '0' . $alpha;
         }
 
-        return $hex . $alpha;
+        return '#' . $hex . $alpha;
     }
 }

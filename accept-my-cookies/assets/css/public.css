@@ -75,7 +75,8 @@
     border-radius: 8px;
 }
 
-.accept-my-cookies-banner--left .accept-my-cookies-banner__content, .accept-my-cookies-banner--right .accept-my-cookies-banner__content {
+.accept-my-cookies-banner--left .accept-my-cookies-banner__content,
+.accept-my-cookies-banner--right .accept-my-cookies-banner__content {
     max-width: 320px;
 }
 
@@ -115,7 +116,8 @@
     color: #ffffff;
 }
 
-.accept-my-cookies-banner--dark label, .accept-my-cookies-banner--dark p {
+.accept-my-cookies-banner--dark label,
+.accept-my-cookies-banner--dark p {
     color: #ffffff;
 }
 
@@ -124,7 +126,8 @@
     color: #1e1e1e;
 }
 
-.accept-my-cookies-banner--bright label, .accept-my-cookies-banner--bright p {
+.accept-my-cookies-banner--bright label,
+.accept-my-cookies-banner--bright p {
     color: #1e1e1e;
 }
 
@@ -137,7 +140,7 @@
 }
 
 .accept-my-cookies-banner__toggle {
-    display: none;
+    display: none !important;
 }
 
 .accept-my-cookies-banner__toggle-label-essentials {
@@ -149,7 +152,7 @@
 }
 
 .accept-my-cookies-banner__toggle_essentials {
-    display: none;
+    display: none !important;
 }
 
 .accept-my-cookies-banner__toggle-slider {
@@ -173,15 +176,16 @@
     transition: transform 0.3s;
 }
 
-.accept-my-cookies-banner__toggle:checked + .accept-my-cookies-banner__toggle-slider {
+.accept-my-cookies-banner__toggle:checked+.accept-my-cookies-banner__toggle-slider {
     background-color: #0073aa;
 }
 
-.accept-my-cookies-banner__toggle_essentials:checked + .accept-my-cookies-banner__toggle-slider::before, .accept-my-cookies-banner__toggle:checked + .accept-my-cookies-banner__toggle-slider::before {
+.accept-my-cookies-banner__toggle_essentials:checked+.accept-my-cookies-banner__toggle-slider::before,
+.accept-my-cookies-banner__toggle:checked+.accept-my-cookies-banner__toggle-slider::before {
     transform: translateX(20px);
 }
 
-.accept-my-cookies-banner__toggle_essentials + .accept-my-cookies-banner__toggle-slider {
+.accept-my-cookies-banner__toggle_essentials+.accept-my-cookies-banner__toggle-slider {
     background-color: #aaa;
 }
 
@@ -207,7 +211,8 @@
     cursor: pointer;
 }
 
-.accept-my-cookies-banner__button--accept, .accept-my-cookies-banner__button--acceptall {
+.accept-my-cookies-banner__button--accept,
+.accept-my-cookies-banner__button--acceptall {
     background-color: #0073aa;
     color: #ffffff;
 }
@@ -218,6 +223,7 @@
     opacity: 0.9;
 }
 
-.accept-my-cookies-banner__button:hover, .accept-my-cookies-banner__link:hover {
+.accept-my-cookies-banner__button:hover,
+.accept-my-cookies-banner__link:hover {
     opacity: 0.8;
 }
