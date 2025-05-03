@@ -121,7 +121,7 @@ jQuery(document).ready(function ($) {
     // Function to update Google Consent Mode
     function updateGoogleConsentMode(consentValues) {
         for (const [param, value] of Object.entries(consentValues)) {
-            if (value && param != 'clarity_tracking') {
+            if (value && param !== 'clarity_tracking') {
                 updateConsent(param, value ? 'granted' : 'denied');
             }
         }
@@ -130,7 +130,7 @@ jQuery(document).ready(function ($) {
     // Function to update Google Consent Mode
     function updateClarityConsent(consentValues) {
         for (const [param, value] of Object.entries(consentValues)) {
-            if (value && param == 'clarity_tracking') {
+            if (value && param === 'clarity_tracking') {
                 loadClarityScript();
             }
         }

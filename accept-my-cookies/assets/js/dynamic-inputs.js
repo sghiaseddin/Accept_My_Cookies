@@ -19,7 +19,11 @@ jQuery(document).ready(function ($) {
                 }
 
                 // Toggle visibility
-                $dependentInput.closest('tr').toggle(isVisible);
+                if ($dependentInput.attr('id') === 'accept-my-cookies-charts') {
+                    $dependentInput.toggle(isVisible);
+                } else {
+                    $dependentInput.closest('tr').toggle(isVisible);
+                }
             }
         });
     }
@@ -28,7 +32,7 @@ jQuery(document).ready(function ($) {
     toggleDependentInputs();
 
     // Toggle on change of critical inputs
-    $('[id="accept_my_cookies_customize_button_enabled"], [id="accept_my_cookies_google_consent_mode_enabled"], [id="accept_my_cookies_clarity_consent_enabled"], [id="accept_my_cookies_banner_color_style"]').on('change', function () {
+    $('[id="accept_my_cookies_customize_button_enabled"], [id="accept_my_cookies_google_consent_mode_enabled"], [id="accept_my_cookies_clarity_consent_enabled"], [id="accept_my_cookies_banner_color_style"], [id="accept_my_cookies_logging_enabled"]').on('change', function () {
         toggleDependentInputs();
     });
 });

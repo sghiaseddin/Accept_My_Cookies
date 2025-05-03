@@ -33,6 +33,9 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
         <a href="#styling" class="nav-tab <?php echo $active_tab === 'styling' ? 'nav-tab-active' : ''; ?>" data-tab="styling">
             <?php esc_html_e('Styling', 'accept-my-cookies'); ?>
         </a>
+        <a href="#logging" class="nav-tab <?php echo $active_tab === 'logging' ? 'nav-tab-active' : ''; ?>" data-tab="logging">
+            <?php esc_html_e('Logging', 'accept-my-cookies'); ?>
+        </a>
         <a href="#credit" class="nav-tab <?php echo $active_tab === 'credit' ? 'nav-tab-active' : ''; ?>" data-tab="credit">
             <?php esc_html_e('Credit', 'accept-my-cookies'); ?>
         </a>
@@ -62,6 +65,11 @@ $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
         <!-- Styling Tab Content -->
         <div id="styling-tab" class="tab-content" style="<?php echo $active_tab === 'styling' ? 'display: block;' : 'display: none;'; ?>">
             <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/styling-tab.php'; ?>
+        </div>
+
+        <!-- Logging Tab Content -->
+        <div id="logging-tab" class="tab-content" style="<?php echo $active_tab === 'logging' ? 'display: block;' : 'display: none;'; ?>">
+            <?php include ACCEPT_MY_COOKIES_DIR . '/include/View/Admin/templates/logging-tab.php'; ?>
         </div>
 
         <!-- Credit Tab Content -->

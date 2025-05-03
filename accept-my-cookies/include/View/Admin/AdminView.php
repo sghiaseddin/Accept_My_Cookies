@@ -2,12 +2,22 @@
 
 namespace AcceptMyCookies\View\Admin;
 
+use AcceptMyCookies\Controller\LogHandler;
+
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
 class AdminView
 {
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->log_handler = new LogHandler();
+    }
+
     /**
      * Render an option input field.
      *
@@ -130,6 +140,7 @@ class AdminView
         // Close the wrapper div
         echo '</div>';
     }
+
     /**
      * Enqueue scripts and styles for the admin area.
      */
@@ -190,6 +201,22 @@ class AdminView
             true
         );
 
+        wp_register_script(
+            'chartjs',
+            ACCEPT_MY_COOKIES_URL . 'vendor/chart.js/dist/chart.umd.js',
+            array(),
+            ACCEPT_MY_COOKIES_VERSION,
+            true
+        );
+
+        wp_register_script(
+            'accept-my-cookies-admin-chart',
+            ACCEPT_MY_COOKIES_URL . 'assets/js/admin-chart.js',
+            array('chartjs'),
+            ACCEPT_MY_COOKIES_VERSION,
+            true
+        );
+
         wp_localize_script(
             'accept-my-cookies-save-settings',
             'acceptMyCookiesSaveSettings',
@@ -212,6 +239,14 @@ class AdminView
             )
         );
 
+        wp_localize_script(
+            'accept-my-cookies-admin-chart', 
+            'acceptMyCookiesChartData',
+            array(
+                'data' => $this->log_handler->extract_consent_data_json()
+            )
+        );
+
         // Get the current screen object
         $screen = get_current_screen();
 
@@ -222,6 +257,8 @@ class AdminView
             wp_enqueue_script('accept-my-cookies-dynamic-inputs');
             wp_enqueue_script('accept-my-cookies-credit');
             wp_enqueue_script('accept-my-cookies-credit-after');
+            wp_enqueue_script('chartjs');
+            wp_enqueue_script('accept-my-cookies-admin-chart');
         }
         wp_enqueue_script('accept-my-cookies-deactivate');
         wp_enqueue_style('accept-my-cookies-admin');

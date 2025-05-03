@@ -108,6 +108,11 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+## 1.4.0
+
+- Extract information from .log file
+- And show as line chart in Logging tab
+
 ## 1.3.1
 
 - Bug fix with showing Clarity toggle

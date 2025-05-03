@@ -104,15 +104,6 @@ return array(
         'description' => __('Choose how consent preferences are stored; cookies or local storage. We recommend cookies, as it checked and processed during php execution. However local storage could be checked only on browser runtime using javascript.', 'accept-my-cookies'),
         'validation-type'   => 'options',
     ),
-    'logging_enabled' => array(
-        'key'     => 'accept_my_cookies_logging_enabled',
-        'default' => '0', // 0 for disabled, 1 for enabled
-        'label'   => __( 'Enable Logging', 'accept-my-cookies' ),
-        'type'    => 'checkbox',
-        'tab'     => 'general',
-        'description' => __( 'Enable storing consent decisions of users in a log file (wp-contents/uploads/accept-my-cookies/consents.log).', 'accept-my-cookies' ),
-        'validation-type'   => 'boolean',
-    ),
     'custom_html_head' => array(
         'key'     => 'accept_my_cookies_custom_html_head',
         'default' => '', // Default empty
@@ -404,5 +395,16 @@ return array(
         'data-depends-on' => 'accept_my_cookies_banner_color_style',
         'data-depends-value' => 'custom',
         'validation-type'   => 'color',
+    ),
+
+    // Logging Tab Options
+    'logging_enabled' => array(
+        'key'     => 'accept_my_cookies_logging_enabled',
+        'default' => '0', // 0 for disabled, 1 for enabled
+        'label'   => __( 'Enable Logging', 'accept-my-cookies' ),
+        'type'    => 'checkbox',
+        'tab'     => 'logging',
+        'description' => __( 'Enable storing consent decisions of users in a log file (wp-contents/uploads/accept-my-cookies/consents-{year}-{month}.log).', 'accept-my-cookies' ),
+        'validation-type'   => 'boolean',
     ),
 );

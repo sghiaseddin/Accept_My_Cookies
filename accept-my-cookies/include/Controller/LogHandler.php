@@ -123,4 +123,69 @@ class LogHandler
         // Append the log entry to the current log file
         file_put_contents($this->log_file, $log_entry, FILE_APPEND);
     }
+
+    /**
+     * Extract data from consents log file.
+     */
+    public static function extract_consent_data_json()
+    {
+        $upload_dir = wp_upload_dir();
+        $log_dir = trailingslashit($upload_dir['basedir']) . 'accept-my-cookies/';
+        $log_files = glob($log_dir . 'consents-*.log');
+
+        if (empty($log_files)) {
+            return array(); // No log files found
+        }
+
+        // Pick the latest log file
+        usort($log_files, function ($a, $b) {
+            return filemtime($b) - filemtime($a);
+        });
+        $latest_log = $log_files[0];
+
+        if (!file_exists($latest_log) || filesize($latest_log) === 0) {
+            return []; // File doesn't exist or is empty
+        }
+
+        $data = array();
+        $attributes = array(
+            'essentials', 
+            'analytics_storage', 
+            'ad_storage', 
+            'ad_user_data', 
+            'ad_personalization',
+            'clarity_tracking'
+        );
+
+        $handle = fopen($latest_log, 'r');
+        if ($handle) {
+            while (($line = fgets($handle)) !== false) {
+                if (!preg_match('/^\[(\d{4}-\d{2}-\d{2}) \d{2}:\d{2}:\d{2}\].*?essentials: ([01]).*?analytics_storage: ([01]).*?ad_storage: ([01]).*?ad_user_data: ([01])(?:.*?ad_personalization: ([01]).*?clarity_tracking: ([01]))?/', $line, $matches)) {
+                    continue; // Skip lines that don't match format
+                }
+
+                $day = (int)substr($matches[1], -2); // Extract day from date
+
+                foreach ($attributes as $i => $attr) {
+                    if (!isset($matches[$i + 2])) {
+                        continue;
+                    }
+                    $val = $matches[$i + 2]; // shift index by 2: [0] full, [1] date, then values
+                    if (!isset($data[$attr])) {
+                        $data[$attr] = array(
+                            '1' => array(), 
+                            '0' => array()
+                        );
+                    }
+                    if (!isset($data[$attr][$val][$day])) {
+                        $data[$attr][$val][$day] = 0;
+                    }
+                    $data[$attr][$val][$day]++;
+                }
+            }
+            fclose($handle);
+        }
+
+        return $data;
+    }
 }

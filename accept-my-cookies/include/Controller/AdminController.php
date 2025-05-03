@@ -90,6 +90,14 @@ class AdminController
             'accept-my-cookies-styling'
         );
 
+        // Register settings for the Logging tab
+        add_settings_section(
+            'accept_my_cookies_logging_section',
+            __('Logging Settings', 'accept-my-cookies'),
+            null,
+            'accept-my-cookies-logging'
+        );
+        
         // Register settings fields
         foreach ($schema as $option_name => $option) {
             register_setting(
@@ -115,7 +123,11 @@ class AdminController
                     $page = 'accept-my-cookies-styling';
                     $section = 'accept_my_cookies_styling_section';
                     break;
-            }
+                case 'logging':
+                    $page = 'accept-my-cookies-logging';
+                    $section = 'accept_my_cookies_logging_section';
+                    break;
+                }
 
             add_settings_field(
                 $option['key'],

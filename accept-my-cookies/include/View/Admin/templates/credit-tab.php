@@ -5,7 +5,7 @@ if (! defined('ABSPATH')) {
 }
 
 ?>
-<div class="my-plugin-credits">
+<div>
     <h2><?php echo esc_html(__('About This Plugin', 'accept-my-cookies')); ?></h2>
     <p><?php echo sprintf( 
         __( 'This plugin was created by %s, a developer.', 'accept-my-cookies' ), 
