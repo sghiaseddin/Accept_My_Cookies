@@ -160,27 +160,22 @@ class LogHandler
         $handle = fopen($latest_log, 'r');
         if ($handle) {
             while (($line = fgets($handle)) !== false) {
-                if (!preg_match('/^\[(\d{4}-\d{2}-\d{2}) \d{2}:\d{2}:\d{2}\].*?essentials: ([01]).*?analytics_storage: ([01]).*?ad_storage: ([01]).*?ad_user_data: ([01])(?:.*?ad_personalization: ([01]).*?clarity_tracking: ([01]))?/', $line, $matches)) {
-                    continue; // Skip lines that don't match format
+                if (!preg_match('/^\[(\d{4}-\d{2}-\d{2}) \d{2}:\d{2}:\d{2}\]/', $line, $date_match)) {
+                    continue;
                 }
+                $day = (int)substr($date_match[1], -2);
 
-                $day = (int)substr($matches[1], -2); // Extract day from date
-
-                foreach ($attributes as $i => $attr) {
-                    if (!isset($matches[$i + 2])) {
-                        continue;
+                foreach ($attributes as $attr) {
+                    if (preg_match('/\b' . preg_quote($attr, '/') . ': ([01])/', $line, $match)) {
+                        $val = $match[1];
+                        if (!isset($data[$attr])) {
+                            $data[$attr] = array('1' => array(), '0' => array());
+                        }
+                        if (!isset($data[$attr][$val][$day])) {
+                            $data[$attr][$val][$day] = 0;
+                        }
+                        $data[$attr][$val][$day]++;
                     }
-                    $val = $matches[$i + 2]; // shift index by 2: [0] full, [1] date, then values
-                    if (!isset($data[$attr])) {
-                        $data[$attr] = array(
-                            '1' => array(), 
-                            '0' => array()
-                        );
-                    }
-                    if (!isset($data[$attr][$val][$day])) {
-                        $data[$attr][$val][$day] = 0;
-                    }
-                    $data[$attr][$val][$day]++;
                 }
             }
             fclose($handle);
