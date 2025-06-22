@@ -30,6 +30,9 @@ ob_start();
         background-color: <?php echo esc_attr($banner_background_color); ?>;
         color: <?php echo esc_attr($banner_text_color); ?>;
     }
+    .accept-my-cookies-banner--custom p, .accept-my-cookies-banner--custom label {
+        color: <?php echo esc_attr($banner_text_color); ?>;
+    }
     .accept-my-cookies-banner__toggle:checked + .accept-my-cookies-banner__toggle-slider {
         background-color: <?php echo esc_attr($banner_button_background_color); ?>;
     }

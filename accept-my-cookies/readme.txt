@@ -4,7 +4,7 @@ Donate link: https://sghiaseddin.com
 Tags: gdpr, cookies, consent, google consent mode, privacy
 Requires at least: 7.3
 Tested up to: 6.8
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -99,6 +99,11 @@ Yes, the consent banner is fully customizable. You can change its text, colors, 
 7. Plugin Settings - Styling
 
 == Changelog ==
+
+== 1.4.3 ==
+
+- Close button added to consent banner
+- Bug fix
 
 == 1.4.0 ==
 

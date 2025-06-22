@@ -224,6 +224,21 @@
 }
 
 .accept-my-cookies-banner__button:hover,
-.accept-my-cookies-banner__link:hover {
+.accept-my-cookies-banner__link:hover,
+.accept-my-cookies-banner-close-button:hover {
     opacity: 0.8;
+}
+
+.accept-my-cookies-banner-close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 32px;
+    line-height: 24px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.accept-my-cookies-banner-close-button>span {
+    font-size: 0;
 }

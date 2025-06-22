@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Accept My Cookies\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-08 10:34+0000\n"
-"PO-Revision-Date: 2025-05-03 19:04+0000\n"
+"PO-Revision-Date: 2025-06-22 08:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: Persian\n"
 "Language: fa_IR\n"
@@ -54,15 +54,15 @@ msgstr ""
 msgid "Accept My Cookies Settings"
 msgstr "تنظیمات Accept My Cookies"
 
-#: include/View/Public/templates/consent-banner.php:50
+#: include/View/Public/templates/consent-banner.php:51
 msgid "Ad Personalization"
 msgstr "شخصی‌سازی تبلیغات"
 
-#: include/View/Public/templates/consent-banner.php:36
+#: include/View/Public/templates/consent-banner.php:37
 msgid "Ad Storage"
 msgstr "ذخیره تبلیغات"
 
-#: include/View/Public/templates/consent-banner.php:43
+#: include/View/Public/templates/consent-banner.php:44
 msgid "Ad User Data"
 msgstr "داده‌های کاربری تبلیغات"
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "All options have successfully saved."
 msgstr "همه‌ی گزینه‌ها با موفقیت ذخیره شد."
 
-#: include/View/Public/templates/consent-banner.php:29
+#: include/View/Public/templates/consent-banner.php:30
 msgid "Analytics Storage"
 msgstr "ذخیره تحلیل‌ها"
 
@@ -192,7 +192,7 @@ msgstr "اندازه بنر Consent را انتخاب کنید."
 msgid "Choose where the consent banner appears on the screen."
 msgstr "انتخاب کنید که بنر Consent در کجای صفحه نمایش داده شود."
 
-#: include/View/Public/templates/consent-banner.php:57
+#: include/View/Public/templates/consent-banner.php:58
 #: include/View/Admin/templates/settings-page.php:31
 msgid "Clarity Tracking"
 msgstr "رهگیری در Clarity"
@@ -208,6 +208,10 @@ msgstr "تنظیمات رهگیری Clarity"
 #: include/Controller/AdminController.php:164
 msgid "Cleanup completed."
 msgstr "پاک‌سازی تکمیل شد."
+
+#: include/View/Public/templates/consent-banner.php:10
+msgid "Close Banner"
+msgstr "بستن بنر"
 
 #: include/options.php:20
 msgid "Consent Text"
@@ -355,7 +359,7 @@ msgstr "شناسه رهگیری در Clarity خود را وارد کنید (مث
 msgid "Enter your Google Property ID (e.g., G-123456)"
 msgstr "شناسه Google Property خود را وارد کنید (مثلاً G-123456)"
 
-#: include/View/Public/templates/consent-banner.php:23
+#: include/View/Public/templates/consent-banner.php:24
 msgid "Essentials"
 msgstr "ضروری‌ها"
 
@@ -472,16 +476,16 @@ msgstr "حریم خصوصی و کوکی‌ها"
 msgid "Right"
 msgstr "راست"
 
-#: include/View/Admin/AdminView.php:284
+#: include/View/Admin/AdminView.php:229
 #: include/View/Admin/templates/settings-page.php:80
 msgid "Save Settings"
 msgstr "ذخیره تنظیمات"
 
-#: include/View/Admin/AdminView.php:283
+#: include/View/Admin/AdminView.php:228
 msgid "Saving failed!"
 msgstr "ذخیره‌سازی عمل نکرد!"
 
-#: include/View/Admin/AdminView.php:281
+#: include/View/Admin/AdminView.php:226
 msgid "Saving..."
 msgstr "در حال ذخیره‌سازی"
 
@@ -521,7 +525,7 @@ msgstr "شفافیت روکش پشت بنر Consent را تنظیم کنید."
 msgid "Set the z-index of the consent banner to control its stacking order."
 msgstr "Z-Index بنر Consent را برای کنترل ترتیب چیدمان آن تنظیم کنید."
 
-#: include/View/Admin/AdminView.php:282
+#: include/View/Admin/AdminView.php:227
 msgid "Setting Saved!"
 msgstr "تنظیمات ذخیره شد!"
 

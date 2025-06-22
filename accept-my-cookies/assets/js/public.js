@@ -162,6 +162,14 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    // Handle "Close" button click and overlay click
+    $(document).on('click', '.accept-my-cookies-banner-close-button, .accept-my-cookies-banner-overlay', function () {
+        // Hide consent banner
+        $('.accept-my-cookies-banner-overlay').hide();
+        $('#accept-my-cookies-banner').hide();
+    });
+
+
     // Initialize the banner
     function initBanner() {
         if (!hasUserConsented()) {

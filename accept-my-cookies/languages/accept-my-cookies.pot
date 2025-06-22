@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Accept My Cookies\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-03 19:02+0000\n"
+"POT-Creation-Date: 2025-06-22 08:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -52,15 +52,15 @@ msgstr ""
 msgid "Accept My Cookies Settings"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:50
+#: include/View/Public/templates/consent-banner.php:51
 msgid "Ad Personalization"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:36
+#: include/View/Public/templates/consent-banner.php:37
 msgid "Ad Storage"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:43
+#: include/View/Public/templates/consent-banner.php:44
 msgid "Ad User Data"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 msgid "All options have successfully saved."
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:29
+#: include/View/Public/templates/consent-banner.php:30
 msgid "Analytics Storage"
 msgstr ""
 
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Choose where the consent banner appears on the screen."
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:57
+#: include/View/Public/templates/consent-banner.php:58
 #: include/View/Admin/templates/settings-page.php:31
 msgid "Clarity Tracking"
 msgstr ""
@@ -200,6 +200,10 @@ msgstr ""
 
 #: include/Controller/AdminController.php:164
 msgid "Cleanup completed."
+msgstr ""
+
+#: include/View/Public/templates/consent-banner.php:10
+msgid "Close Banner"
 msgstr ""
 
 #: include/options.php:20
@@ -336,7 +340,7 @@ msgstr ""
 msgid "Enter your Google Property ID (e.g., G-123456)"
 msgstr ""
 
-#: include/View/Public/templates/consent-banner.php:23
+#: include/View/Public/templates/consent-banner.php:24
 msgid "Essentials"
 msgstr ""
 
@@ -449,16 +453,16 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: include/View/Admin/AdminView.php:284
+#: include/View/Admin/AdminView.php:229
 #: include/View/Admin/templates/settings-page.php:80
 msgid "Save Settings"
 msgstr ""
 
-#: include/View/Admin/AdminView.php:283
+#: include/View/Admin/AdminView.php:228
 msgid "Saving failed!"
 msgstr ""
 
-#: include/View/Admin/AdminView.php:281
+#: include/View/Admin/AdminView.php:226
 msgid "Saving..."
 msgstr ""
 
@@ -498,7 +502,7 @@ msgstr ""
 msgid "Set the z-index of the consent banner to control its stacking order."
 msgstr ""
 
-#: include/View/Admin/AdminView.php:282
+#: include/View/Admin/AdminView.php:227
 msgid "Setting Saved!"
 msgstr ""
 

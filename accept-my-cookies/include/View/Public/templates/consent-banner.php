@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
 ?>
 <div class="accept-my-cookies-banner-overlay" style="display: none;"></div>
 <div id="accept-my-cookies-banner" class="accept-my-cookies-banner accept-my-cookies-banner--<?php echo esc_attr($banner_position); ?> accept-my-cookies-banner-size--<?php echo esc_attr($banner_size); ?> accept-my-cookies-banner-button-size--<?php echo esc_attr($banner_button_size); ?> accept-my-cookies-banner--<?php echo esc_attr($banner_color_style); ?>" style="display: none;">
+    <div class="accept-my-cookies-banner-close-button">×<span> <?php esc_html_e('Close Banner', 'accept-my-cookies'); ?></span></div>
     <div class="accept-my-cookies-banner__content">
         <div class="accept-my-cookies-banner__info">
             <p class="accept-my-cookies-banner__title"><?php echo esc_html($banner_title); ?></p>
