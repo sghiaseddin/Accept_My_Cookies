@@ -239,6 +239,11 @@
     cursor: pointer;
 }
 
+body.rtl .accept-my-cookies-banner-close-button {
+    left: 5px;
+    right: unset;
+}
+
 .accept-my-cookies-banner-close-button>span {
     font-size: 0;
 }

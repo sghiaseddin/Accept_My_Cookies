@@ -108,6 +108,10 @@ If you encounter any issues or have questions, please [open an issue](https://gi
 
 ## Changelog
 
+## 1.4.4
+
+- Minor bug fix
+
 ## 1.4.3
 
 - Close button added to consent banner
